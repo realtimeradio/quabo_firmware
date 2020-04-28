@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
 	<list key="org.eclipse.ui.internal.wizards.datatransfer.SmartImportRootWizardPage.knownSources">
+		<item value="/media/wei/DATA/LW/Project/Vivado_Project/Panoseti/V0105_NEW/quabo_master/SDK"/>
 		<item value="/media/wei/DATA/LW/Project/Vivado_Project/Panoseti/V0105/quabo_master/SDK"/>
 		<item value="/media/wei/DATA/LW/Project/Vivado_Project/Panoseti/V0104/quabo_master/SDK"/>
 		<item value="/media/wei/DATA/LW/Project/Vivado_Project/Panoseti/V0103/quabo_master/SDK"/>

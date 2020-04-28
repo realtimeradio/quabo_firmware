@@ -1,11 +1,15 @@
+v10.5A:
+(1) We get IM packets(ACQ_MODE=2) from hardware instead of software, so we can get high speed packets;
+(2) We can set ACQ_MODE to 0, so that no packets will be sent out except HK packets.
+
 v10.5:
 (1) finish high speed IM mode(ACQ_MODE = 3).
 	We can get PH packets and IM packets at the same time:
 	when it's PH packet, its ACQ_MODE = 1;
 	when it's IM packet, its ACQ_MODE = 3;
 (2) I just finished function test,including UDP packets checksum, timing difference,
-	but I'm not sure whether the scientific data is correct.
-	We need more tests on it.
+	but I'm not sure whether the scientific data is correct;
+	We need more tests on it;
 
 v10.4:
 (1) replace set_focus function with rick's new code to solve issue of stage stops when it reacges tge upper optical switch;

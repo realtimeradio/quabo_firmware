@@ -1,5 +1,5 @@
 
-# PART is kintex7 xc7k160tffg676
+# PART is kintex7 xc7k160tfbg676
 
 ############################################################
 # Clock Period Constraints                                 #

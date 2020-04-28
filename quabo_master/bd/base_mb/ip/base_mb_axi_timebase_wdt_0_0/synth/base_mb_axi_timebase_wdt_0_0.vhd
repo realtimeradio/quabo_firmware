@@ -127,11 +127,11 @@ ARCHITECTURE base_mb_axi_timebase_wdt_0_0_arch OF base_mb_axi_timebase_wdt_0_0 I
     );
   END COMPONENT axi_timebase_wdt_top;
   ATTRIBUTE X_CORE_INFO : STRING;
-  ATTRIBUTE X_CORE_INFO OF base_mb_axi_timebase_wdt_0_0_arch: ARCHITECTURE IS "axi_timebase_wdt_top,Vivado 2018.3_AR71948";
+  ATTRIBUTE X_CORE_INFO OF base_mb_axi_timebase_wdt_0_0_arch: ARCHITECTURE IS "axi_timebase_wdt_top,Vivado 2018.3.1_AR71948";
   ATTRIBUTE CHECK_LICENSE_TYPE : STRING;
   ATTRIBUTE CHECK_LICENSE_TYPE OF base_mb_axi_timebase_wdt_0_0_arch : ARCHITECTURE IS "base_mb_axi_timebase_wdt_0_0,axi_timebase_wdt_top,{}";
   ATTRIBUTE CORE_GENERATION_INFO : STRING;
-  ATTRIBUTE CORE_GENERATION_INFO OF base_mb_axi_timebase_wdt_0_0_arch: ARCHITECTURE IS "base_mb_axi_timebase_wdt_0_0,axi_timebase_wdt_top,{x_ipProduct=Vivado 2018.3_AR71948,x_ipVendor=xilinx.com,x_ipLibrary=ip,x_ipName=axi_timebase_wdt,x_ipVersion=3.0,x_ipCoreRevision=10,x_ipLanguage=VERILOG,x_ipSimLanguage=MIXED,C_FAMILY=kintex7,C_WDT_INTERVAL=30,C_WDT_ENABLE_ONCE=1,C_S_AXI_DATA_WIDTH=32,C_S_AXI_ADDR_WIDTH=4,C_ENABLE_WINDOW_WDT=0,C_SST_COUNT_WIDTH=8,C_MAX_COUNT_WIDTH=32}";
+  ATTRIBUTE CORE_GENERATION_INFO OF base_mb_axi_timebase_wdt_0_0_arch: ARCHITECTURE IS "base_mb_axi_timebase_wdt_0_0,axi_timebase_wdt_top,{x_ipProduct=Vivado 2018.3.1_AR71948,x_ipVendor=xilinx.com,x_ipLibrary=ip,x_ipName=axi_timebase_wdt,x_ipVersion=3.0,x_ipCoreRevision=10,x_ipLanguage=VERILOG,x_ipSimLanguage=MIXED,C_FAMILY=kintex7,C_WDT_INTERVAL=30,C_WDT_ENABLE_ONCE=1,C_S_AXI_DATA_WIDTH=32,C_S_AXI_ADDR_WIDTH=4,C_ENABLE_WINDOW_WDT=0,C_SST_COUNT_WIDTH=8,C_MAX_COUNT_WIDTH=32}";
   ATTRIBUTE X_INTERFACE_INFO : STRING;
   ATTRIBUTE X_INTERFACE_PARAMETER : STRING;
   ATTRIBUTE X_INTERFACE_PARAMETER OF wdt_reset: SIGNAL IS "XIL_INTERFACENAME WDT_RESET, POLARITY ACTIVE_HIGH, INSERT_VIP 0";

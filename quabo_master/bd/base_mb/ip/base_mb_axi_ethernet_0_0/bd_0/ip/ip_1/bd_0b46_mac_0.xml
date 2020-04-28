@@ -5630,15 +5630,15 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Tue Feb 18 19:23:16 UTC 2020</spirit:value>
+            <spirit:value>Mon Apr 27 18:46:10 UTC 2020</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:7254cd50</spirit:value>
+            <spirit:value>9:65da233d</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductLicenses</spirit:name>
-            <spirit:value>tri_mode_eth_mac@2015.04(BOUGHT);eth_avb_endpoint@2015.04(DESIGN_LINKING)</spirit:value>
+            <spirit:value>tri_mode_eth_mac@2015.04(HARDWARE_EVALUATION);eth_avb_endpoint@2015.04(HARDWARE_EVALUATION)</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -5654,15 +5654,15 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Tue Feb 18 19:23:16 UTC 2020</spirit:value>
+            <spirit:value>Mon Apr 27 18:46:10 UTC 2020</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:7254cd50</spirit:value>
+            <spirit:value>9:65da233d</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductLicenses</spirit:name>
-            <spirit:value>tri_mode_eth_mac@2015.04(BOUGHT);eth_avb_endpoint@2015.04(DESIGN_LINKING)</spirit:value>
+            <spirit:value>tri_mode_eth_mac@2015.04(HARDWARE_EVALUATION);eth_avb_endpoint@2015.04(HARDWARE_EVALUATION)</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -5692,15 +5692,15 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Tue Feb 18 19:23:16 UTC 2020</spirit:value>
+            <spirit:value>Mon Apr 27 18:46:10 UTC 2020</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:c33fcff6</spirit:value>
+            <spirit:value>9:242777bf</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductLicenses</spirit:name>
-            <spirit:value>tri_mode_eth_mac@2015.04(BOUGHT);eth_avb_endpoint@2015.04(DESIGN_LINKING)</spirit:value>
+            <spirit:value>tri_mode_eth_mac@2015.04(HARDWARE_EVALUATION);eth_avb_endpoint@2015.04(HARDWARE_EVALUATION)</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -5716,15 +5716,15 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Tue Feb 18 19:23:16 UTC 2020</spirit:value>
+            <spirit:value>Mon Apr 27 18:46:10 UTC 2020</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:c33fcff6</spirit:value>
+            <spirit:value>9:242777bf</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductLicenses</spirit:name>
-            <spirit:value>tri_mode_eth_mac@2015.04(BOUGHT);eth_avb_endpoint@2015.04(DESIGN_LINKING)</spirit:value>
+            <spirit:value>tri_mode_eth_mac@2015.04(HARDWARE_EVALUATION);eth_avb_endpoint@2015.04(HARDWARE_EVALUATION)</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -5738,15 +5738,15 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Tue Feb 18 19:23:17 UTC 2020</spirit:value>
+            <spirit:value>Mon Apr 27 18:46:11 UTC 2020</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:7254cd50</spirit:value>
+            <spirit:value>9:65da233d</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductLicenses</spirit:name>
-            <spirit:value>tri_mode_eth_mac@2015.04(BOUGHT);eth_avb_endpoint@2015.04(DESIGN_LINKING)</spirit:value>
+            <spirit:value>tri_mode_eth_mac@2015.04(HARDWARE_EVALUATION);eth_avb_endpoint@2015.04(HARDWARE_EVALUATION)</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -9052,7 +9052,7 @@
         </spirit:define>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../../../../ipshared/0713/hdl/tri_mode_ethernet_mac_v9_0_rfs.v</spirit:name>
+        <spirit:name>../../../../../ipshared/4523/hdl/tri_mode_ethernet_mac_v9_0_rfs.v</spirit:name>
         <spirit:fileType>verilogSource</spirit:fileType>
         <spirit:logicalName>tri_mode_ethernet_mac_v9_0_13</spirit:logicalName>
       </spirit:file>
@@ -9062,7 +9062,7 @@
         <spirit:logicalName>tri_mode_ethernet_mac_v9_0_13</spirit:logicalName>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../../../../ipshared/0713/hdl/tri_mode_ethernet_mac_v9_0_rfs.vhd</spirit:name>
+        <spirit:name>../../../../../ipshared/4523/hdl/tri_mode_ethernet_mac_v9_0_rfs.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
         <spirit:logicalName>tri_mode_ethernet_mac_v9_0_13</spirit:logicalName>
       </spirit:file>
@@ -9178,7 +9178,7 @@
     <spirit:fileSet>
       <spirit:name>xilinx_anylanguagebehavioralsimulation_view_fileset</spirit:name>
       <spirit:file>
-        <spirit:name>../../../../../ipshared/0713/hdl/tri_mode_ethernet_mac_v9_0_rfs.v</spirit:name>
+        <spirit:name>../../../../../ipshared/4523/hdl/tri_mode_ethernet_mac_v9_0_rfs.v</spirit:name>
         <spirit:fileType>verilogSource</spirit:fileType>
         <spirit:userFileType>USED_IN_ipstatic</spirit:userFileType>
         <spirit:logicalName>tri_mode_ethernet_mac_v9_0_13</spirit:logicalName>
@@ -9189,7 +9189,7 @@
         <spirit:logicalName>tri_mode_ethernet_mac_v9_0_13</spirit:logicalName>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../../../../ipshared/0713/hdl/tri_mode_ethernet_mac_v9_0_rfs.vhd</spirit:name>
+        <spirit:name>../../../../../ipshared/4523/hdl/tri_mode_ethernet_mac_v9_0_rfs.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
         <spirit:userFileType>USED_IN_ipstatic</spirit:userFileType>
         <spirit:logicalName>tri_mode_ethernet_mac_v9_0_13</spirit:logicalName>
@@ -9540,7 +9540,7 @@
       </xilinx:configElementInfos>
     </xilinx:coreExtensions>
     <xilinx:packagingInfo>
-      <xilinx:xilinxVersion>2018.3</xilinx:xilinxVersion>
+      <xilinx:xilinxVersion>2018.3.1</xilinx:xilinxVersion>
       <xilinx:checksum xilinx:scope="busInterfaces" xilinx:value="bd34a292"/>
       <xilinx:checksum xilinx:scope="fileGroups" xilinx:value="d3536ebd"/>
       <xilinx:checksum xilinx:scope="ports" xilinx:value="3df2239e"/>

@@ -32,7 +32,8 @@ Panoseti_EthPacketHeader ethpacketheader_user=
 	0xc001,								//src_port	keys
 	0xea61,								//dst_port	keys
 	0x0218,								//length
-	{0x00,0x00,0x00,0x00}				//board_loc	keys
+	{0x00,0x00,0x00,0x00},				//board_loc	keys
+	0x03								//acqmode
 };
 Panoseti_EthPacketHeader *ethpacketheader_user_ptr = &ethpacketheader_user;
 
@@ -82,7 +83,7 @@ void Cal_UDP_ChecksumPart(){
 	//the following is part of data
 	checksum_sum += ethpacketheader_user_ptr->board_loc[0] *256;
 	checksum_sum += ethpacketheader_user_ptr->board_loc[1];
-	checksum_sum +=	ACQ_MODE_HS_IM *256;
+	checksum_sum +=	ethpacketheader_user_ptr->acqmode *256;
 
 	ethpacketheader_user_ptr->udp_checksum_part = checksum_sum;
 }
@@ -118,6 +119,7 @@ char Panoseti_EthPacketHeader_Init(EthPacketHeader_Keys *ethpacketheader_keys)
 	ethpacketheader_user_ptr->dst_port  = ethpacketheader_keys->dst_port;
 	ethpacketheader_user_ptr->src_port  = ethpacketheader_keys->src_port;
 	memcpy(ethpacketheader_user_ptr->board_loc, ethpacketheader_keys->board_loc,4);
+	ethpacketheader_user_ptr->acqmode = ethpacketheader_keys->acqmode;
 	Cal_IP_Checksum();
 	Cal_UDP_ChecksumPart();
 	EthPacketHeader_for_FPGA_Init();

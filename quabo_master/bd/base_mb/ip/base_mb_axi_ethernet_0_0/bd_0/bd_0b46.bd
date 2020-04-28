@@ -3,7 +3,7 @@
     "design_info": {
       "boundary_crc": "0x92FB4E87A2EF03D1",
       "design_src": "SBD",
-      "device": "xc7k160tffg676-1",
+      "device": "xc7k160tfbg676-1",
       "name": "bd_0b46",
       "scoped": "true",
       "synth_flow_mode": "None",
@@ -1099,34 +1099,16 @@
       }
     },
     "interface_nets": {
-      "mgt_clk_1": {
-        "interface_ports": [
-          "mgt_clk",
-          "pcs_pma/gtrefclk_in"
-        ]
-      },
-      "s_axis_txd_1": {
-        "interface_ports": [
-          "s_axis_txd",
-          "eth_buf/AXI_STR_TXD"
-        ]
-      },
-      "mac_gmii": {
-        "interface_ports": [
-          "mac/gmii",
-          "pcs_pma/gmii_pcs_pma"
-        ]
-      },
-      "s_axi_1": {
-        "interface_ports": [
-          "s_axi",
-          "eth_buf/S_AXI"
-        ]
-      },
       "eth_buf_AXI_STR_RXS": {
         "interface_ports": [
           "m_axis_rxs",
           "eth_buf/AXI_STR_RXS"
+        ]
+      },
+      "s_axis_txc_1": {
+        "interface_ports": [
+          "s_axis_txc",
+          "eth_buf/AXI_STR_TXC"
         ]
       },
       "pcs_pma_sfp": {
@@ -1141,10 +1123,28 @@
           "eth_buf/AXI_STR_RXD"
         ]
       },
-      "eth_buf_S_AXI_2TEMAC": {
+      "s_axis_txd_1": {
         "interface_ports": [
-          "eth_buf/S_AXI_2TEMAC",
-          "mac/s_axi"
+          "s_axis_txd",
+          "eth_buf/AXI_STR_TXD"
+        ]
+      },
+      "mgt_clk_1": {
+        "interface_ports": [
+          "mgt_clk",
+          "pcs_pma/gtrefclk_in"
+        ]
+      },
+      "s_axi_1": {
+        "interface_ports": [
+          "s_axi",
+          "eth_buf/S_AXI"
+        ]
+      },
+      "mac_gmii": {
+        "interface_ports": [
+          "mac/gmii",
+          "pcs_pma/gmii_pcs_pma"
         ]
       },
       "mac_m_axis_rx": {
@@ -1153,16 +1153,16 @@
           "mac/m_axis_rx"
         ]
       },
-      "s_axis_txc_1": {
-        "interface_ports": [
-          "s_axis_txc",
-          "eth_buf/AXI_STR_TXC"
-        ]
-      },
       "eth_buf_TX_AXIS_MAC": {
         "interface_ports": [
           "eth_buf/TX_AXIS_MAC",
           "mac/s_axis_tx"
+        ]
+      },
+      "eth_buf_S_AXI_2TEMAC": {
+        "interface_ports": [
+          "eth_buf/S_AXI_2TEMAC",
+          "mac/s_axi"
         ]
       }
     },

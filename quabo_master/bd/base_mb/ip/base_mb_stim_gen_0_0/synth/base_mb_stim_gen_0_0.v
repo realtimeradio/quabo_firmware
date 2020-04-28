@@ -50,9 +50,9 @@
 // IP VLNV: xilinx.com:module_ref:stim_gen:1.0
 // IP Revision: 1
 
-(* X_CORE_INFO = "stim_gen,Vivado 2018.3_AR71948" *)
+(* X_CORE_INFO = "stim_gen,Vivado 2018.3.1_AR71948" *)
 (* CHECK_LICENSE_TYPE = "base_mb_stim_gen_0_0,stim_gen,{}" *)
-(* CORE_GENERATION_INFO = "base_mb_stim_gen_0_0,stim_gen,{x_ipProduct=Vivado 2018.3_AR71948,x_ipVendor=xilinx.com,x_ipLibrary=module_ref,x_ipName=stim_gen,x_ipVersion=1.0,x_ipCoreRevision=1,x_ipLanguage=VERILOG,x_ipSimLanguage=MIXED}" *)
+(* CORE_GENERATION_INFO = "base_mb_stim_gen_0_0,stim_gen,{x_ipProduct=Vivado 2018.3.1_AR71948,x_ipVendor=xilinx.com,x_ipLibrary=module_ref,x_ipName=stim_gen,x_ipVersion=1.0,x_ipCoreRevision=1,x_ipLanguage=VERILOG,x_ipSimLanguage=MIXED}" *)
 (* DowngradeIPIdentifiedWarnings = "yes" *)
 module base_mb_stim_gen_0_0 (
   clk,

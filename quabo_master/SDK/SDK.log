@@ -7888,3 +7888,30 @@ Reason: ERROR: [Common 17-39] 'hsi::open_hw_design' failed due to earlier errors
 14:51:12 INFO  : Processing command line option -hwspec /media/wei/DATA/LW/Project/Vivado_Project/Panoseti/V0105/quabo_master/SDK/base_mb_wrapper.hdf.
 14:51:13 INFO  : Successfully done setting SDK workspace  
 14:51:13 INFO  : Checking for hwspec changes in the project base_mb_wrapper_hw_platform_1.
+13:01:44 INFO  : Registering command handlers for SDK TCF services
+13:01:49 INFO  : Launching XSCT server: xsct -n -interactive /media/wei/DATA/LW/Project/Vivado_Project/Panoseti/V0105/quabo_master/SDK/temp_xsdb_launch_script.tcl
+13:01:53 INFO  : XSCT server has started successfully.
+13:01:58 INFO  : Successfully done setting XSCT server connection channel  
+13:01:58 INFO  : Successfully done setting SDK workspace  
+13:01:58 INFO  : Processing command line option -hwspec /media/wei/DATA/LW/Project/Vivado_Project/Panoseti/V0105/quabo_master/SDK/base_mb_wrapper.hdf.
+13:01:58 INFO  : Checking for hwspec changes in the project base_mb_wrapper_hw_platform_1.
+12:19:45 INFO  : Registering command handlers for SDK TCF services
+12:19:48 INFO  : Launching XSCT server: xsct -n -interactive /media/wei/DATA/LW/Project/Vivado_Project/Panoseti/V0105/quabo_master/SDK/temp_xsdb_launch_script.tcl
+12:19:52 INFO  : XSCT server has started successfully.
+12:19:52 INFO  : Successfully done setting XSCT server connection channel  
+12:19:56 INFO  : Successfully done setting SDK workspace  
+12:19:56 INFO  : Processing command line option -hwspec /media/wei/DATA/LW/Project/Vivado_Project/Panoseti/V0105/quabo_master/SDK/base_mb_wrapper.hdf.
+12:19:56 INFO  : Checking for hwspec changes in the project base_mb_wrapper_hw_platform_1.
+12:16:33 INFO  : Registering command handlers for SDK TCF services
+12:16:37 INFO  : Launching XSCT server: xsct -n -interactive /media/wei/DATA/LW/Project/Vivado_Project/Panoseti/V0105/quabo_master/SDK/temp_xsdb_launch_script.tcl
+12:16:41 INFO  : XSCT server has started successfully.
+12:16:47 INFO  : Successfully done setting XSCT server connection channel  
+12:16:47 INFO  : Successfully done setting SDK workspace  
+12:16:47 INFO  : Processing command line option -hwspec /media/wei/DATA/LW/Project/Vivado_Project/Panoseti/V0105/quabo_master/SDK/base_mb_wrapper.hdf.
+12:16:48 INFO  : Checking for hwspec changes in the project base_mb_wrapper_hw_platform_1.
+17:40:13 INFO  : Registering command handlers for SDK TCF services
+17:40:14 INFO  : Launching XSCT server: xsct -n -interactive /media/wei/DATA/LW/Project/Vivado_Project/Panoseti/V0105_NEW/quabo_master/SDK/temp_xsdb_launch_script.tcl
+17:40:16 INFO  : XSCT server has started successfully.
+17:40:16 INFO  : Successfully done setting XSCT server connection channel  
+17:40:16 INFO  : Successfully done setting SDK workspace  
+17:40:16 INFO  : Processing command line option -hwspec /media/wei/DATA/LW/Project/Vivado_Project/Panoseti/V0105_NEW/quabo_master/SDK/base_mb_wrapper.hdf.

@@ -16079,11 +16079,11 @@ In both cases, the FCS is verified on the frame.
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Thu Jan 24 00:03:40 UTC 2019</spirit:value>
+            <spirit:value>Mon Apr 27 18:40:02 UTC 2020</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:73d9691c</spirit:value>
+            <spirit:value>9:03be3a01</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -16097,11 +16097,11 @@ In both cases, the FCS is verified on the frame.
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Thu Jan 24 00:03:40 UTC 2019</spirit:value>
+            <spirit:value>Mon Apr 27 18:40:02 UTC 2020</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:410333cb</spirit:value>
+            <spirit:value>9:8efce707</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -16116,15 +16116,15 @@ In both cases, the FCS is verified on the frame.
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Tue Feb 18 19:23:12 UTC 2020</spirit:value>
+            <spirit:value>Mon Apr 27 18:46:03 UTC 2020</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:3c6accf1</spirit:value>
+            <spirit:value>9:eeabb4ee</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductLicenses</spirit:name>
-            <spirit:value>tri_mode_eth_mac@2015.04(BOUGHT);eth_avb_endpoint@2015.04(DESIGN_LINKING)</spirit:value>
+            <spirit:value>tri_mode_eth_mac@2015.04(HARDWARE_EVALUATION);eth_avb_endpoint@2015.04(HARDWARE_EVALUATION)</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -16140,15 +16140,15 @@ In both cases, the FCS is verified on the frame.
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Tue Feb 18 19:23:12 UTC 2020</spirit:value>
+            <spirit:value>Mon Apr 27 18:46:03 UTC 2020</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:3c6accf1</spirit:value>
+            <spirit:value>9:eeabb4ee</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductLicenses</spirit:name>
-            <spirit:value>tri_mode_eth_mac@2015.04(BOUGHT);eth_avb_endpoint@2015.04(DESIGN_LINKING)</spirit:value>
+            <spirit:value>tri_mode_eth_mac@2015.04(HARDWARE_EVALUATION);eth_avb_endpoint@2015.04(HARDWARE_EVALUATION)</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -16160,11 +16160,11 @@ In both cases, the FCS is verified on the frame.
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:91eb0c15</spirit:value>
+            <spirit:value>9:b05e2760</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductLicenses</spirit:name>
-            <spirit:value>tri_mode_eth_mac@2015.04(BOUGHT);eth_avb_endpoint@2015.04(DESIGN_LINKING)</spirit:value>
+            <spirit:value>tri_mode_eth_mac@2015.04(HARDWARE_EVALUATION);eth_avb_endpoint@2015.04(HARDWARE_EVALUATION)</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -16180,15 +16180,15 @@ In both cases, the FCS is verified on the frame.
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Tue Feb 18 19:23:12 UTC 2020</spirit:value>
+            <spirit:value>Mon Apr 27 18:46:03 UTC 2020</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:91eb0c15</spirit:value>
+            <spirit:value>9:b05e2760</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductLicenses</spirit:name>
-            <spirit:value>tri_mode_eth_mac@2015.04(BOUGHT);eth_avb_endpoint@2015.04(DESIGN_LINKING)</spirit:value>
+            <spirit:value>tri_mode_eth_mac@2015.04(HARDWARE_EVALUATION);eth_avb_endpoint@2015.04(HARDWARE_EVALUATION)</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -16202,15 +16202,15 @@ In both cases, the FCS is verified on the frame.
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Tue Feb 18 19:23:13 UTC 2020</spirit:value>
+            <spirit:value>Mon Apr 27 18:46:03 UTC 2020</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:3c6accf1</spirit:value>
+            <spirit:value>9:eeabb4ee</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductLicenses</spirit:name>
-            <spirit:value>tri_mode_eth_mac@2015.04(BOUGHT);eth_avb_endpoint@2015.04(DESIGN_LINKING)</spirit:value>
+            <spirit:value>tri_mode_eth_mac@2015.04(HARDWARE_EVALUATION);eth_avb_endpoint@2015.04(HARDWARE_EVALUATION)</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -18213,7 +18213,7 @@ In both cases, the FCS is verified on the frame.
       </xilinx:configElementInfos>
     </xilinx:coreExtensions>
     <xilinx:packagingInfo>
-      <xilinx:xilinxVersion>2018.3</xilinx:xilinxVersion>
+      <xilinx:xilinxVersion>2018.3.1</xilinx:xilinxVersion>
       <xilinx:checksum xilinx:scope="busInterfaces" xilinx:value="8200e7ad"/>
       <xilinx:checksum xilinx:scope="memoryMaps" xilinx:value="00000000"/>
       <xilinx:checksum xilinx:scope="fileGroups" xilinx:value="7f91f7b4"/>

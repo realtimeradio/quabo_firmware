@@ -525,7 +525,7 @@
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>NUM_READ_OUTSTANDING</spirit:name>
-          <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="BUSIFPARAM_VALUE.M_AXI_IM_CONFIG.NUM_READ_OUTSTANDING">2</spirit:value>
+          <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="BUSIFPARAM_VALUE.M_AXI_IM_CONFIG.NUM_READ_OUTSTANDING">1</spirit:value>
           <spirit:vendorExtensions>
             <xilinx:parameterInfo>
               <xilinx:parameterUsage>none</xilinx:parameterUsage>
@@ -534,7 +534,7 @@
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>NUM_WRITE_OUTSTANDING</spirit:name>
-          <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="BUSIFPARAM_VALUE.M_AXI_IM_CONFIG.NUM_WRITE_OUTSTANDING">2</spirit:value>
+          <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="BUSIFPARAM_VALUE.M_AXI_IM_CONFIG.NUM_WRITE_OUTSTANDING">1</spirit:value>
           <spirit:vendorExtensions>
             <xilinx:parameterInfo>
               <xilinx:parameterUsage>none</xilinx:parameterUsage>
@@ -1411,7 +1411,7 @@
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>NUM_READ_OUTSTANDING</spirit:name>
-          <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="BUSIFPARAM_VALUE.S_AXI_PACKETHEADER.NUM_READ_OUTSTANDING">1</spirit:value>
+          <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="BUSIFPARAM_VALUE.S_AXI_PACKETHEADER.NUM_READ_OUTSTANDING">2</spirit:value>
           <spirit:vendorExtensions>
             <xilinx:parameterInfo>
               <xilinx:parameterUsage>none</xilinx:parameterUsage>
@@ -1420,7 +1420,7 @@
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>NUM_WRITE_OUTSTANDING</spirit:name>
-          <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="BUSIFPARAM_VALUE.S_AXI_PACKETHEADER.NUM_WRITE_OUTSTANDING">1</spirit:value>
+          <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="BUSIFPARAM_VALUE.S_AXI_PACKETHEADER.NUM_WRITE_OUTSTANDING">2</spirit:value>
           <spirit:vendorExtensions>
             <xilinx:parameterInfo>
               <xilinx:parameterUsage>none</xilinx:parameterUsage>
@@ -1637,11 +1637,11 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Tue Apr 07 21:01:20 UTC 2020</spirit:value>
+            <spirit:value>Mon Apr 27 18:46:41 UTC 2020</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:4f7bce3b</spirit:value>
+            <spirit:value>9:1828a727</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -1657,11 +1657,11 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Tue Apr 07 21:01:20 UTC 2020</spirit:value>
+            <spirit:value>Mon Apr 27 18:46:41 UTC 2020</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:4f7bce3b</spirit:value>
+            <spirit:value>9:1828a727</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -1676,11 +1676,11 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Tue Apr 07 21:01:20 UTC 2020</spirit:value>
+            <spirit:value>Mon Apr 27 18:46:41 UTC 2020</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:562060a8</spirit:value>
+            <spirit:value>9:fa5d1eb4</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -1696,11 +1696,11 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Tue Apr 07 21:01:20 UTC 2020</spirit:value>
+            <spirit:value>Mon Apr 27 18:46:41 UTC 2020</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:562060a8</spirit:value>
+            <spirit:value>9:fa5d1eb4</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -2842,15 +2842,15 @@
         <spirit:userFileType>xci</spirit:userFileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/0317/src/HighSpeed_IM_v1_0_M_AXI_IM_ReadData.v</spirit:name>
+        <spirit:name>../../ipshared/6be5/src/HighSpeed_IM_v1_0_M_AXI_IM_ReadData.v</spirit:name>
         <spirit:fileType>verilogSource</spirit:fileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/0317/hdl/HighSpeed_IM_v1_0_S_AXI_PacketHeader.v</spirit:name>
+        <spirit:name>../../ipshared/6be5/hdl/HighSpeed_IM_v1_0_S_AXI_PacketHeader.v</spirit:name>
         <spirit:fileType>verilogSource</spirit:fileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/0317/hdl/HighSpeed_IM_v1_0.v</spirit:name>
+        <spirit:name>../../ipshared/6be5/hdl/HighSpeed_IM_v1_0.v</spirit:name>
         <spirit:fileType>verilogSource</spirit:fileType>
       </spirit:file>
     </spirit:fileSet>
@@ -2873,15 +2873,15 @@
         <spirit:userFileType>xci</spirit:userFileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/0317/src/HighSpeed_IM_v1_0_M_AXI_IM_ReadData.v</spirit:name>
+        <spirit:name>../../ipshared/6be5/src/HighSpeed_IM_v1_0_M_AXI_IM_ReadData.v</spirit:name>
         <spirit:fileType>verilogSource</spirit:fileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/0317/hdl/HighSpeed_IM_v1_0_S_AXI_PacketHeader.v</spirit:name>
+        <spirit:name>../../ipshared/6be5/hdl/HighSpeed_IM_v1_0_S_AXI_PacketHeader.v</spirit:name>
         <spirit:fileType>verilogSource</spirit:fileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/0317/hdl/HighSpeed_IM_v1_0.v</spirit:name>
+        <spirit:name>../../ipshared/6be5/hdl/HighSpeed_IM_v1_0.v</spirit:name>
         <spirit:fileType>verilogSource</spirit:fileType>
       </spirit:file>
     </spirit:fileSet>
@@ -2958,13 +2958,13 @@
   </spirit:parameters>
   <spirit:vendorExtensions>
     <xilinx:coreExtensions>
-      <xilinx:displayName>HighSpeed_IM_v2_5</xilinx:displayName>
+      <xilinx:displayName>HighSpeed_IM_v2_6</xilinx:displayName>
       <xilinx:definitionSource>package_project</xilinx:definitionSource>
       <xilinx:xpmLibraries>
         <xilinx:xpmLibrary>XPM_MEMORY</xilinx:xpmLibrary>
         <xilinx:xpmLibrary>XPM_CDC</xilinx:xpmLibrary>
       </xilinx:xpmLibraries>
-      <xilinx:coreRevision>6</xilinx:coreRevision>
+      <xilinx:coreRevision>2</xilinx:coreRevision>
       <xilinx:tags>
         <xilinx:tag xilinx:name="ui.data.coregen.dd@7f5480ca_ARCHIVE_LOCATION">/media/wei/DATA/LW/Project/Vivado_Project/Panoseti/V0105/quabo_master/ip_repo/HighSpeed_IM_1.0</xilinx:tag>
         <xilinx:tag xilinx:name="ui.data.coregen.dd@15f55e1f_ARCHIVE_LOCATION">/media/wei/DATA/LW/Project/Vivado_Project/Panoseti/V0105/quabo_master/ip_repo/HighSpeed_IM_1.0</xilinx:tag>
@@ -3845,6 +3845,35 @@
         <xilinx:tag xilinx:name="ui.data.coregen.dd@22125d8b_ARCHIVE_LOCATION">/media/wei/DATA/LW/Project/Vivado_Project/Panoseti/V0105/quabo_master/ip_repo/HighSpeed_IM_1.0</xilinx:tag>
         <xilinx:tag xilinx:name="ui.data.coregen.dd@4ab774e5_ARCHIVE_LOCATION">/media/wei/DATA/LW/Project/Vivado_Project/Panoseti/V0105/quabo_master/ip_repo/HighSpeed_IM_1.0</xilinx:tag>
         <xilinx:tag xilinx:name="ui.data.coregen.dd@5dea81f0_ARCHIVE_LOCATION">/media/wei/DATA/LW/Project/Vivado_Project/Panoseti/V0105/quabo_master/ip_repo/HighSpeed_IM_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@585d831c_ARCHIVE_LOCATION">/media/wei/DATA/LW/Project/Vivado_Project/Panoseti/V0105/quabo_master/ip_repo/HighSpeed_IM_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@26838fe0_ARCHIVE_LOCATION">/media/wei/DATA/LW/Project/Vivado_Project/Panoseti/V0105/quabo_master/ip_repo/HighSpeed_IM_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@e1e7726_ARCHIVE_LOCATION">/media/wei/DATA/LW/Project/Vivado_Project/Panoseti/V0105/quabo_master/ip_repo/HighSpeed_IM_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6f464d71_ARCHIVE_LOCATION">/media/wei/DATA/LW/Project/Vivado_Project/Panoseti/V0105/quabo_master/ip_repo/HighSpeed_IM_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@64651990_ARCHIVE_LOCATION">/media/wei/DATA/LW/Project/Vivado_Project/Panoseti/V0105/quabo_master/ip_repo/HighSpeed_IM_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4839f350_ARCHIVE_LOCATION">/media/wei/DATA/LW/Project/Vivado_Project/Panoseti/V0105/quabo_master/ip_repo/HighSpeed_IM_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@2ee2095e_ARCHIVE_LOCATION">/media/wei/DATA/LW/Project/Vivado_Project/Panoseti/V0105/quabo_master/ip_repo/HighSpeed_IM_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@527e761a_ARCHIVE_LOCATION">/media/wei/DATA/LW/Project/Vivado_Project/Panoseti/V0105/quabo_master/ip_repo/HighSpeed_IM_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1517f035_ARCHIVE_LOCATION">/media/wei/DATA/LW/Project/Vivado_Project/Panoseti/V0105/quabo_master/ip_repo/HighSpeed_IM_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@648e44ec_ARCHIVE_LOCATION">/media/wei/DATA/LW/Project/Vivado_Project/Panoseti/V0105/quabo_master/ip_repo/HighSpeed_IM_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@355632a7_ARCHIVE_LOCATION">/media/wei/DATA/LW/Project/Vivado_Project/Panoseti/V0105/quabo_master/ip_repo/HighSpeed_IM_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@2b637afb_ARCHIVE_LOCATION">/media/wei/DATA/LW/Project/Vivado_Project/Panoseti/V0105/quabo_master/ip_repo/HighSpeed_IM_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@668500cc_ARCHIVE_LOCATION">/media/wei/DATA/LW/Project/Vivado_Project/Panoseti/V0105/quabo_master/ip_repo/HighSpeed_IM_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@60c103a5_ARCHIVE_LOCATION">/media/wei/DATA/LW/Project/Vivado_Project/Panoseti/V0105/quabo_master/ip_repo/HighSpeed_IM_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@2c98f397_ARCHIVE_LOCATION">/media/wei/DATA/LW/Project/Vivado_Project/Panoseti/V0105/quabo_master/ip_repo/HighSpeed_IM_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7828e771_ARCHIVE_LOCATION">/media/wei/DATA/LW/Project/Vivado_Project/Panoseti/V0105/quabo_master/ip_repo/HighSpeed_IM_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@62a21a35_ARCHIVE_LOCATION">/media/wei/DATA/LW/Project/Vivado_Project/Panoseti/V0105/quabo_master/ip_repo/HighSpeed_IM_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@2cc7651d_ARCHIVE_LOCATION">/media/wei/DATA/LW/Project/Vivado_Project/Panoseti/V0105/quabo_master/ip_repo/HighSpeed_IM_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@29b6d067_ARCHIVE_LOCATION">/media/wei/DATA/LW/Project/Vivado_Project/Panoseti/V0105/quabo_master/ip_repo/HighSpeed_IM_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7d9a3f5a_ARCHIVE_LOCATION">/media/wei/DATA/LW/Project/Vivado_Project/Panoseti/V0105/quabo_master/ip_repo/HighSpeed_IM_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6502de0c_ARCHIVE_LOCATION">/media/wei/DATA/LW/Project/Vivado_Project/Panoseti/V0105/quabo_master/ip_repo/HighSpeed_IM_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@24f063af_ARCHIVE_LOCATION">/media/wei/DATA/LW/Project/Vivado_Project/Panoseti/V0105/quabo_master/ip_repo/HighSpeed_IM_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@33b93a09_ARCHIVE_LOCATION">/media/wei/DATA/LW/Project/Vivado_Project/Panoseti/V0105/quabo_master/ip_repo/HighSpeed_IM_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@2c96e5d7_ARCHIVE_LOCATION">/media/wei/DATA/LW/Project/Vivado_Project/Panoseti/V0105/quabo_master/ip_repo/HighSpeed_IM_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@47894fbc_ARCHIVE_LOCATION">/media/wei/DATA/LW/Project/Vivado_Project/Panoseti/V0105/quabo_master/ip_repo/HighSpeed_IM_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@2f52ef8a_ARCHIVE_LOCATION">/media/wei/DATA/LW/Project/Vivado_Project/Panoseti/V0105/quabo_master/ip_repo/HighSpeed_IM_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@22043b7f_ARCHIVE_LOCATION">/media/wei/DATA/LW/Project/Vivado_Project/Panoseti/V0105/quabo_master/ip_repo/HighSpeed_IM_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@573bcd71_ARCHIVE_LOCATION">/media/wei/DATA/LW/Project/Vivado_Project/Panoseti/V0105/quabo_master/ip_repo/HighSpeed_IM_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@343fe976_ARCHIVE_LOCATION">/media/wei/DATA/LW/Project/Vivado_Project/Panoseti/V0105/quabo_master/ip_repo/HighSpeed_IM_1.0</xilinx:tag>
       </xilinx:tags>
       <xilinx:configElementInfos>
         <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.ACLK.CLK_DOMAIN" xilinx:valueSource="default_prop" xilinx:valuePermission="bd"/>
@@ -3879,8 +3908,8 @@
         <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.M_AXI_IM_CONFIG.HAS_WSTRB" xilinx:valueSource="constant" xilinx:valuePermission="bd"/>
         <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.M_AXI_IM_CONFIG.ID_WIDTH" xilinx:valueSource="constant" xilinx:valuePermission="bd"/>
         <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.M_AXI_IM_CONFIG.MAX_BURST_LENGTH" xilinx:valuePermission="bd"/>
-        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.M_AXI_IM_CONFIG.NUM_READ_OUTSTANDING" xilinx:valueSource="default_prop" xilinx:valuePermission="bd"/>
-        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.M_AXI_IM_CONFIG.NUM_WRITE_OUTSTANDING" xilinx:valueSource="default_prop" xilinx:valuePermission="bd"/>
+        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.M_AXI_IM_CONFIG.NUM_READ_OUTSTANDING" xilinx:valuePermission="bd"/>
+        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.M_AXI_IM_CONFIG.NUM_WRITE_OUTSTANDING" xilinx:valuePermission="bd"/>
         <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.M_AXI_IM_CONFIG.PHASE" xilinx:valuePermission="bd"/>
         <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.M_AXI_IM_CONFIG.PROTOCOL" xilinx:valueSource="constant" xilinx:valuePermission="bd"/>
         <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.M_AXI_IM_CONFIG.READ_WRITE_MODE" xilinx:valueSource="constant" xilinx:valuePermission="bd"/>
@@ -3931,8 +3960,8 @@
         <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.S_AXI_PACKETHEADER.HAS_WSTRB" xilinx:valueSource="constant" xilinx:valuePermission="bd"/>
         <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.S_AXI_PACKETHEADER.ID_WIDTH" xilinx:valueSource="constant" xilinx:valuePermission="bd"/>
         <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.S_AXI_PACKETHEADER.MAX_BURST_LENGTH" xilinx:valuePermission="bd"/>
-        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.S_AXI_PACKETHEADER.NUM_READ_OUTSTANDING" xilinx:valuePermission="bd"/>
-        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.S_AXI_PACKETHEADER.NUM_WRITE_OUTSTANDING" xilinx:valuePermission="bd"/>
+        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.S_AXI_PACKETHEADER.NUM_READ_OUTSTANDING" xilinx:valueSource="default_prop" xilinx:valuePermission="bd"/>
+        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.S_AXI_PACKETHEADER.NUM_WRITE_OUTSTANDING" xilinx:valueSource="default_prop" xilinx:valuePermission="bd"/>
         <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.S_AXI_PACKETHEADER.PHASE" xilinx:valuePermission="bd"/>
         <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.S_AXI_PACKETHEADER.PROTOCOL" xilinx:valueSource="constant" xilinx:valuePermission="bd"/>
         <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.S_AXI_PACKETHEADER.READ_WRITE_MODE" xilinx:valueSource="constant" xilinx:valuePermission="bd"/>
@@ -3947,7 +3976,7 @@
       <xilinx:checksum xilinx:scope="busInterfaces" xilinx:value="101fd562"/>
       <xilinx:checksum xilinx:scope="addressSpaces" xilinx:value="c75837e7"/>
       <xilinx:checksum xilinx:scope="memoryMaps" xilinx:value="af84359a"/>
-      <xilinx:checksum xilinx:scope="fileGroups" xilinx:value="bfa53fbf"/>
+      <xilinx:checksum xilinx:scope="fileGroups" xilinx:value="5ef58ffd"/>
       <xilinx:checksum xilinx:scope="ports" xilinx:value="d14d88bf"/>
       <xilinx:checksum xilinx:scope="hdlParameters" xilinx:value="16eb17cd"/>
       <xilinx:checksum xilinx:scope="parameters" xilinx:value="90aed57d"/>

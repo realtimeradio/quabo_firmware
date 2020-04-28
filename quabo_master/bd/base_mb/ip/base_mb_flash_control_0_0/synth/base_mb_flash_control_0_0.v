@@ -50,9 +50,9 @@
 // IP VLNV: xilinx.com:module_ref:flash_control:1.0
 // IP Revision: 1
 
-(* X_CORE_INFO = "flash_control,Vivado 2018.3_AR71948" *)
+(* X_CORE_INFO = "flash_control,Vivado 2018.3.1_AR71948" *)
 (* CHECK_LICENSE_TYPE = "base_mb_flash_control_0_0,flash_control,{}" *)
-(* CORE_GENERATION_INFO = "base_mb_flash_control_0_0,flash_control,{x_ipProduct=Vivado 2018.3_AR71948,x_ipVendor=xilinx.com,x_ipLibrary=module_ref,x_ipName=flash_control,x_ipVersion=1.0,x_ipCoreRevision=1,x_ipLanguage=VERILOG,x_ipSimLanguage=MIXED,clk_div=0x02000}" *)
+(* CORE_GENERATION_INFO = "base_mb_flash_control_0_0,flash_control,{x_ipProduct=Vivado 2018.3.1_AR71948,x_ipVendor=xilinx.com,x_ipLibrary=module_ref,x_ipName=flash_control,x_ipVersion=1.0,x_ipCoreRevision=1,x_ipLanguage=VERILOG,x_ipSimLanguage=MIXED,clk_div=0x02000}" *)
 (* IP_DEFINITION_SOURCE = "module_ref" *)
 (* DowngradeIPIdentifiedWarnings = "yes" *)
 module base_mb_flash_control_0_0 (

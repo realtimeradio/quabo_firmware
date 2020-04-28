@@ -50,9 +50,9 @@
 // IP VLNV: xilinx.com:ip:xlconstant:1.1
 // IP Revision: 5
 
-(* X_CORE_INFO = "xlconstant_v1_1_5_xlconstant,Vivado 2018.3_AR71948" *)
+(* X_CORE_INFO = "xlconstant_v1_1_5_xlconstant,Vivado 2018.3.1_AR71948" *)
 (* CHECK_LICENSE_TYPE = "base_mb_xlconstant_1_1,xlconstant_v1_1_5_xlconstant,{}" *)
-(* CORE_GENERATION_INFO = "base_mb_xlconstant_1_1,xlconstant_v1_1_5_xlconstant,{x_ipProduct=Vivado 2018.3_AR71948,x_ipVendor=xilinx.com,x_ipLibrary=ip,x_ipName=xlconstant,x_ipVersion=1.1,x_ipCoreRevision=5,x_ipLanguage=VERILOG,x_ipSimLanguage=MIXED,CONST_WIDTH=1,CONST_VAL=0x0}" *)
+(* CORE_GENERATION_INFO = "base_mb_xlconstant_1_1,xlconstant_v1_1_5_xlconstant,{x_ipProduct=Vivado 2018.3.1_AR71948,x_ipVendor=xilinx.com,x_ipLibrary=ip,x_ipName=xlconstant,x_ipVersion=1.1,x_ipCoreRevision=5,x_ipLanguage=VERILOG,x_ipSimLanguage=MIXED,CONST_WIDTH=1,CONST_VAL=0x0}" *)
 (* DowngradeIPIdentifiedWarnings = "yes" *)
 module base_mb_xlconstant_1_1 (
   dout

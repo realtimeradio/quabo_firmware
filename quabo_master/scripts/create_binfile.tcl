@@ -23,7 +23,7 @@ puts $orig_proj_dir/$_xil_proj_name_.xpr
 #current_project $_xil_proj_name_
 open_project $orig_proj_dir/$_xil_proj_name_.xpr
 #open the implemented design
-open_run impl_6
+open_run impl_1
 
 #Get the epoch time, in seconds, and subtract 1e9 to make it fit in 32 bits
 #TCL has a funny way of saying c = a - b!

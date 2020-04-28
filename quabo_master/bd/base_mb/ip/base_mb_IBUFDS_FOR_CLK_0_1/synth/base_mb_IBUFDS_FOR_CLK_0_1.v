@@ -50,9 +50,9 @@
 // IP VLNV: xilinx.com:module_ref:IBUFDS_FOR_CLK:1.0
 // IP Revision: 1
 
-(* X_CORE_INFO = "IBUFDS_FOR_CLK,Vivado 2018.3_AR71948" *)
+(* X_CORE_INFO = "IBUFDS_FOR_CLK,Vivado 2018.3.1_AR71948" *)
 (* CHECK_LICENSE_TYPE = "base_mb_IBUFDS_FOR_CLK_0_1,IBUFDS_FOR_CLK,{}" *)
-(* CORE_GENERATION_INFO = "base_mb_IBUFDS_FOR_CLK_0_1,IBUFDS_FOR_CLK,{x_ipProduct=Vivado 2018.3_AR71948,x_ipVendor=xilinx.com,x_ipLibrary=module_ref,x_ipName=IBUFDS_FOR_CLK,x_ipVersion=1.0,x_ipCoreRevision=1,x_ipLanguage=VERILOG,x_ipSimLanguage=MIXED}" *)
+(* CORE_GENERATION_INFO = "base_mb_IBUFDS_FOR_CLK_0_1,IBUFDS_FOR_CLK,{x_ipProduct=Vivado 2018.3.1_AR71948,x_ipVendor=xilinx.com,x_ipLibrary=module_ref,x_ipName=IBUFDS_FOR_CLK,x_ipVersion=1.0,x_ipCoreRevision=1,x_ipLanguage=VERILOG,x_ipSimLanguage=MIXED}" *)
 (* IP_DEFINITION_SOURCE = "module_ref" *)
 (* DowngradeIPIdentifiedWarnings = "yes" *)
 module base_mb_IBUFDS_FOR_CLK_0_1 (

@@ -48,6 +48,7 @@ typedef struct Panoseti_EthPacketHeader {
 	unsigned short dst_port;
 	unsigned short length;
 	unsigned char board_loc[4];
+	unsigned char acqmode;
 } Panoseti_EthPacketHeader;
 //data in this struct is different, which is based on each quabo
 typedef struct EthPacketHeader_Keys{
@@ -58,6 +59,7 @@ typedef struct EthPacketHeader_Keys{
 	unsigned short src_port;
 	unsigned short dst_port;
 	unsigned char board_loc[4];
+	unsigned char acqmode;
 } EthPacketHeader_Keys;
 char Panoseti_EthPacketHeader_Init(EthPacketHeader_Keys *ethpacketheader_keys);
 void Panoseti_WriteHeaderToRam();

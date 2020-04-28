@@ -128,7 +128,7 @@ ARCHITECTURE base_mb_wrc_board_quabo_Light_0_2_arch OF base_mb_wrc_board_quabo_L
     );
   END COMPONENT wrc_board_quabo;
   ATTRIBUTE X_CORE_INFO : STRING;
-  ATTRIBUTE X_CORE_INFO OF base_mb_wrc_board_quabo_Light_0_2_arch: ARCHITECTURE IS "wrc_board_quabo,Vivado 2018.3_AR71948";
+  ATTRIBUTE X_CORE_INFO OF base_mb_wrc_board_quabo_Light_0_2_arch: ARCHITECTURE IS "wrc_board_quabo,Vivado 2018.3.1_AR71948";
   ATTRIBUTE CHECK_LICENSE_TYPE : STRING;
   ATTRIBUTE CHECK_LICENSE_TYPE OF base_mb_wrc_board_quabo_Light_0_2_arch : ARCHITECTURE IS "base_mb_wrc_board_quabo_Light_0_2,wrc_board_quabo,{}";
   ATTRIBUTE IP_DEFINITION_SOURCE : STRING;

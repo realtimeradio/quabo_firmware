@@ -612,19 +612,43 @@ set_property DRIVE 16 [get_ports pps_inout_0]
 
 
 
+connect_debug_port u_ila_0/probe1 [get_nets [list {base_mb_i/maroc_dc_0/inst/USR_LOGIC/IM_SM/frame_count2_reg__0[0]} {base_mb_i/maroc_dc_0/inst/USR_LOGIC/IM_SM/frame_count2_reg__0[1]} {base_mb_i/maroc_dc_0/inst/USR_LOGIC/IM_SM/frame_count2_reg__0[2]} {base_mb_i/maroc_dc_0/inst/USR_LOGIC/IM_SM/frame_count2_reg__0[3]} {base_mb_i/maroc_dc_0/inst/USR_LOGIC/IM_SM/frame_count2_reg__0[4]} {base_mb_i/maroc_dc_0/inst/USR_LOGIC/IM_SM/frame_count2_reg__0[5]} {base_mb_i/maroc_dc_0/inst/USR_LOGIC/IM_SM/frame_count2_reg__0[6]} {base_mb_i/maroc_dc_0/inst/USR_LOGIC/IM_SM/frame_count2_reg__0[7]}]]
+connect_debug_port u_ila_0/probe2 [get_nets [list {base_mb_i/maroc_dc_0/inst/USR_LOGIC/IM_SM/frame_count1_reg[0]} {base_mb_i/maroc_dc_0/inst/USR_LOGIC/IM_SM/frame_count1_reg[1]} {base_mb_i/maroc_dc_0/inst/USR_LOGIC/IM_SM/frame_count1_reg[2]} {base_mb_i/maroc_dc_0/inst/USR_LOGIC/IM_SM/frame_count1_reg[3]} {base_mb_i/maroc_dc_0/inst/USR_LOGIC/IM_SM/frame_count1_reg[4]} {base_mb_i/maroc_dc_0/inst/USR_LOGIC/IM_SM/frame_count1_reg[5]} {base_mb_i/maroc_dc_0/inst/USR_LOGIC/IM_SM/frame_count1_reg[6]} {base_mb_i/maroc_dc_0/inst/USR_LOGIC/IM_SM/frame_count1_reg[7]} {base_mb_i/maroc_dc_0/inst/USR_LOGIC/IM_SM/frame_count1_reg[8]} {base_mb_i/maroc_dc_0/inst/USR_LOGIC/IM_SM/frame_count1_reg[9]} {base_mb_i/maroc_dc_0/inst/USR_LOGIC/IM_SM/frame_count1_reg[10]} {base_mb_i/maroc_dc_0/inst/USR_LOGIC/IM_SM/frame_count1_reg[11]} {base_mb_i/maroc_dc_0/inst/USR_LOGIC/IM_SM/frame_count1_reg[12]} {base_mb_i/maroc_dc_0/inst/USR_LOGIC/IM_SM/frame_count1_reg[13]} {base_mb_i/maroc_dc_0/inst/USR_LOGIC/IM_SM/frame_count1_reg[14]} {base_mb_i/maroc_dc_0/inst/USR_LOGIC/IM_SM/frame_count1_reg[15]}]]
 
 
 
 
-
-
-
-
-
-connect_debug_port u_ila_0/probe33 [get_nets [list base_mb_i/AXI_Stream_Switch_1/inst/s1_sending]]
-connect_debug_port u_ila_0/probe35 [get_nets [list base_mb_i/AXI_Stream_Switch_0/inst/s1_sending]]
-
-
-
-
-
+create_debug_core u_ila_0 ila
+set_property ALL_PROBE_SAME_MU true [get_debug_cores u_ila_0]
+set_property ALL_PROBE_SAME_MU_CNT 1 [get_debug_cores u_ila_0]
+set_property C_ADV_TRIGGER false [get_debug_cores u_ila_0]
+set_property C_DATA_DEPTH 16384 [get_debug_cores u_ila_0]
+set_property C_EN_STRG_QUAL false [get_debug_cores u_ila_0]
+set_property C_INPUT_PIPE_STAGES 0 [get_debug_cores u_ila_0]
+set_property C_TRIGIN_EN false [get_debug_cores u_ila_0]
+set_property C_TRIGOUT_EN false [get_debug_cores u_ila_0]
+set_property port_width 1 [get_debug_ports u_ila_0/clk]
+connect_debug_port u_ila_0/clk [get_nets [list base_mb_i/clk_wiz_1/inst/clk_100]]
+set_property PROBE_TYPE DATA_AND_TRIGGER [get_debug_ports u_ila_0/probe0]
+set_property port_width 28 [get_debug_ports u_ila_0/probe0]
+connect_debug_port u_ila_0/probe0 [get_nets [list {base_mb_i/HighSpeed_IM_v1_0_0/inst/hs_im_state[0]} {base_mb_i/HighSpeed_IM_v1_0_0/inst/hs_im_state[1]} {base_mb_i/HighSpeed_IM_v1_0_0/inst/hs_im_state[2]} {base_mb_i/HighSpeed_IM_v1_0_0/inst/hs_im_state[3]} {base_mb_i/HighSpeed_IM_v1_0_0/inst/hs_im_state[4]} {base_mb_i/HighSpeed_IM_v1_0_0/inst/hs_im_state[5]} {base_mb_i/HighSpeed_IM_v1_0_0/inst/hs_im_state[6]} {base_mb_i/HighSpeed_IM_v1_0_0/inst/hs_im_state[7]} {base_mb_i/HighSpeed_IM_v1_0_0/inst/hs_im_state[8]} {base_mb_i/HighSpeed_IM_v1_0_0/inst/hs_im_state[9]} {base_mb_i/HighSpeed_IM_v1_0_0/inst/hs_im_state[10]} {base_mb_i/HighSpeed_IM_v1_0_0/inst/hs_im_state[11]} {base_mb_i/HighSpeed_IM_v1_0_0/inst/hs_im_state[12]} {base_mb_i/HighSpeed_IM_v1_0_0/inst/hs_im_state[13]} {base_mb_i/HighSpeed_IM_v1_0_0/inst/hs_im_state[14]} {base_mb_i/HighSpeed_IM_v1_0_0/inst/hs_im_state[15]} {base_mb_i/HighSpeed_IM_v1_0_0/inst/hs_im_state[16]} {base_mb_i/HighSpeed_IM_v1_0_0/inst/hs_im_state[17]} {base_mb_i/HighSpeed_IM_v1_0_0/inst/hs_im_state[18]} {base_mb_i/HighSpeed_IM_v1_0_0/inst/hs_im_state[19]} {base_mb_i/HighSpeed_IM_v1_0_0/inst/hs_im_state[20]} {base_mb_i/HighSpeed_IM_v1_0_0/inst/hs_im_state[21]} {base_mb_i/HighSpeed_IM_v1_0_0/inst/hs_im_state[22]} {base_mb_i/HighSpeed_IM_v1_0_0/inst/hs_im_state[23]} {base_mb_i/HighSpeed_IM_v1_0_0/inst/hs_im_state[24]} {base_mb_i/HighSpeed_IM_v1_0_0/inst/hs_im_state[25]} {base_mb_i/HighSpeed_IM_v1_0_0/inst/hs_im_state[26]} {base_mb_i/HighSpeed_IM_v1_0_0/inst/hs_im_state[27]}]]
+create_debug_port u_ila_0 probe
+set_property PROBE_TYPE DATA_AND_TRIGGER [get_debug_ports u_ila_0/probe1]
+set_property port_width 16 [get_debug_ports u_ila_0/probe1]
+connect_debug_port u_ila_0/probe1 [get_nets [list {base_mb_i/maroc_dc_0/inst/USR_LOGIC/IM_SM/frame_count1[0]} {base_mb_i/maroc_dc_0/inst/USR_LOGIC/IM_SM/frame_count1[1]} {base_mb_i/maroc_dc_0/inst/USR_LOGIC/IM_SM/frame_count1[2]} {base_mb_i/maroc_dc_0/inst/USR_LOGIC/IM_SM/frame_count1[3]} {base_mb_i/maroc_dc_0/inst/USR_LOGIC/IM_SM/frame_count1[4]} {base_mb_i/maroc_dc_0/inst/USR_LOGIC/IM_SM/frame_count1[5]} {base_mb_i/maroc_dc_0/inst/USR_LOGIC/IM_SM/frame_count1[6]} {base_mb_i/maroc_dc_0/inst/USR_LOGIC/IM_SM/frame_count1[7]} {base_mb_i/maroc_dc_0/inst/USR_LOGIC/IM_SM/frame_count1[8]} {base_mb_i/maroc_dc_0/inst/USR_LOGIC/IM_SM/frame_count1[9]} {base_mb_i/maroc_dc_0/inst/USR_LOGIC/IM_SM/frame_count1[10]} {base_mb_i/maroc_dc_0/inst/USR_LOGIC/IM_SM/frame_count1[11]} {base_mb_i/maroc_dc_0/inst/USR_LOGIC/IM_SM/frame_count1[12]} {base_mb_i/maroc_dc_0/inst/USR_LOGIC/IM_SM/frame_count1[13]} {base_mb_i/maroc_dc_0/inst/USR_LOGIC/IM_SM/frame_count1[14]} {base_mb_i/maroc_dc_0/inst/USR_LOGIC/IM_SM/frame_count1[15]}]]
+create_debug_port u_ila_0 probe
+set_property PROBE_TYPE DATA_AND_TRIGGER [get_debug_ports u_ila_0/probe2]
+set_property port_width 6 [get_debug_ports u_ila_0/probe2]
+connect_debug_port u_ila_0/probe2 [get_nets [list {base_mb_i/maroc_dc_0/inst/USR_LOGIC/IM_SM/state[0]} {base_mb_i/maroc_dc_0/inst/USR_LOGIC/IM_SM/state[1]} {base_mb_i/maroc_dc_0/inst/USR_LOGIC/IM_SM/state[2]} {base_mb_i/maroc_dc_0/inst/USR_LOGIC/IM_SM/state[3]} {base_mb_i/maroc_dc_0/inst/USR_LOGIC/IM_SM/state[4]} {base_mb_i/maroc_dc_0/inst/USR_LOGIC/IM_SM/state[5]}]]
+create_debug_port u_ila_0 probe
+set_property PROBE_TYPE DATA_AND_TRIGGER [get_debug_ports u_ila_0/probe3]
+set_property port_width 1 [get_debug_ports u_ila_0/probe3]
+connect_debug_port u_ila_0/probe3 [get_nets [list base_mb_i/maroc_dc_0/inst/USR_LOGIC/IM_SM/frame_go]]
+create_debug_port u_ila_0 probe
+set_property PROBE_TYPE DATA_AND_TRIGGER [get_debug_ports u_ila_0/probe4]
+set_property port_width 1 [get_debug_ports u_ila_0/probe4]
+connect_debug_port u_ila_0/probe4 [get_nets [list base_mb_i/maroc_dc_0/inst/USR_LOGIC/IM_SM/frame_pulse]]
+set_property C_CLK_INPUT_FREQ_HZ 300000000 [get_debug_cores dbg_hub]
+set_property C_ENABLE_CLK_DIVIDER false [get_debug_cores dbg_hub]
+set_property C_USER_SCAN_CHAIN 1 [get_debug_cores dbg_hub]
+connect_debug_port dbg_hub/clk [get_nets u_ila_0_clk_100]

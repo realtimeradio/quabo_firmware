@@ -50,9 +50,9 @@
 // IP VLNV: xilinx.com:module_ref:in_buf_ds_1bit:1.0
 // IP Revision: 1
 
-(* X_CORE_INFO = "in_buf_ds_1bit,Vivado 2018.3_AR71948" *)
+(* X_CORE_INFO = "in_buf_ds_1bit,Vivado 2018.3.1_AR71948" *)
 (* CHECK_LICENSE_TYPE = "base_mb_in_buf_ds_1bit_0_0,in_buf_ds_1bit,{}" *)
-(* CORE_GENERATION_INFO = "base_mb_in_buf_ds_1bit_0_0,in_buf_ds_1bit,{x_ipProduct=Vivado 2018.3_AR71948,x_ipVendor=xilinx.com,x_ipLibrary=module_ref,x_ipName=in_buf_ds_1bit,x_ipVersion=1.0,x_ipCoreRevision=1,x_ipLanguage=VERILOG,x_ipSimLanguage=MIXED}" *)
+(* CORE_GENERATION_INFO = "base_mb_in_buf_ds_1bit_0_0,in_buf_ds_1bit,{x_ipProduct=Vivado 2018.3.1_AR71948,x_ipVendor=xilinx.com,x_ipLibrary=module_ref,x_ipName=in_buf_ds_1bit,x_ipVersion=1.0,x_ipCoreRevision=1,x_ipLanguage=VERILOG,x_ipSimLanguage=MIXED}" *)
 (* DowngradeIPIdentifiedWarnings = "yes" *)
 module base_mb_in_buf_ds_1bit_0_0 (
   in_p,
