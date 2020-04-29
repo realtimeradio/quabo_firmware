@@ -36,26 +36,19 @@ module im_mode_state_machine(
 //A counter to define a frame repetition interval
 //If AXI clock is 10ns, count to 999 gives 10us pulse rate
 parameter clk_div = 999;
-(*DONT_TOUCH="{true}"*) reg [15:0]frame_count1;
-(*DONT_TOUCH="{true}"*) reg [7:0]frame_count2;
-(*DONT_TOUCH="{true}"*) wire frame_pulse = (frame_count1 == clk_div);
-(*DONT_TOUCH="{true}"*) wire frame_go = (frame_count2 == frame_int) && frame_pulse;
-reg frame_pulse_d0;
-always @(posedge clk)
-    begin
-        if(frame_reset)
-            frame_pulse_d0 <= 0;
-        else
-            frame_pulse_d0 <= frame_pulse;
-    end
-    
+reg [15:0]frame_count1;
+reg [7:0]frame_count2;
+wire frame_pulse = (frame_count1 == clk_div);
+//(*DONT_TOUCH="{true}"*) wire frame_pulse = (frame_count1 == (clk_div-1));
+wire frame_go = (frame_count2 == frame_int) && frame_pulse;
+     
 always @ (posedge clk) begin
         if (frame_reset) begin
             frame_count1 <= 0;
             frame_count2 <= 0;
         end
         else begin
-            if ((frame_pulse==1) && (frame_pulse_d0 == 0)) begin
+            if (frame_pulse) begin
                 frame_count1 <= 0;
                 if (frame_go) frame_count2 <= 0;
                 else frame_count2 <= frame_count2 + 1;
@@ -65,62 +58,6 @@ always @ (posedge clk) begin
             end
         end 
 end
-/*
-(*DONT_TOUCH="{true}"*) reg frame_pulse;
-always @(posedge clk)
-    begin
-        if(frame_reset)
-            frame_pulse <= 0;
-        else if(frame_count1 == 1)
-            frame_pulse <= 1;
-        else
-            frame_pulse <= 0;
-    end
-
-reg frame_go;
-always @(posedge clk)
-    begin
-        if(frame_reset)
-            frame_go <= 0;
-        else if((frame_count2 == frame_int) && (frame_pulse == 1))
-            frame_go <= 1;
-        else
-            frame_go <= 0;    
-    end
-
-
-always @(posedge clk)
-    begin
-        if(frame_reset | frame_pulse)
-            begin
-                frame_count1 <= clk_div;
-            end
-        else
-            begin
-                frame_count1 <= frame_count1 - 1;
-            end
-    end
-
-always @(posedge clk)
-    begin
-        if(frame_reset)
-            begin
-                frame_count2 <= 0;
-            end
-        else if(frame_go)
-            begin
-                frame_count2 <= 0;
-            end
-        else if(frame_pulse)
-            begin
-                frame_count2 <= frame_count2 + 1;
-            end
-        else
-            begin
-                frame_count2 <= frame_count2;
-            end          
-    end
-*/
 
 //A counter to sequence through the mux channels
 reg[7:0] word_count = 0;

@@ -48,7 +48,7 @@
 
 
 // IP VLNV: xilinx.com:user:maroc_dc:1.2
-// IP Revision: 7
+// IP Revision: 16
 
 `timescale 1ns/1ps
 

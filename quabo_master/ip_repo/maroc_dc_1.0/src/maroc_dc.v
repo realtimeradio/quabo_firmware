@@ -467,6 +467,7 @@ module maroc_dc(
     BUFG BUFG_CTR_RST (
        .O(counter_reset_buf), // 1-bit output: Clock output
        .I(counter_reset_hs_sync)  // 1-bit input: Clock input
+       //.I(counter_reset || reset_counters_after_read)
     );
 
     //A bufg to distribute the hold
@@ -552,6 +553,7 @@ im_mode_state_machine IM_SM(
     .clk(axi_clk),
     .frame_int(frame_interval),
     .frame_reset(counter_reset_buf || (!mode_enable[1])),
+    //.frame_reset(counter_reset || reset_counters_after_read || (!mode_enable[1])),
     .first_word(),
     .word_sel(im_mux_sel),
     .hold(hold_count),

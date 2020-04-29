@@ -1,3 +1,6 @@
+v10.5B:
+Remove all debugging signals, and add placement constraints in placement.xdc
+
 v10.5A:
 (1) We get IM packets(ACQ_MODE=2) from hardware instead of software, so we can get high speed packets;
 (2) We can set ACQ_MODE to 0, so that no packets will be sent out except HK packets.
