@@ -332,7 +332,7 @@ proc create_root_design { parentCell } {
   set user_sfp_0_sfp_txp_o [ create_bd_port -dir O user_sfp_0_sfp_txp_o ]
 
   # Create instance: AXI_Stream_Switch_3_0, and set properties
-  set AXI_Stream_Switch_3_0 [ create_bd_cell -type ip -vlnv user.org:user:AXI_Stream_Switch_3:1.1 AXI_Stream_Switch_3_0 ]
+  set AXI_Stream_Switch_3_0 [ create_bd_cell -type ip -vlnv user.org:user:AXI_Stream_Switch_3:1.2 AXI_Stream_Switch_3_0 ]
 
   # Create instance: Bit_0_0, and set properties
   set Bit_0_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:xlslice:1.0 Bit_0_0 ]
@@ -1016,7 +1016,7 @@ proc create_root_design { parentCell } {
    }
   
   # Create instance: maroc_dc_0, and set properties
-  set maroc_dc_0 [ create_bd_cell -type ip -vlnv xilinx.com:user:maroc_dc:1.2 maroc_dc_0 ]
+  set maroc_dc_0 [ create_bd_cell -type ip -vlnv xilinx.com:user:maroc_dc:1.3 maroc_dc_0 ]
   set_property -dict [ list \
    CONFIG.C_M01_AXIS_TDATA_WIDTH {32} \
  ] $maroc_dc_0

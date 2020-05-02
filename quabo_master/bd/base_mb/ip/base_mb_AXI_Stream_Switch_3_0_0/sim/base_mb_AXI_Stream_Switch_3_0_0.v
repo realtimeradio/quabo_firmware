@@ -47,7 +47,7 @@
 // DO NOT MODIFY THIS FILE.
 
 
-// IP VLNV: user.org:user:AXI_Stream_Switch_3:1.1
+// IP VLNV: user.org:user:AXI_Stream_Switch_3:1.2
 // IP Revision: 1
 
 `timescale 1ns/1ps

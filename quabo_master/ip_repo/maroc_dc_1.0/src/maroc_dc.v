@@ -483,7 +483,7 @@ module maroc_dc(
         bin_counter 
             BC(
             .pulse_in(chan_trig_pulse[gg]),
-            .hold(hold_count_buf),
+            //.hold(hold_count_buf),
             .reset(counter_reset_buf),
             .clk(hs_clk),
             .count_out(im_counter[gg])
@@ -552,8 +552,9 @@ wire [9:0] im_fifo_data_count;
 im_mode_state_machine IM_SM(
     .clk(axi_clk),
     .frame_int(frame_interval),
-    .frame_reset(counter_reset_buf || (!mode_enable[1])),
+    //.frame_reset(counter_reset_buf || (!mode_enable[1])),
     //.frame_reset(counter_reset || reset_counters_after_read || (!mode_enable[1])),
+    .frame_reset((!mode_enable[1])),
     .first_word(),
     .word_sel(im_mux_sel),
     .hold(hold_count),

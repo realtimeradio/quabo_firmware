@@ -21,13 +21,22 @@
 module bin_counter(
     input pulse_in,
     input reset,
-    input hold,
+    //input hold,
     input clk,
     output reg [15:0] count_out
     );
     
-    always @ (posedge clk) begin
+ /*   always @ (posedge clk) begin
         if (reset) count_out <= 0;
         else if (pulse_in && !hold) count_out <= count_out + 1;
+    end
+ */
+ reg [15:0] counter;
+    always @ (posedge clk) begin
+        if (reset) begin 
+           count_out <= counter;
+           counter <= 0;
+      end
+        else if (pulse_in) counter <= counter + 1;
     end
 endmodule

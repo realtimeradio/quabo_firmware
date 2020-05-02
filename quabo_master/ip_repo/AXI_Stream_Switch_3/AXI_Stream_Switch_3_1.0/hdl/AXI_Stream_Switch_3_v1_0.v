@@ -168,7 +168,7 @@ parameter [2:0] IDLE        = 3'b111,
                 S2_SENDING  = 3'b011;
 
               
-always @(s_req_suppress)
+always @(s_req_suppress or aresetn)
     begin
         if(~aresetn)
             begin

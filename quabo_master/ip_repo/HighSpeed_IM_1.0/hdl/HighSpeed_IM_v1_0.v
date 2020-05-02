@@ -776,7 +776,7 @@ always @(posedge aclk)
                            packet_no           <= packet_no;
                            packet_no_reg0      <= {packet_no[7:0], 8'b0};
                            packet_no_reg1      <= {8'b0, packet_no[15:8]};
-                           elapsed_time_reg    <= {1'b0, (elapsed_time<<2)};
+                           elapsed_time_reg    <= {1'b0, (elapsed_time<<2)}-256;
                            elapsed_time_reg0   <= {elapsed_time_reg[7:0], 8'b0};
                            elapsed_time_reg1   <= {8'b0, elapsed_time_reg[15:8]};
                            elapsed_time_reg2   <= {elapsed_time_reg[23:16],8'b0};
