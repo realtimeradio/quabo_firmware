@@ -488,7 +488,7 @@ proc create_root_design { parentCell } {
  ] $GPIO
 
   # Create instance: HighSpeed_IM_v1_0_0, and set properties
-  set HighSpeed_IM_v1_0_0 [ create_bd_cell -type ip -vlnv user.org:user:HighSpeed_IM_v2_6:2.6 HighSpeed_IM_v1_0_0 ]
+  set HighSpeed_IM_v1_0_0 [ create_bd_cell -type ip -vlnv user.org:user:HighSpeed_IM_v2_7:2.7 HighSpeed_IM_v1_0_0 ]
   set_property -dict [ list \
    CONFIG.C_M_AXI_IM_Config_TARGET_SLAVE_BASE_ADDR {0x44A60000} \
  ] $HighSpeed_IM_v1_0_0

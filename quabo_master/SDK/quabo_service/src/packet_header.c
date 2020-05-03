@@ -55,12 +55,13 @@ void Cal_IP_Checksum(){
 	checksum_sum += ethpacketheader_user_ptr->dst_ip[1];
 	checksum_sum += ethpacketheader_user_ptr->dst_ip[2] *256;
 	checksum_sum += ethpacketheader_user_ptr->dst_ip[3];
-	while((checksum_sum & (0xffff0000))>0)
-	{
-		checksum_sum = ((checksum_sum>>16) & (0x0000ffff)) + (checksum_sum & 0x0000ffff);
-	}
+	//while((checksum_sum & (0xffff0000))>0)
+	//{
+		//checksum_sum = ((checksum_sum>>16) & (0x0000ffff)) + (checksum_sum & 0x0000ffff);
+	//}
 	//the checksum should be (ffff-checksum_sum &0x0000ffff), which is finished in fpga
-	ethpacketheader_user_ptr->ip_checksum_part = 65535-(checksum_sum & 0x0000ffff);
+	//ethpacketheader_user_ptr->ip_checksum_part = 65535-(checksum_sum & 0x0000ffff);
+	ethpacketheader_user_ptr->ip_checksum_part = checksum_sum;
 }
 
 //cal the udp packet checksum

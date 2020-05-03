@@ -10503,3 +10503,34 @@ mb-size quabo_service.elf  |tee "quabo_service.elf.size"
  119782	   2240	 137506	 259528	  3f5c8	quabo_service.elf
 Finished building: quabo_service.elf.size
  
+10:07:05 **** Auto Build of configuration Debug for project quabo_service ****
+make all 
+Building file: ../src/packet_header.c
+Invoking: MicroBlaze gcc compiler
+mb-gcc -Wall -O0 -g3 -I../../standalone_bsp_0/microblaze_0/include -c -fmessage-length=0 -MT"src/packet_header.o" -mxl-frequency -mxl-frequency -mxl-frequency -mxl-frequency -mxl-frequency -mxl-frequency -mxl-frequency -I../../standalone_bsp_0/microblaze_0/include -mlittle-endian -mcpu=v11.0 -mxl-soft-mul -Wl,--no-relax -ffunction-sections -fdata-sections -MMD -MP -MF"src/packet_header.d" -MT"src/packet_header.o" -o "src/packet_header.o" "../src/packet_header.c"
+../src/packet_header.c: In function 'Cal_IP_Checksum':
+../src/packet_header.c:64:47: error: 'check_sum' undeclared (first use in this function); did you mean 'checksum_sum'?
+  ethpacketheader_user_ptr->ip_checksum_part = check_sum;
+                                               ^~~~~~~~~
+                                               checksum_sum
+../src/packet_header.c:64:47: note: each undeclared identifier is reported only once for each function it appears in
+make: *** [src/packet_header.o] Error 1
+src/subdir.mk:33: recipe for target 'src/packet_header.o' failed
+10:12:16 **** Auto Build of configuration Debug for project quabo_service ****
+make all 
+Building file: ../src/packet_header.c
+Invoking: MicroBlaze gcc compiler
+mb-gcc -Wall -O0 -g3 -I../../standalone_bsp_0/microblaze_0/include -c -fmessage-length=0 -MT"src/packet_header.o" -mxl-frequency -mxl-frequency -mxl-frequency -mxl-frequency -mxl-frequency -mxl-frequency -mxl-frequency -I../../standalone_bsp_0/microblaze_0/include -mlittle-endian -mcpu=v11.0 -mxl-soft-mul -Wl,--no-relax -ffunction-sections -fdata-sections -MMD -MP -MF"src/packet_header.d" -MT"src/packet_header.o" -o "src/packet_header.o" "../src/packet_header.c"
+Finished building: ../src/packet_header.c
+ 
+Building target: quabo_service.elf
+Invoking: MicroBlaze gcc linker
+mb-gcc -L../../standalone_bsp_0/microblaze_0/lib -Wl,-T -Wl,../src/lscript.ld -L../../standalone_bsp_0/microblaze_0/lib -mlittle-endian -mcpu=v11.0 -mxl-soft-mul -Wl,--no-relax -Wl,--gc-sections -o "quabo_service.elf"  ./src/casper_src/casper_tapcp.o ./src/casper_src/casper_tftp.o ./src/casper_src/csl.o ./src/casper_src/flash.o ./src/casper_src/gpio_spi_sel.o ./src/casper_src/icap.o ./src/casper_src/spi.o ./src/casper_src/tftp_server.o ./src/casper_src/tmrctr.o  ./src/EthCore_Configuration.o ./src/main.o ./src/packet_header.o ./src/platform.o ./src/platform_mb.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group -Wl,--start-group,-lxil,-llwip4,-lgcc,-lc,--end-group
+Finished building target: quabo_service.elf
+ 
+Invoking: MicroBlaze Print Size
+mb-size quabo_service.elf  |tee "quabo_service.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+ 119658	   2240	 137510	 259408	  3f550	quabo_service.elf
+Finished building: quabo_service.elf.size
+ 

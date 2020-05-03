@@ -3375,11 +3375,11 @@ This bit has no significance in dual or quad mode.
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Mon Apr 27 18:46:21 UTC 2020</spirit:value>
+            <spirit:value>Sun May 03 20:35:28 UTC 2020</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:c178a332</spirit:value>
+            <spirit:value>9:746d1305</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -3395,11 +3395,11 @@ This bit has no significance in dual or quad mode.
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Mon Apr 27 18:46:21 UTC 2020</spirit:value>
+            <spirit:value>Sun May 03 20:35:28 UTC 2020</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:c178a332</spirit:value>
+            <spirit:value>9:746d1305</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -3438,11 +3438,11 @@ This bit has no significance in dual or quad mode.
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Mon Apr 27 18:46:21 UTC 2020</spirit:value>
+            <spirit:value>Sun May 03 20:35:28 UTC 2020</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:ec357eac</spirit:value>
+            <spirit:value>9:74ee77f0</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -3458,11 +3458,11 @@ This bit has no significance in dual or quad mode.
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Mon Apr 27 18:46:21 UTC 2020</spirit:value>
+            <spirit:value>Sun May 03 20:35:28 UTC 2020</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:ec357eac</spirit:value>
+            <spirit:value>9:74ee77f0</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -3476,11 +3476,11 @@ This bit has no significance in dual or quad mode.
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Mon Apr 27 18:46:21 UTC 2020</spirit:value>
+            <spirit:value>Sun May 03 20:35:28 UTC 2020</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:c178a332</spirit:value>
+            <spirit:value>9:746d1305</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -5991,6 +5991,11 @@ This bit has no significance in dual or quad mode.
   </spirit:model>
   <spirit:choices>
     <spirit:choice>
+      <spirit:name>choice_list_0051c444</spirit:name>
+      <spirit:enumeration>16</spirit:enumeration>
+      <spirit:enumeration>256</spirit:enumeration>
+    </spirit:choice>
+    <spirit:choice>
       <spirit:name>choice_list_552a89ba</spirit:name>
       <spirit:enumeration>2</spirit:enumeration>
       <spirit:enumeration>4</spirit:enumeration>
@@ -6021,10 +6026,6 @@ This bit has no significance in dual or quad mode.
     <spirit:choice>
       <spirit:name>choice_list_ac75ef1e</spirit:name>
       <spirit:enumeration>Custom</spirit:enumeration>
-    </spirit:choice>
-    <spirit:choice>
-      <spirit:name>choice_list_d85ad257</spirit:name>
-      <spirit:enumeration>0</spirit:enumeration>
     </spirit:choice>
     <spirit:choice>
       <spirit:name>choice_pairs_4873554b</spirit:name>
@@ -6661,7 +6662,7 @@ This bit has no significance in dual or quad mode.
       <spirit:name>C_FIFO_DEPTH</spirit:name>
       <spirit:displayName>FIFO Depth</spirit:displayName>
       <spirit:description>This parameter should be set while choosing FIFO depth. Please refer PG for more reference. Standard SPI mode provides the choice 0 or 16 or 256 beat FIFO depth, while Dual and Quad mode provides options of 16 or 256 beat FIFO depth.</spirit:description>
-      <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.C_FIFO_DEPTH" spirit:choiceRef="choice_list_d85ad257" spirit:order="100">0</spirit:value>
+      <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.C_FIFO_DEPTH" spirit:choiceRef="choice_list_0051c444" spirit:order="100">16</spirit:value>
       <spirit:vendorExtensions>
         <xilinx:parameterInfo>
           <xilinx:enablement>
