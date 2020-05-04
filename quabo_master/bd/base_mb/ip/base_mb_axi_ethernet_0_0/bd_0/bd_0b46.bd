@@ -1141,16 +1141,16 @@
           "eth_buf/S_AXI"
         ]
       },
-      "mac_m_axis_rx": {
-        "interface_ports": [
-          "eth_buf/RX_AXIS_MAC",
-          "mac/m_axis_rx"
-        ]
-      },
       "mac_gmii": {
         "interface_ports": [
           "mac/gmii",
           "pcs_pma/gmii_pcs_pma"
+        ]
+      },
+      "mac_m_axis_rx": {
+        "interface_ports": [
+          "eth_buf/RX_AXIS_MAC",
+          "mac/m_axis_rx"
         ]
       },
       "eth_buf_TX_AXIS_MAC": {

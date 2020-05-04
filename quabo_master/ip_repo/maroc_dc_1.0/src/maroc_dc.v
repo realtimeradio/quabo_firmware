@@ -453,12 +453,12 @@ module maroc_dc(
     reg hold_count_d1;
     always @ (posedge axi_clk) hold_count_d1 <= hold_count;
     wire reset_counters_after_read = !hold_count && hold_count_d1;
-    
     //Sync the reset signal that goes to all the counters
     wire counter_reset_hs_sync;
     sync_it S5 (
     .clk(hs_clk),
-    .din(counter_reset || reset_counters_after_read),
+    //.din(counter_reset || reset_counters_after_read),
+    .din(counter_reset),
     .dout(counter_reset_hs_sync)
     );
 
@@ -483,7 +483,7 @@ module maroc_dc(
         bin_counter 
             BC(
             .pulse_in(chan_trig_pulse[gg]),
-            //.hold(hold_count_buf),
+            .hold(hold_count_buf),
             .reset(counter_reset_buf),
             .clk(hs_clk),
             .count_out(im_counter[gg])

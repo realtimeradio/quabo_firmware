@@ -17883,3 +17883,6 @@ Writing a 1 to this bit position clears the receive FIFO
 
 !ENTRY com.xilinx.sdk.utils 0 0 2020-05-03 09:58:45.245
 !MESSAGE XSCT command with result: [::hsi::utils::closehw /media/wei/DATA/LW/Project/Vivado_Project/Panoseti/V0105_NEW/quabo_master/SDK/base_mb_wrapper_hw_platform_3/system.hdf], Result: [null, ]. Thread: ModalContext
+
+!ENTRY com.xilinx.sdk.utils 1 0 2020-05-03 17:00:48.558
+!MESSAGE Executed Webtalk command

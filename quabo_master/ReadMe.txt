@@ -1,3 +1,7 @@
+v10.5E:
+(1) change the reset design of bin_counter.
+	The reset will start before im_mode_state_machine sending data
+	
 v10.5D:
 (1) fix ip checksum bug
 
