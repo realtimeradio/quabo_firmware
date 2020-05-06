@@ -48,7 +48,7 @@
 
 
 // IP VLNV: user.org:user:HighSpeed_IM_v2_7:2.7
-// IP Revision: 2
+// IP Revision: 4
 
 (* X_CORE_INFO = "HighSpeed_IM_v1_0,Vivado 2018.3.1_AR71948" *)
 (* CHECK_LICENSE_TYPE = "base_mb_HighSpeed_IM_v1_0_0_0,HighSpeed_IM_v1_0,{}" *)

@@ -345,7 +345,8 @@ parameter [3:0] PACKET_HEADER_LEN = 4'd11;
 //we use capital letter to show it's a input signal 
 wire M_AXIS_TREADY;
 assign M_AXIS_TREADY = m_axis_tready;
-
+wire [31:0] elapsed_time_wire;
+assign elapsed_time_wire = {3'b0,elapsed_time};
 //this is packet_no, and will increase every packet 
 reg [15:0] packet_no;
 reg [15:0] packet_no_reg0,
@@ -779,7 +780,7 @@ always @(posedge aclk)
                            packet_no           <= packet_no;
                            packet_no_reg0      <= {packet_no[7:0], 8'b0};
                            packet_no_reg1      <= {8'b0, packet_no[15:8]};
-                           elapsed_time_reg    <= {1'b0, (elapsed_time<<2)}-256;
+                           elapsed_time_reg    <= {(elapsed_time_wire<<2)}-256;
                            elapsed_time_reg0   <= {elapsed_time_reg[7:0], 8'b0};
                            elapsed_time_reg1   <= {8'b0, elapsed_time_reg[15:8]};
                            elapsed_time_reg2   <= {elapsed_time_reg[23:16],8'b0};

@@ -48,7 +48,7 @@
 
 
 // IP VLNV: user.org:user:HighSpeed_IM_v2_7:2.7
-// IP Revision: 2
+// IP Revision: 4
 
 `timescale 1ns/1ps
 
