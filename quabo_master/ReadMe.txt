@@ -1,3 +1,13 @@
+v11.1:
+(1) add mode 6--8-BIT IM mode;
+(2) add mode 7--8-BIT IM mode simultaneous  with 16 pulse height mode;
+(3) time tick is changed to 1us;
+(4) acq_int is changed to 16 bit, so the max integration time is 65536us = 65.536ms;
+
+v11.0:
+It's the same as v10.5F.
+Because we have a lot of new features, we release v11.0.
+
 v10.5F:
 (1) fix a reset bug
 The elapsed_time counter is 29bits, and it increases every 4ns, so I move 2 bits to left, making the resolution 1ns in the packets.

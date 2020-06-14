@@ -22,7 +22,8 @@
 #define SELF_CHECK(data)			data = Xil_In32(AXI_RAM_ADDR+8);
 #define GET_STATE(data)				data = Xil_In32(AXI_RAM_ADDR+16);
 #define IMFIFO_MB_CTRL()			Xil_Out32(AXI_RAM_ADDR+0,0);
-#define IMFIFO_FPGA_CTRL()			Xil_Out32(AXI_RAM_ADDR+0,2);
+#define IMFIFO_FPGA_CTRL_16BIT()	Xil_Out32(AXI_RAM_ADDR+0,2);
+#define IMFIFO_FPGA_CTRL_8BIT()		Xil_Out32(AXI_RAM_ADDR+0,4);
 #define SET_ACQ_MODE(data)			Xil_Out32(AXI_RAM_ADDR+20,data);
 //because the length of the eth packet struct is 48 bytes
 #define EthPacketHeader_Word_Len	13
@@ -60,6 +61,8 @@ typedef struct EthPacketHeader_Keys{
 	unsigned short dst_port;
 	unsigned char board_loc[4];
 	unsigned char acqmode;
+	unsigned short total_len;
+	unsigned short length;
 } EthPacketHeader_Keys;
 char Panoseti_EthPacketHeader_Init(EthPacketHeader_Keys *ethpacketheader_keys);
 void Panoseti_WriteHeaderToRam();

@@ -118,9 +118,11 @@ and slv_reg1 is the par_data_out (readback from the MAROCs)
 #define WR_INTERRUPT_INTR 5
 //The MAROC_data_capture hardware module can be accessed through this address
 #define MAROC_DC XPAR_MAROC_DC_0_S00_AXI_BASEADDR
-#define ACQ_MODE_PH 0x01
-#define ACQ_MODE_IM 0x02
-#define ACQ_MODE_HS_IM	0x03
+#define ACQ_MODE_PH 		0x01
+#define ACQ_MODE_IM 		0x02
+#define ACQ_MODE_HS_IM		0x03
+#define ACQ_MODE_IM_8BIT	0x06
+#define ACQ_MODE_HS_IM_8BIT	0x07
 
 #define ADC_LATENCY_SKIP_VAL 10
  /* The interface to the maroc_dc module
@@ -342,9 +344,11 @@ EthPacketHeader_Keys ethpacketheader_key={
 		49153,									//src port
 		60001,									//dst port
 		{0xfb, 0x03, 0x00, 0x00},				//board_loc
-		0x03									//acqmode
+		0x03,									//acqmode
+		556,									//total_len
+		536,									//length
 };
-u8 wegetdata = 0;
+//u8 wegetdata = 0;
 int main()
 {
 #ifdef GOLD_COPY
@@ -520,10 +524,10 @@ int main()
 	/* the mac address of the board. this should be unique per board */
 	unsigned char flash_uid[8];
 	gpio_sel_mb();
-	flash_read_uid(flash_uid);
+	//flash_read_uid(flash_uid);
 	gpio_sel_wr();
-	//unsigned char mac_ethernet_address[] ={ 0x00, 0x0a, 0x35, 0x00, 0x01, 0x03 };
-	unsigned char mac_ethernet_address[6] ={0x00,flash_uid[5],flash_uid[4],flash_uid[3],flash_uid[2],flash_uid[1]};
+	unsigned char mac_ethernet_address[] ={ 0x00, 0x0a, 0x35, 0x00, 0x01, 0x03 };
+	//unsigned char mac_ethernet_address[6] ={0x00,flash_uid[5],flash_uid[4],flash_uid[3],flash_uid[2],flash_uid[1]};
 	xil_printf("mac_address = %x %x %x %x %x %x\r\n",mac_ethernet_address[0],mac_ethernet_address[1],mac_ethernet_address[2],
 			                                         mac_ethernet_address[3],mac_ethernet_address[4],mac_ethernet_address[5]);
   	/* Add network interface to the netif_list, and set it as default */
@@ -712,8 +716,8 @@ int main()
 						{
 							hk_timer = 0;
 							SendHouseKeeping();
-							xil_printf("do we get PH data?: %d\r\n", wegetdata);
-							wegetdata = 0;
+							//xil_printf("do we get PH data?: %d\r\n", wegetdata);
+							//wegetdata = 0;
 						}
 					}
 				}
@@ -829,65 +833,14 @@ int main()
 			}
 			}
 			else if ((acq_mode & 0xf) == ACQ_MODE_IM)
-				{
-/*					if (XLlFifo_iRxOccupancy(&IM_Fifo))
-					{
-					//Check the fifo occupancy.  There should be 256 words in the FIFO,
-					static u32 ReceiveLength;
-					int i;
-					u32 RxWord0;
-					//GetLen returns num bytes; convert to num u32s
-					ReceiveLength = (XLlFifo_iRxGetLen(&IM_Fifo))/4;
-					if ((ReceiveLength>0) && (ReceiveLength != 256)) {
-					//Wrong packet length, need to read them out and dump them
-					xil_printf("Received %d words, SB 256\n", ReceiveLength);
-						for ( i=0; i < ReceiveLength; i++)
-							RxWord0 = XLlFifo_RxGetWord(&IM_Fifo);
-						}
-					if (ReceiveLength == 256)
-					{
-						struct pbuf *sci_pbuf;
-						sci_pbuf = pbuf_alloc(PBUF_TRANSPORT, SCI_BUF_SIZE, PBUF_RAM);
-						if (!sci_pbuf) {
-							xil_printf("error allocating pbuf to send\r\n");
-							return -1;
-						}
-						char * sci_payload_ptr = sci_pbuf->payload;
-						*(sci_payload_ptr) = acq_mode;
-						*(sci_payload_ptr+1) = 0x0;
-						*(u16*)(sci_payload_ptr+2) = packet_number++;
-						*(u16*)(sci_payload_ptr+4) = board_location;
-						*(u16*)(sci_payload_ptr+14) = (u16)ReceiveLength;
-						//There's one 24b value, padded to 32b, per channel
-						//Seems like there's an extra word... dump it
-						//RxWord0 = XLlFifo_RxGetWord(&IM_Fifo);
-					for ( i=0; i < ReceiveLength; i++)
-					{
-						RxWord0 = 0;
-						RxWord0 = XLlFifo_RxGetWord(&IM_Fifo);
-						//Each 32b word holds a 24b value.  But we only have 16b allocated
-						u16 trig_value = RxWord0>>IM_TRUNC_FACTOR;
-						memcpy(sci_payload_ptr + 16 + 2*i, (u8*)(&trig_value),2);
-						}
-
-
-						err_t err = udp_send(sci_pcb, sci_pbuf);
-						if (err != ERR_OK) {
-							xil_printf("Error on command udp_send: %d\r\n", err);
-							pbuf_free(sci_pbuf);
-							return -2;
-							}
-						pbuf_free(sci_pbuf);
-
-				}
-
-			}*/
-		}
-			else if((acq_mode & 0xf) == ACQ_MODE_HS_IM)		//High Speed IM
+			{
+				//It's implemented in FPGA
+			}
+			else if(((acq_mode & 0xf) == ACQ_MODE_HS_IM) || ((acq_mode & 0xf) == ACQ_MODE_HS_IM_8BIT))		//High Speed IM
 			{
 				if(XLlFifo_iRxOccupancy(&PH_Fifo))
 				{
-					wegetdata = 1;
+					//wegetdata = 1;
 					static u32 ReceiveLength;
 					int i;
 					u32 RxWord0, RxWord1;
@@ -993,6 +946,10 @@ int main()
 					pbuf_free(sci_pbuf);
 				}
 			}
+		}
+		else if ((acq_mode & 0xf) == ACQ_MODE_IM_8BIT)
+		{
+				//It's implemented in FPGA
 		}
 	}
 	/* never reached */
@@ -1296,7 +1253,8 @@ void Set_Acquisition(u16* dataptr)
 	u32 regval = Xil_In32(MAROC_DC + 32) & 0x1ff;
 
 	acq_mode = *dataptr++ & 0xff;
-	u8 acq_int = *dataptr++ & 0xff;
+	//u8 acq_int = *dataptr++ & 0xff;
+	u16 acq_int = *dataptr++; //16 bit acq_int
 	u8 hold1 = *dataptr++ & 0xf;
 	u8 hold2 = *dataptr++ & 0xf;
 #ifdef HW_GTV08
@@ -1319,8 +1277,11 @@ void Set_Acquisition(u16* dataptr)
 	flash_width = *dataptr++ & 0xf;
 
 	UpdateGPIO();
-	regval = acq_int | (hold1<<8) | (hold2<<16) | (stop_channel<<24);
+	//regval = acq_int | (hold1<<8) | (hold2<<16) | (stop_channel<<24);
+	regval = (hold1<<8) | (hold2<<16) | (stop_channel<<24);
 	Xil_Out32(MAROC_DC + 36, regval);
+	regval = acq_int;
+	Xil_Out32(MAROC_DC + 40, regval);//acq_int is in slave_reg10[15:0] now
 #ifdef HW_GTV08
 	//regval = regval | ((acq_mode & 0x3)<<9) | (adcclkph<<11) | ((acq_mode & 0x80)<<9);
 	regval = ((acq_mode & 0x3)<<9) | (adcclkph<<11) | ((acq_mode & 0x80)<<9);
@@ -1342,26 +1303,62 @@ void Set_Acquisition(u16* dataptr)
 		//set acq_mode first
 		SET_ACQ_MODE(acq_mode);
 		ethpacketheader_key.acqmode = acq_mode;
+		ethpacketheader_key.total_len = 556;
+		ethpacketheader_key.length = 536;
 		//udp checksum part should be changed
 		Panoseti_EthPacketHeader_Init(&ethpacketheader_key);
 		IMFIFO_MB_CTRL();
+		xil_printf("16-BIT IM MODE\r\n");
 		XLlFifo_RxReset(&IM_Fifo);
-		IMFIFO_FPGA_CTRL();
+		IMFIFO_FPGA_CTRL_16BIT();
 	}
 	else if(acq_mode == ACQ_MODE_HS_IM)
 	{
 		//set acq_mode first
 		SET_ACQ_MODE(acq_mode);
 		ethpacketheader_key.acqmode = acq_mode;
+		ethpacketheader_key.total_len = 556;
+		ethpacketheader_key.length = 536;
 		//udp checksum part should be changed
 		Panoseti_EthPacketHeader_Init(&ethpacketheader_key);
 		//we use MB to initialize IM_FIFO, then switch to fpga for getting data at high speed
 		IMFIFO_MB_CTRL();
 		XLlFifo_RxReset(&PH_Fifo);
-		xil_printf("high speed IM mode--AXI SEL\r\n");
+		xil_printf("high speed 16BIT-IM mode\r\n");
 		XLlFifo_RxReset(&IM_Fifo);
-		IMFIFO_FPGA_CTRL();
+		IMFIFO_FPGA_CTRL_16BIT();
 	}
+	else if(acq_mode == ACQ_MODE_IM_8BIT)
+	{
+		SET_ACQ_MODE(acq_mode);
+		ethpacketheader_key.acqmode = acq_mode;
+		ethpacketheader_key.total_len = 300;
+		ethpacketheader_key.length = 280;
+		//udp checksum part should be changed
+		Panoseti_EthPacketHeader_Init(&ethpacketheader_key);
+		//we use MB to initialize IM_FIFO, then switch to fpga for getting data at high speed
+		IMFIFO_MB_CTRL();
+		XLlFifo_RxReset(&PH_Fifo);
+		xil_printf("8-BIT IM MODE\r\n");
+		XLlFifo_RxReset(&IM_Fifo);
+		IMFIFO_FPGA_CTRL_8BIT();
+	}
+	else if(acq_mode == ACQ_MODE_HS_IM_8BIT)
+		{
+			//set acq_mode first
+			SET_ACQ_MODE(acq_mode);
+			ethpacketheader_key.acqmode = acq_mode;
+			ethpacketheader_key.total_len = 300;
+			ethpacketheader_key.length = 280;
+			//udp checksum part should be changed
+			Panoseti_EthPacketHeader_Init(&ethpacketheader_key);
+			//we use MB to initialize IM_FIFO, then switch to fpga for getting data at high speed
+			IMFIFO_MB_CTRL();
+			XLlFifo_RxReset(&PH_Fifo);
+			xil_printf("high speed 8-BIT IM mode\r\n");
+			XLlFifo_RxReset(&IM_Fifo);
+			IMFIFO_FPGA_CTRL_8BIT();
+		}
 	//Wait for reset to complete
 	for (delay = 0; delay < 1000; delay++);
 	//Set acq_mode

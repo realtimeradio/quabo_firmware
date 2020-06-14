@@ -488,7 +488,7 @@ proc create_root_design { parentCell } {
  ] $GPIO
 
   # Create instance: HighSpeed_IM_v1_0_0, and set properties
-  set HighSpeed_IM_v1_0_0 [ create_bd_cell -type ip -vlnv user.org:user:HighSpeed_IM_v2_7:2.7 HighSpeed_IM_v1_0_0 ]
+  set HighSpeed_IM_v1_0_0 [ create_bd_cell -type ip -vlnv user.org:user:HighSpeed_IM_v2_8:2.8 HighSpeed_IM_v1_0_0 ]
   set_property -dict [ list \
    CONFIG.C_M_AXI_IM_Config_TARGET_SLAVE_BASE_ADDR {0x44A60000} \
  ] $HighSpeed_IM_v1_0_0
@@ -1016,7 +1016,7 @@ proc create_root_design { parentCell } {
    }
   
   # Create instance: maroc_dc_0, and set properties
-  set maroc_dc_0 [ create_bd_cell -type ip -vlnv xilinx.com:user:maroc_dc:1.3 maroc_dc_0 ]
+  set maroc_dc_0 [ create_bd_cell -type ip -vlnv xilinx.com:user:maroc_dc:1.5 maroc_dc_0 ]
   set_property -dict [ list \
    CONFIG.C_M01_AXIS_TDATA_WIDTH {32} \
  ] $maroc_dc_0

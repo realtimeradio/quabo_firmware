@@ -121,6 +121,8 @@ char Panoseti_EthPacketHeader_Init(EthPacketHeader_Keys *ethpacketheader_keys)
 	ethpacketheader_user_ptr->src_port  = ethpacketheader_keys->src_port;
 	memcpy(ethpacketheader_user_ptr->board_loc, ethpacketheader_keys->board_loc,4);
 	ethpacketheader_user_ptr->acqmode = ethpacketheader_keys->acqmode;
+	ethpacketheader_user_ptr->total_len = ethpacketheader_keys->total_len;
+	ethpacketheader_user_ptr->length = ethpacketheader_keys->length;
 	Cal_IP_Checksum();
 	Cal_UDP_ChecksumPart();
 	EthPacketHeader_for_FPGA_Init();
