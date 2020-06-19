@@ -1,3 +1,8 @@
+v11.2:
+(1)implement shutter control 
+Focus stage shares the 4 ports with shutter control, and it depends on the quabo position.
+If it's quabo0, the 4 ports are used for focus stage; if it's quabo1, the 4 ports are used for shutter control;
+
 v11.1:
 (1) add mode 6--8-BIT IM mode;
 (2) add mode 7--8-BIT IM mode simultaneous  with 16 pulse height mode;

@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<webTalkData  fileName='usage_statistics_ext_sdk.xml'  majorVersion='1' minorVersion='0' timeStamp='Mon Jun  8 20:30:16 2020'>
+<webTalkData  fileName='usage_statistics_ext_sdk.xml'  majorVersion='1' minorVersion='0' timeStamp='Fri Jun 19 16:22:41 2020'>
 <section name="__ROOT__" level="0" order="1" description="">
  <section name="software_version_and_target_device" level="1" order="1" description="">
   <keyValuePair key="beta" value="false" description="" />
   <keyValuePair key="build_version" value="2018.3" description="" />
-  <keyValuePair key="date_generated" value="2020-06-08 20:30:16" description="" />
+  <keyValuePair key="date_generated" value="2020-06-19 16:22:39" description="" />
   <keyValuePair key="os_platform" value="amd64" description="" />
   <keyValuePair key="product_version" value="SDK v2018.3" description="" />
-  <keyValuePair key="project_id" value="2018.3_17" description="" />
-  <keyValuePair key="project_iteration" value="17" description="" />
-  <keyValuePair key="random_id" value="v99bmnt7e8coneikrb21c3an7b" description="" />
+  <keyValuePair key="project_id" value="2018.3_21" description="" />
+  <keyValuePair key="project_iteration" value="21" description="" />
+  <keyValuePair key="random_id" value="j4744vbq69m126tdml8pav4par" description="" />
   <keyValuePair key="registration_id" value="211886108_0_0_326" description="" />
   <keyValuePair key="route_design" value="NA" description="" />
   <keyValuePair key="target_device" value="NA" description="" />
@@ -20,14 +20,14 @@
  </section>
  <section name="user_environment" level="1" order="2" description="">
   <keyValuePair key="cpu_name" value="Intel(R) Core(TM) i7-8750H CPU @ 2.20GHz" description="" />
-  <keyValuePair key="cpu_speed" value="4045.557 MHz" description="" />
+  <keyValuePair key="cpu_speed" value="3927.136 MHz" description="" />
   <keyValuePair key="os_name" value="Ubuntu" description="" />
   <keyValuePair key="os_release" value="Ubuntu 18.04.4 LTS" description="" />
   <keyValuePair key="system_ram" value="25.073 GB" description="" />
   <keyValuePair key="total_processors" value="1" description="" />
  </section>
  <section name="sdk" level="1" order="3" description="">
-  <section name="bsp/1591673416191" level="2" order="1" description="">
+  <section name="bsp/1592608959777" level="2" order="1" description="">
    <keyValuePair key="bootgencount" value="0" description="" />
    <keyValuePair key="crosstriggcount" value="0" description="" />
    <keyValuePair key="debugcount" value="0" description="" />
@@ -37,7 +37,7 @@
    <keyValuePair key="recordtype" value="ToolUsage" description="" />
    <keyValuePair key="uid" value="NA" description="" />
   </section>
-  <section name="hardware/1591668098000" level="2" order="2" description="">
+  <section name="hardware/1592600783000" level="2" order="2" description="">
    <keyValuePair key="apptemplate" value="NA" description="" />
    <keyValuePair key="arch" value="kintex7" description="" />
    <keyValuePair key="device" value="7k160t" description="" />
@@ -47,7 +47,7 @@
    <keyValuePair key="os" value="NA" description="" />
    <keyValuePair key="processors" value="1" description="" />
    <keyValuePair key="recordtype" value="HWCreation" description="" />
-   <keyValuePair key="uid" value="1591668098000" description="" />
+   <keyValuePair key="uid" value="1592600783000" description="" />
    <keyValuePair key="vivadoversion" value="2018.3_AR71948" description="" />
   </section>
  </section>

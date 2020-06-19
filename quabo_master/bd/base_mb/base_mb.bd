@@ -1,7 +1,7 @@
 {
   "design": {
     "design_info": {
-      "boundary_crc": "0xA03F0C4036C3F507",
+      "boundary_crc": "0xD6D90507666538EF",
       "device": "xc7k160tfbg676-1",
       "name": "base_mb",
       "synth_flow_mode": "None",
@@ -38,7 +38,6 @@
       "Bit_21_21": "",
       "Bit_19_23": "",
       "Bit_24_27": "",
-      "Bit_22_22": "",
       "Bit_23_23": "",
       "Bit_28_28": "",
       "ETH_CORE_CTRL_0": "",
@@ -123,7 +122,8 @@
       "Bit_15_15": "",
       "AXI_Stream_Switch_3_0": "",
       "HighSpeed_IM_v1_0_0": "",
-      "maroc_dc_0": ""
+      "maroc_dc_0": "",
+      "StepDrive_ShutterCtr_0": ""
     },
     "interface_ports": {
       "mgt_clk_0": {
@@ -401,24 +401,9 @@
       "flash_led_n": {
         "direction": "O"
       },
-      "shutter_open": {
-        "direction": "O",
-        "left": "0",
-        "right": "0"
-      },
-      "shutter_power": {
-        "direction": "O",
-        "left": "0",
-        "right": "0"
-      },
       "focus_limits_on": {
         "direction": "O",
         "left": "0",
-        "right": "0"
-      },
-      "step_drive": {
-        "direction": "O",
-        "left": "3",
         "right": "0"
       },
       "focus_down_lim": {
@@ -502,6 +487,18 @@
         "direction": "I"
       },
       "pps_inout_0": {
+        "direction": "IO"
+      },
+      "sd0_sc": {
+        "direction": "O"
+      },
+      "sd2_spare": {
+        "direction": "O"
+      },
+      "sd1_ss": {
+        "direction": "IO"
+      },
+      "sd3_lss": {
         "direction": "IO"
       }
     },
@@ -593,10 +590,16 @@
           }
         },
         "interface_nets": {
-          "microblaze_0_dlmb_bus": {
+          "microblaze_0_ilmb_cntlr": {
             "interface_ports": [
-              "dlmb_v10/LMB_Sl_0",
-              "dlmb_bram_if_cntlr/SLMB"
+              "ilmb_bram_if_cntlr/BRAM_PORT",
+              "lmb_bram/BRAM_PORTB"
+            ]
+          },
+          "microblaze_0_ilmb": {
+            "interface_ports": [
+              "ILMB",
+              "ilmb_v10/LMB_M"
             ]
           },
           "microblaze_0_ilmb_bus": {
@@ -605,28 +608,22 @@
               "ilmb_bram_if_cntlr/SLMB"
             ]
           },
+          "microblaze_0_dlmb_bus": {
+            "interface_ports": [
+              "dlmb_v10/LMB_Sl_0",
+              "dlmb_bram_if_cntlr/SLMB"
+            ]
+          },
           "microblaze_0_dlmb": {
             "interface_ports": [
               "DLMB",
               "dlmb_v10/LMB_M"
             ]
           },
-          "microblaze_0_ilmb_cntlr": {
-            "interface_ports": [
-              "ilmb_bram_if_cntlr/BRAM_PORT",
-              "lmb_bram/BRAM_PORTB"
-            ]
-          },
           "microblaze_0_dlmb_cntlr": {
             "interface_ports": [
               "dlmb_bram_if_cntlr/BRAM_PORT",
               "lmb_bram/BRAM_PORTA"
-            ]
-          },
-          "microblaze_0_ilmb": {
-            "interface_ports": [
-              "ILMB",
-              "ilmb_v10/LMB_M"
             ]
           }
         },
@@ -1409,24 +1406,6 @@
           }
         }
       },
-      "Bit_22_22": {
-        "vlnv": "xilinx.com:ip:xlslice:1.0",
-        "xci_name": "base_mb_Bit_21_21_0",
-        "parameters": {
-          "DIN_FROM": {
-            "value": "22"
-          },
-          "DIN_TO": {
-            "value": "22"
-          },
-          "DIN_WIDTH": {
-            "value": "32"
-          },
-          "DOUT_WIDTH": {
-            "value": "1"
-          }
-        }
-      },
       "Bit_23_23": {
         "vlnv": "xilinx.com:ip:xlslice:1.0",
         "xci_name": "base_mb_Bit_22_22_0",
@@ -1729,7 +1708,7 @@
             "value": "1"
           },
           "C_GPIO2_WIDTH": {
-            "value": "5"
+            "value": "7"
           },
           "C_IS_DUAL": {
             "value": "1"
@@ -2332,28 +2311,16 @@
           }
         },
         "interface_nets": {
+          "m03_couplers_to_axi_interconnect_0": {
+            "interface_ports": [
+              "M03_AXI",
+              "m03_couplers/M_AXI"
+            ]
+          },
           "xbar_to_m03_couplers": {
             "interface_ports": [
               "xbar/M03_AXI",
               "m03_couplers/S_AXI"
-            ]
-          },
-          "xbar_to_m01_couplers": {
-            "interface_ports": [
-              "xbar/M01_AXI",
-              "m01_couplers/S_AXI"
-            ]
-          },
-          "m00_couplers_to_axi_interconnect_0": {
-            "interface_ports": [
-              "M00_AXI",
-              "m00_couplers/M_AXI"
-            ]
-          },
-          "xbar_to_m02_couplers": {
-            "interface_ports": [
-              "xbar/M02_AXI",
-              "m02_couplers/S_AXI"
             ]
           },
           "m01_couplers_to_axi_interconnect_0": {
@@ -2362,16 +2329,28 @@
               "m01_couplers/M_AXI"
             ]
           },
-          "m03_couplers_to_axi_interconnect_0": {
+          "xbar_to_m05_couplers": {
             "interface_ports": [
-              "M03_AXI",
-              "m03_couplers/M_AXI"
+              "xbar/M05_AXI",
+              "m05_couplers/S_AXI"
+            ]
+          },
+          "m05_couplers_to_axi_interconnect_0": {
+            "interface_ports": [
+              "M05_AXI",
+              "m05_couplers/M_AXI"
             ]
           },
           "m04_couplers_to_axi_interconnect_0": {
             "interface_ports": [
               "M04_AXI",
               "m04_couplers/M_AXI"
+            ]
+          },
+          "xbar_to_m04_couplers": {
+            "interface_ports": [
+              "xbar/M04_AXI",
+              "m04_couplers/S_AXI"
             ]
           },
           "s00_couplers_to_xbar": {
@@ -2386,10 +2365,10 @@
               "m02_couplers/M_AXI"
             ]
           },
-          "xbar_to_m00_couplers": {
+          "xbar_to_m02_couplers": {
             "interface_ports": [
-              "xbar/M00_AXI",
-              "m00_couplers/S_AXI"
+              "xbar/M02_AXI",
+              "m02_couplers/S_AXI"
             ]
           },
           "axi_interconnect_0_to_s00_couplers": {
@@ -2398,22 +2377,22 @@
               "s00_couplers/S_AXI"
             ]
           },
-          "xbar_to_m04_couplers": {
+          "xbar_to_m01_couplers": {
             "interface_ports": [
-              "xbar/M04_AXI",
-              "m04_couplers/S_AXI"
+              "xbar/M01_AXI",
+              "m01_couplers/S_AXI"
             ]
           },
-          "m05_couplers_to_axi_interconnect_0": {
+          "m00_couplers_to_axi_interconnect_0": {
             "interface_ports": [
-              "M05_AXI",
-              "m05_couplers/M_AXI"
+              "M00_AXI",
+              "m00_couplers/M_AXI"
             ]
           },
-          "xbar_to_m05_couplers": {
+          "xbar_to_m00_couplers": {
             "interface_ports": [
-              "xbar/M05_AXI",
-              "m05_couplers/S_AXI"
+              "xbar/M00_AXI",
+              "m00_couplers/S_AXI"
             ]
           }
         },
@@ -4236,154 +4215,16 @@
           }
         },
         "interface_nets": {
-          "xbar_to_m05_couplers": {
-            "interface_ports": [
-              "xbar/M05_AXI",
-              "m05_couplers/S_AXI"
-            ]
-          },
-          "m13_couplers_to_microblaze_0_axi_periph": {
-            "interface_ports": [
-              "M13_AXI",
-              "m13_couplers/M_AXI"
-            ]
-          },
-          "m02_couplers_to_microblaze_0_axi_periph": {
-            "interface_ports": [
-              "M02_AXI",
-              "m02_couplers/M_AXI"
-            ]
-          },
-          "xbar_to_m00_couplers": {
-            "interface_ports": [
-              "xbar/M00_AXI",
-              "m00_couplers/S_AXI"
-            ]
-          },
-          "m15_couplers_to_microblaze_0_axi_periph": {
-            "interface_ports": [
-              "M15_AXI",
-              "m15_couplers/M_AXI"
-            ]
-          },
-          "xbar_to_m03_couplers": {
-            "interface_ports": [
-              "xbar/M03_AXI",
-              "m03_couplers/S_AXI"
-            ]
-          },
-          "s01_couplers_to_xbar": {
-            "interface_ports": [
-              "s01_couplers/M_AXI",
-              "xbar/S01_AXI"
-            ]
-          },
-          "xbar_to_m15_couplers": {
-            "interface_ports": [
-              "xbar/M15_AXI",
-              "m15_couplers/S_AXI"
-            ]
-          },
-          "m03_couplers_to_microblaze_0_axi_periph": {
-            "interface_ports": [
-              "M03_AXI",
-              "m03_couplers/M_AXI"
-            ]
-          },
-          "microblaze_0_axi_periph_to_s00_couplers": {
-            "interface_ports": [
-              "S00_AXI",
-              "s00_couplers/S_AXI"
-            ]
-          },
-          "xbar_to_m13_couplers": {
-            "interface_ports": [
-              "xbar/M13_AXI",
-              "m13_couplers/S_AXI"
-            ]
-          },
-          "xbar_to_m09_couplers": {
-            "interface_ports": [
-              "xbar/M09_AXI",
-              "m09_couplers/S_AXI"
-            ]
-          },
-          "m04_couplers_to_microblaze_0_axi_periph": {
-            "interface_ports": [
-              "M04_AXI",
-              "m04_couplers/M_AXI"
-            ]
-          },
-          "xbar_to_m04_couplers": {
-            "interface_ports": [
-              "xbar/M04_AXI",
-              "m04_couplers/S_AXI"
-            ]
-          },
-          "m10_couplers_to_microblaze_0_axi_periph": {
-            "interface_ports": [
-              "M10_AXI",
-              "m10_couplers/M_AXI"
-            ]
-          },
           "xbar_to_m10_couplers": {
             "interface_ports": [
               "xbar/M10_AXI",
               "m10_couplers/S_AXI"
             ]
           },
-          "m09_couplers_to_microblaze_0_axi_periph": {
+          "m10_couplers_to_microblaze_0_axi_periph": {
             "interface_ports": [
-              "M09_AXI",
-              "m09_couplers/M_AXI"
-            ]
-          },
-          "xbar_to_m08_couplers": {
-            "interface_ports": [
-              "xbar/M08_AXI",
-              "m08_couplers/S_AXI"
-            ]
-          },
-          "xbar_to_m06_couplers": {
-            "interface_ports": [
-              "xbar/M06_AXI",
-              "m06_couplers/S_AXI"
-            ]
-          },
-          "s00_couplers_to_xbar": {
-            "interface_ports": [
-              "s00_couplers/M_AXI",
-              "xbar/S00_AXI"
-            ]
-          },
-          "m14_couplers_to_microblaze_0_axi_periph": {
-            "interface_ports": [
-              "M14_AXI",
-              "m14_couplers/M_AXI"
-            ]
-          },
-          "xbar_to_m07_couplers": {
-            "interface_ports": [
-              "xbar/M07_AXI",
-              "m07_couplers/S_AXI"
-            ]
-          },
-          "m05_couplers_to_microblaze_0_axi_periph": {
-            "interface_ports": [
-              "M05_AXI",
-              "m05_couplers/M_AXI"
-            ]
-          },
-          "xbar_to_m14_couplers": {
-            "interface_ports": [
-              "xbar/M14_AXI",
-              "m14_couplers/S_AXI"
-            ]
-          },
-          "m00_couplers_to_microblaze_0_axi_periph": {
-            "interface_ports": [
-              "M00_AXI",
-              "m00_couplers/M_AXI"
+              "M10_AXI",
+              "m10_couplers/M_AXI"
             ]
           },
           "xbar_to_m12_couplers": {
@@ -4398,16 +4239,70 @@
               "m11_couplers/S_AXI"
             ]
           },
+          "m12_couplers_to_microblaze_0_axi_periph": {
+            "interface_ports": [
+              "M12_AXI",
+              "m12_couplers/M_AXI"
+            ]
+          },
           "m11_couplers_to_microblaze_0_axi_periph": {
             "interface_ports": [
               "M11_AXI",
               "m11_couplers/M_AXI"
             ]
           },
-          "m12_couplers_to_microblaze_0_axi_periph": {
+          "xbar_to_m13_couplers": {
             "interface_ports": [
-              "M12_AXI",
-              "m12_couplers/M_AXI"
+              "xbar/M13_AXI",
+              "m13_couplers/S_AXI"
+            ]
+          },
+          "m13_couplers_to_microblaze_0_axi_periph": {
+            "interface_ports": [
+              "M13_AXI",
+              "m13_couplers/M_AXI"
+            ]
+          },
+          "xbar_to_m14_couplers": {
+            "interface_ports": [
+              "xbar/M14_AXI",
+              "m14_couplers/S_AXI"
+            ]
+          },
+          "m14_couplers_to_microblaze_0_axi_periph": {
+            "interface_ports": [
+              "M14_AXI",
+              "m14_couplers/M_AXI"
+            ]
+          },
+          "m15_couplers_to_microblaze_0_axi_periph": {
+            "interface_ports": [
+              "M15_AXI",
+              "m15_couplers/M_AXI"
+            ]
+          },
+          "xbar_to_m15_couplers": {
+            "interface_ports": [
+              "xbar/M15_AXI",
+              "m15_couplers/S_AXI"
+            ]
+          },
+          "xbar_to_m09_couplers": {
+            "interface_ports": [
+              "xbar/M09_AXI",
+              "m09_couplers/S_AXI"
+            ]
+          },
+          "m08_couplers_to_microblaze_0_axi_periph": {
+            "interface_ports": [
+              "M08_AXI",
+              "m08_couplers/M_AXI"
+            ]
+          },
+          "xbar_to_m08_couplers": {
+            "interface_ports": [
+              "xbar/M08_AXI",
+              "m08_couplers/S_AXI"
             ]
           },
           "m07_couplers_to_microblaze_0_axi_periph": {
@@ -4416,22 +4311,58 @@
               "m07_couplers/M_AXI"
             ]
           },
-          "xbar_to_m01_couplers": {
+          "xbar_to_m00_couplers": {
             "interface_ports": [
-              "xbar/M01_AXI",
-              "m01_couplers/S_AXI"
+              "xbar/M00_AXI",
+              "m00_couplers/S_AXI"
             ]
           },
-          "m06_couplers_to_microblaze_0_axi_periph": {
+          "xbar_to_m06_couplers": {
             "interface_ports": [
-              "M06_AXI",
-              "m06_couplers/M_AXI"
+              "xbar/M06_AXI",
+              "m06_couplers/S_AXI"
             ]
           },
-          "microblaze_0_axi_periph_to_s01_couplers": {
+          "m05_couplers_to_microblaze_0_axi_periph": {
             "interface_ports": [
-              "S01_AXI",
-              "s01_couplers/S_AXI"
+              "M05_AXI",
+              "m05_couplers/M_AXI"
+            ]
+          },
+          "xbar_to_m05_couplers": {
+            "interface_ports": [
+              "xbar/M05_AXI",
+              "m05_couplers/S_AXI"
+            ]
+          },
+          "m04_couplers_to_microblaze_0_axi_periph": {
+            "interface_ports": [
+              "M04_AXI",
+              "m04_couplers/M_AXI"
+            ]
+          },
+          "xbar_to_m04_couplers": {
+            "interface_ports": [
+              "xbar/M04_AXI",
+              "m04_couplers/S_AXI"
+            ]
+          },
+          "m03_couplers_to_microblaze_0_axi_periph": {
+            "interface_ports": [
+              "M03_AXI",
+              "m03_couplers/M_AXI"
+            ]
+          },
+          "xbar_to_m03_couplers": {
+            "interface_ports": [
+              "xbar/M03_AXI",
+              "m03_couplers/S_AXI"
+            ]
+          },
+          "m02_couplers_to_microblaze_0_axi_periph": {
+            "interface_ports": [
+              "M02_AXI",
+              "m02_couplers/M_AXI"
             ]
           },
           "xbar_to_m02_couplers": {
@@ -4446,10 +4377,58 @@
               "m01_couplers/M_AXI"
             ]
           },
-          "m08_couplers_to_microblaze_0_axi_periph": {
+          "microblaze_0_axi_periph_to_s01_couplers": {
             "interface_ports": [
-              "M08_AXI",
-              "m08_couplers/M_AXI"
+              "S01_AXI",
+              "s01_couplers/S_AXI"
+            ]
+          },
+          "s01_couplers_to_xbar": {
+            "interface_ports": [
+              "s01_couplers/M_AXI",
+              "xbar/S01_AXI"
+            ]
+          },
+          "microblaze_0_axi_periph_to_s00_couplers": {
+            "interface_ports": [
+              "S00_AXI",
+              "s00_couplers/S_AXI"
+            ]
+          },
+          "s00_couplers_to_xbar": {
+            "interface_ports": [
+              "s00_couplers/M_AXI",
+              "xbar/S00_AXI"
+            ]
+          },
+          "m09_couplers_to_microblaze_0_axi_periph": {
+            "interface_ports": [
+              "M09_AXI",
+              "m09_couplers/M_AXI"
+            ]
+          },
+          "m00_couplers_to_microblaze_0_axi_periph": {
+            "interface_ports": [
+              "M00_AXI",
+              "m00_couplers/M_AXI"
+            ]
+          },
+          "xbar_to_m01_couplers": {
+            "interface_ports": [
+              "xbar/M01_AXI",
+              "m01_couplers/S_AXI"
+            ]
+          },
+          "xbar_to_m07_couplers": {
+            "interface_ports": [
+              "xbar/M07_AXI",
+              "m07_couplers/S_AXI"
+            ]
+          },
+          "m06_couplers_to_microblaze_0_axi_periph": {
+            "interface_ports": [
+              "M06_AXI",
+              "m06_couplers/M_AXI"
             ]
           }
         },
@@ -4813,10 +4792,10 @@
         "xci_name": "base_mb_xlconcat_2_0",
         "parameters": {
           "NUM_PORTS": {
-            "value": "5"
+            "value": "7"
           },
           "dout_width": {
-            "value": "5"
+            "value": "7"
           }
         }
       },
@@ -5070,243 +5049,62 @@
       "maroc_dc_0": {
         "vlnv": "xilinx.com:user:maroc_dc:1.5",
         "xci_name": "base_mb_maroc_dc_0_0"
+      },
+      "StepDrive_ShutterCtr_0": {
+        "vlnv": "xilinx.com:module_ref:StepDrive_ShutterCtrl_Sel:1.0",
+        "xci_name": "base_mb_StepDrive_ShutterCtr_0_0",
+        "reference_info": {
+          "ref_type": "hdl",
+          "ref_name": "StepDrive_ShutterCtrl_Sel",
+          "boundary_crc": "0x0"
+        },
+        "ports": {
+          "clk": {
+            "type": "clk",
+            "direction": "I",
+            "parameters": {
+              "CLK_DOMAIN": {
+                "value": "base_mb_clk_wiz_1_0_clk_100",
+                "value_src": "default_prop"
+              }
+            }
+          },
+          "pos0": {
+            "direction": "I"
+          },
+          "pos1": {
+            "direction": "I"
+          },
+          "step_drive": {
+            "direction": "I",
+            "left": "3",
+            "right": "0"
+          },
+          "shutter_command": {
+            "direction": "I"
+          },
+          "shutter_status": {
+            "direction": "O"
+          },
+          "light_sensor_status": {
+            "direction": "O"
+          },
+          "sd0_sc": {
+            "direction": "O"
+          },
+          "sd2_spare": {
+            "direction": "O"
+          },
+          "sd1_ss": {
+            "direction": "IO"
+          },
+          "sd3_lss": {
+            "direction": "IO"
+          }
+        }
       }
     },
     "interface_nets": {
-      "mgt_clk_0_1": {
-        "interface_ports": [
-          "mgt_clk_0",
-          "axi_ethernet_0/mgt_clk"
-        ]
-      },
-      "microblaze_0_debug": {
-        "interface_ports": [
-          "mdm_1/MBDEBUG_0",
-          "microblaze_0/DEBUG"
-        ]
-      },
-      "microblaze_0_axi_periph_M13_AXI": {
-        "interface_ports": [
-          "microblaze_0_axi_periph/M13_AXI",
-          "axi_timebase_wdt_0/S_AXI"
-        ]
-      },
-      "maroc_dc_0_M01_AXIS": {
-        "interface_ports": [
-          "axi_fifo_mm_s_PH/AXI_STR_RXD",
-          "maroc_dc_0/M01_AXIS"
-        ]
-      },
-      "ETH_CORE_CTRL_0_m_axis_txc": {
-        "interface_ports": [
-          "ETH_CORE_CTRL_0/m_axis_txc",
-          "axi_ethernet_1/s_axis_txc"
-        ]
-      },
-      "microblaze_0_axi_periph_M01_AXI": {
-        "interface_ports": [
-          "microblaze_0_axi_periph/M01_AXI",
-          "maroc_slow_control_0/S00_AXI"
-        ]
-      },
-      "microblaze_0_axi_periph_M00_AXI": {
-        "interface_ports": [
-          "microblaze_0_axi_periph/M00_AXI",
-          "axi_uartlite_0/S_AXI"
-        ]
-      },
-      "microblaze_0_M_AXI_DP": {
-        "interface_ports": [
-          "microblaze_0/M_AXI_DP",
-          "microblaze_0_axi_periph/S00_AXI"
-        ]
-      },
-      "axi_interconnect_0_M04_AXI": {
-        "interface_ports": [
-          "axi_ethernet_1/s_axi",
-          "axi_interconnect_0/M04_AXI"
-        ]
-      },
-      "axi_interconnect_0_M05_AXI": {
-        "interface_ports": [
-          "axi_interconnect_0/M05_AXI",
-          "HighSpeed_IM_v1_0_0/s_axi_packetheader"
-        ]
-      },
-      "axi_interconnect_0_M00_AXI": {
-        "interface_ports": [
-          "axi_quad_spi_1/AXI_LITE",
-          "axi_interconnect_0/M00_AXI"
-        ]
-      },
-      "maroc_dc_0_M00_AXIS": {
-        "interface_ports": [
-          "axi_fifo_mm_s_IM/AXI_STR_RXD",
-          "maroc_dc_0/M00_AXIS"
-        ]
-      },
-      "ETH_CORE_CTRL_0_m_axis_txd": {
-        "interface_ports": [
-          "ETH_CORE_CTRL_0/m_axis_txd",
-          "axi_ethernet_1/s_axis_txd"
-        ]
-      },
-      "ETH_CORE_CTRL_1_m_axis_txd": {
-        "interface_ports": [
-          "ETH_CORE_CTRL_1/m_axis_txd",
-          "axi_ethernet_0/s_axis_txd"
-        ]
-      },
-      "microblaze_0_axi_periph_M07_AXI": {
-        "interface_ports": [
-          "microblaze_0_axi_periph/M07_AXI",
-          "axi_iic_0/S_AXI"
-        ]
-      },
-      "microblaze_0_axi_periph_M02_AXI": {
-        "interface_ports": [
-          "microblaze_0_axi_periph/M02_AXI",
-          "axi_ethernet_0/s_axi"
-        ]
-      },
-      "microblaze_0_axi_periph_M06_AXI": {
-        "interface_ports": [
-          "microblaze_0_axi_periph/M06_AXI",
-          "axi_timer_0/S_AXI"
-        ]
-      },
-      "microblaze_0_axi_periph_M03_AXI": {
-        "interface_ports": [
-          "microblaze_0_axi_periph/M03_AXI",
-          "axi_ethernet_0_fifo/S_AXI"
-        ]
-      },
-      "HighSpeed_IM_v1_0_0_m_axi_im_config": {
-        "interface_ports": [
-          "HighSpeed_IM_v1_0_0/m_axi_im_config",
-          "axi_fifo_mm_s_IM/S_AXI"
-        ]
-      },
-      "microblaze_0_axi_periph_M12_AXI": {
-        "interface_ports": [
-          "HighSpeed_IM_v1_0_0/s_axi_im_config",
-          "microblaze_0_axi_periph/M12_AXI"
-        ]
-      },
-      "axi_ethernet_0_fifo_AXI_STR_TXD": {
-        "interface_ports": [
-          "axi_ethernet_0_fifo/AXI_STR_TXD",
-          "AXI_Stream_Switch_3_0/S0_AXIS"
-        ]
-      },
-      "axi_ethernet_1_sfp": {
-        "interface_ports": [
-          "sfp_1",
-          "axi_ethernet_1/sfp"
-        ]
-      },
-      "axi_intc_0_interrupt": {
-        "interface_ports": [
-          "axi_intc_0/interrupt",
-          "microblaze_0/INTERRUPT"
-        ]
-      },
-      "AXI_Stream_Switch_3_0_M0_AXIS": {
-        "interface_ports": [
-          "ETH_CORE_CTRL_1/s_axis_txd",
-          "AXI_Stream_Switch_3_0/M0_AXIS"
-        ]
-      },
-      "axi_iic_0_IIC": {
-        "interface_ports": [
-          "iic_main",
-          "axi_iic_0/IIC"
-        ]
-      },
-      "FIFO_for_AXIS_0_m_axis": {
-        "interface_ports": [
-          "FIFO_for_AXIS_0/m_axis",
-          "AXI_Stream_Switch_3_0/S1_AXIS"
-        ]
-      },
-      "microblaze_0_dlmb_1": {
-        "interface_ports": [
-          "microblaze_0/DLMB",
-          "microblaze_0_local_memory/DLMB"
-        ]
-      },
-      "microblaze_0_axi_periph_M08_AXI": {
-        "interface_ports": [
-          "microblaze_0_axi_periph/M08_AXI",
-          "axi_quad_spi_0/AXI_LITE"
-        ]
-      },
-      "axi_interconnect_0_M01_AXI": {
-        "interface_ports": [
-          "axi_interconnect_0/M01_AXI",
-          "axi_hwicap_0/S_AXI_LITE"
-        ]
-      },
-      "axi_interconnect_0_M03_AXI": {
-        "interface_ports": [
-          "axi_interconnect_0/M03_AXI",
-          "axi_timer_1/S_AXI"
-        ]
-      },
-      "microblaze_0_axi_periph_M09_AXI": {
-        "interface_ports": [
-          "microblaze_0_axi_periph/M09_AXI",
-          "GPIO/S_AXI"
-        ]
-      },
-      "HighSpeed_IM_v1_0_0_m_axis": {
-        "interface_ports": [
-          "HighSpeed_IM_v1_0_0/m_axis",
-          "AXI_Stream_Switch_3_0/S2_AXIS"
-        ]
-      },
-      "axi_ethernet_0_sfp": {
-        "interface_ports": [
-          "sfp_0",
-          "axi_ethernet_0/sfp"
-        ]
-      },
-      "microblaze_0_M_AXI_IP": {
-        "interface_ports": [
-          "microblaze_0/M_AXI_IP",
-          "microblaze_0_axi_periph/S01_AXI"
-        ]
-      },
-      "axi_ethernet_1_m_axis_rxd": {
-        "interface_ports": [
-          "axi_ethernet_1/m_axis_rxd",
-          "FIFO_for_AXIS_0/s_axis"
-        ]
-      },
-      "microblaze_0_axi_periph_M11_AXI": {
-        "interface_ports": [
-          "microblaze_0_axi_periph/M11_AXI",
-          "axi_fifo_mm_s_PH/S_AXI"
-        ]
-      },
-      "microblaze_0_axi_periph_M14_AXI": {
-        "interface_ports": [
-          "microblaze_0_axi_periph/M14_AXI",
-          "axi_gpio_mech/S_AXI"
-        ]
-      },
-      "microblaze_0_axi_periph_M15_AXI": {
-        "interface_ports": [
-          "microblaze_0_axi_periph/M15_AXI",
-          "axi_interconnect_0/S00_AXI"
-        ]
-      },
-      "microblaze_0_axi_periph_M04_AXI": {
-        "interface_ports": [
-          "microblaze_0_axi_periph/M04_AXI",
-          "maroc_dc_0/S00_AXI"
-        ]
-      },
       "microblaze_0_ilmb_1": {
         "interface_ports": [
           "microblaze_0/ILMB",
@@ -5335,6 +5133,240 @@
         "interface_ports": [
           "microblaze_0_axi_periph/M05_AXI",
           "axi_intc_0/s_axi"
+        ]
+      },
+      "microblaze_0_axi_periph_M15_AXI": {
+        "interface_ports": [
+          "microblaze_0_axi_periph/M15_AXI",
+          "axi_interconnect_0/S00_AXI"
+        ]
+      },
+      "microblaze_0_M_AXI_IP": {
+        "interface_ports": [
+          "microblaze_0/M_AXI_IP",
+          "microblaze_0_axi_periph/S01_AXI"
+        ]
+      },
+      "axi_ethernet_1_m_axis_rxd": {
+        "interface_ports": [
+          "axi_ethernet_1/m_axis_rxd",
+          "FIFO_for_AXIS_0/s_axis"
+        ]
+      },
+      "microblaze_0_axi_periph_M11_AXI": {
+        "interface_ports": [
+          "microblaze_0_axi_periph/M11_AXI",
+          "axi_fifo_mm_s_PH/S_AXI"
+        ]
+      },
+      "microblaze_0_axi_periph_M13_AXI": {
+        "interface_ports": [
+          "microblaze_0_axi_periph/M13_AXI",
+          "axi_timebase_wdt_0/S_AXI"
+        ]
+      },
+      "microblaze_0_axi_periph_M14_AXI": {
+        "interface_ports": [
+          "microblaze_0_axi_periph/M14_AXI",
+          "axi_gpio_mech/S_AXI"
+        ]
+      },
+      "microblaze_0_axi_periph_M04_AXI": {
+        "interface_ports": [
+          "microblaze_0_axi_periph/M04_AXI",
+          "maroc_dc_0/S00_AXI"
+        ]
+      },
+      "mgt_clk_0_1": {
+        "interface_ports": [
+          "mgt_clk_0",
+          "axi_ethernet_0/mgt_clk"
+        ]
+      },
+      "AXI_Stream_Switch_3_0_M0_AXIS": {
+        "interface_ports": [
+          "ETH_CORE_CTRL_1/s_axis_txd",
+          "AXI_Stream_Switch_3_0/M0_AXIS"
+        ]
+      },
+      "microblaze_0_axi_periph_M08_AXI": {
+        "interface_ports": [
+          "microblaze_0_axi_periph/M08_AXI",
+          "axi_quad_spi_0/AXI_LITE"
+        ]
+      },
+      "microblaze_0_axi_periph_M01_AXI": {
+        "interface_ports": [
+          "microblaze_0_axi_periph/M01_AXI",
+          "maroc_slow_control_0/S00_AXI"
+        ]
+      },
+      "microblaze_0_axi_periph_M00_AXI": {
+        "interface_ports": [
+          "microblaze_0_axi_periph/M00_AXI",
+          "axi_uartlite_0/S_AXI"
+        ]
+      },
+      "FIFO_for_AXIS_0_m_axis": {
+        "interface_ports": [
+          "FIFO_for_AXIS_0/m_axis",
+          "AXI_Stream_Switch_3_0/S1_AXIS"
+        ]
+      },
+      "microblaze_0_axi_periph_M12_AXI": {
+        "interface_ports": [
+          "HighSpeed_IM_v1_0_0/s_axi_im_config",
+          "microblaze_0_axi_periph/M12_AXI"
+        ]
+      },
+      "microblaze_0_M_AXI_DP": {
+        "interface_ports": [
+          "microblaze_0/M_AXI_DP",
+          "microblaze_0_axi_periph/S00_AXI"
+        ]
+      },
+      "microblaze_0_axi_periph_M03_AXI": {
+        "interface_ports": [
+          "microblaze_0_axi_periph/M03_AXI",
+          "axi_ethernet_0_fifo/S_AXI"
+        ]
+      },
+      "axi_interconnect_0_M01_AXI": {
+        "interface_ports": [
+          "axi_interconnect_0/M01_AXI",
+          "axi_hwicap_0/S_AXI_LITE"
+        ]
+      },
+      "axi_ethernet_0_sfp": {
+        "interface_ports": [
+          "sfp_0",
+          "axi_ethernet_0/sfp"
+        ]
+      },
+      "microblaze_0_axi_periph_M07_AXI": {
+        "interface_ports": [
+          "microblaze_0_axi_periph/M07_AXI",
+          "axi_iic_0/S_AXI"
+        ]
+      },
+      "axi_ethernet_1_sfp": {
+        "interface_ports": [
+          "sfp_1",
+          "axi_ethernet_1/sfp"
+        ]
+      },
+      "ETH_CORE_CTRL_0_m_axis_txd": {
+        "interface_ports": [
+          "ETH_CORE_CTRL_0/m_axis_txd",
+          "axi_ethernet_1/s_axis_txd"
+        ]
+      },
+      "axi_interconnect_0_M05_AXI": {
+        "interface_ports": [
+          "axi_interconnect_0/M05_AXI",
+          "HighSpeed_IM_v1_0_0/s_axi_packetheader"
+        ]
+      },
+      "microblaze_0_axi_periph_M02_AXI": {
+        "interface_ports": [
+          "microblaze_0_axi_periph/M02_AXI",
+          "axi_ethernet_0/s_axi"
+        ]
+      },
+      "axi_interconnect_0_M04_AXI": {
+        "interface_ports": [
+          "axi_ethernet_1/s_axi",
+          "axi_interconnect_0/M04_AXI"
+        ]
+      },
+      "HighSpeed_IM_v1_0_0_m_axi_im_config": {
+        "interface_ports": [
+          "HighSpeed_IM_v1_0_0/m_axi_im_config",
+          "axi_fifo_mm_s_IM/S_AXI"
+        ]
+      },
+      "axi_intc_0_interrupt": {
+        "interface_ports": [
+          "axi_intc_0/interrupt",
+          "microblaze_0/INTERRUPT"
+        ]
+      },
+      "maroc_dc_0_M01_AXIS": {
+        "interface_ports": [
+          "axi_fifo_mm_s_PH/AXI_STR_RXD",
+          "maroc_dc_0/M01_AXIS"
+        ]
+      },
+      "maroc_dc_0_M00_AXIS": {
+        "interface_ports": [
+          "axi_fifo_mm_s_IM/AXI_STR_RXD",
+          "maroc_dc_0/M00_AXIS"
+        ]
+      },
+      "axi_ethernet_0_fifo_AXI_STR_TXD": {
+        "interface_ports": [
+          "axi_ethernet_0_fifo/AXI_STR_TXD",
+          "AXI_Stream_Switch_3_0/S0_AXIS"
+        ]
+      },
+      "axi_iic_0_IIC": {
+        "interface_ports": [
+          "iic_main",
+          "axi_iic_0/IIC"
+        ]
+      },
+      "axi_interconnect_0_M00_AXI": {
+        "interface_ports": [
+          "axi_quad_spi_1/AXI_LITE",
+          "axi_interconnect_0/M00_AXI"
+        ]
+      },
+      "microblaze_0_axi_periph_M09_AXI": {
+        "interface_ports": [
+          "microblaze_0_axi_periph/M09_AXI",
+          "GPIO/S_AXI"
+        ]
+      },
+      "microblaze_0_axi_periph_M06_AXI": {
+        "interface_ports": [
+          "microblaze_0_axi_periph/M06_AXI",
+          "axi_timer_0/S_AXI"
+        ]
+      },
+      "microblaze_0_debug": {
+        "interface_ports": [
+          "mdm_1/MBDEBUG_0",
+          "microblaze_0/DEBUG"
+        ]
+      },
+      "microblaze_0_dlmb_1": {
+        "interface_ports": [
+          "microblaze_0/DLMB",
+          "microblaze_0_local_memory/DLMB"
+        ]
+      },
+      "axi_interconnect_0_M03_AXI": {
+        "interface_ports": [
+          "axi_interconnect_0/M03_AXI",
+          "axi_timer_1/S_AXI"
+        ]
+      },
+      "HighSpeed_IM_v1_0_0_m_axis": {
+        "interface_ports": [
+          "HighSpeed_IM_v1_0_0/m_axis",
+          "AXI_Stream_Switch_3_0/S2_AXIS"
+        ]
+      },
+      "ETH_CORE_CTRL_0_m_axis_txc": {
+        "interface_ports": [
+          "ETH_CORE_CTRL_0/m_axis_txc",
+          "axi_ethernet_1/s_axis_txc"
+        ]
+      },
+      "ETH_CORE_CTRL_1_m_axis_txd": {
+        "interface_ports": [
+          "ETH_CORE_CTRL_1/m_axis_txd",
+          "axi_ethernet_0/s_axis_txd"
         ]
       }
     },
@@ -5408,7 +5440,8 @@
           "HighSpeed_IM_v1_0_0/aclk",
           "maroc_dc_0/s00_axi_aclk",
           "maroc_dc_0/m00_axis_aclk",
-          "maroc_dc_0/m01_axis_aclk"
+          "maroc_dc_0/m01_axis_aclk",
+          "StepDrive_ShutterCtr_0/clk"
         ]
       },
       "clk_wiz_1_locked": {
@@ -6050,7 +6083,6 @@
           "Bit_3_0/Din",
           "Bit_29_24/Din",
           "Bit_21_21/Din",
-          "Bit_22_22/Din",
           "Bit_23_23/Din"
         ]
       },
@@ -6058,18 +6090,6 @@
         "ports": [
           "xlconcat_2/dout",
           "axi_gpio_mech/gpio2_io_i"
-        ]
-      },
-      "Bit_21_21_Dout": {
-        "ports": [
-          "Bit_21_21/Dout",
-          "shutter_open"
-        ]
-      },
-      "Bit_22_22_Dout": {
-        "ports": [
-          "Bit_22_22/Dout",
-          "shutter_power"
         ]
       },
       "In0_0_1": {
@@ -6428,14 +6448,16 @@
         "ports": [
           "xlslice_0/Dout",
           "PPS_IO_0/io_ctrl0",
-          "pinout_three_state_0/pos0"
+          "pinout_three_state_0/pos0",
+          "StepDrive_ShutterCtr_0/pos0"
         ]
       },
       "xlslice_1_Dout1": {
         "ports": [
           "xlslice_1/Dout",
           "PPS_IO_0/io_ctrl1",
-          "pinout_three_state_0/pos1"
+          "pinout_three_state_0/pos1",
+          "StepDrive_ShutterCtr_0/pos1"
         ]
       },
       "Bit_29_24_Dout": {
@@ -6480,12 +6502,6 @@
           "IBUFDS_FOR_CLK_0/IB"
         ]
       },
-      "step_drive_0_drive_out": {
-        "ports": [
-          "step_drive_0/drive_out",
-          "step_drive"
-        ]
-      },
       "Bit_3_0_Dout": {
         "ports": [
           "Bit_3_0/Dout",
@@ -6508,6 +6524,54 @@
         "ports": [
           "Bit_23_23/Dout",
           "pinout_three_state_0/d_in"
+        ]
+      },
+      "Bit_21_21_Dout": {
+        "ports": [
+          "Bit_21_21/Dout",
+          "StepDrive_ShutterCtr_0/shutter_command"
+        ]
+      },
+      "step_drive_0_drive_out": {
+        "ports": [
+          "step_drive_0/drive_out",
+          "StepDrive_ShutterCtr_0/step_drive"
+        ]
+      },
+      "StepDrive_ShutterCtr_0_shutter_status": {
+        "ports": [
+          "StepDrive_ShutterCtr_0/shutter_status",
+          "xlconcat_2/In5"
+        ]
+      },
+      "StepDrive_ShutterCtr_0_light_sensor_status": {
+        "ports": [
+          "StepDrive_ShutterCtr_0/light_sensor_status",
+          "xlconcat_2/In6"
+        ]
+      },
+      "StepDrive_ShutterCtr_0_sd0_sc": {
+        "ports": [
+          "StepDrive_ShutterCtr_0/sd0_sc",
+          "sd0_sc"
+        ]
+      },
+      "StepDrive_ShutterCtr_0_sd2_spare": {
+        "ports": [
+          "StepDrive_ShutterCtr_0/sd2_spare",
+          "sd2_spare"
+        ]
+      },
+      "Net5": {
+        "ports": [
+          "sd1_ss",
+          "StepDrive_ShutterCtr_0/sd1_ss"
+        ]
+      },
+      "Net6": {
+        "ports": [
+          "sd3_lss",
+          "StepDrive_ShutterCtr_0/sd3_lss"
         ]
       }
     },

@@ -237,6 +237,9 @@ void WR_int_callback();
 //Get the firmware ID value, programmed at configuration
 void get_FWID(void);
 
+//Get the shutter status, including shutter_status and light_sensor_status
+void Get_shutter_status(void);
+
 int set_focus(u16 target, int* statptr);
 int move_stepper(int steps, u8 last_phase, u8 limit_override);
 int get_stored_focus(void);
@@ -275,8 +278,9 @@ u8 wr_int_arm = 0;
 u8 SPI_flag;
 u8 ET_clk_reset = 0;
 
-u8 shutter_power = 0;
-u8 shutter_open = 0;
+//u8 shutter_power = 0;
+//u8 shutter_open = 0;
+u8 shutter_command = 0;
 u8 focus_limits_on = 0;
 u8 fan_speed = 0;
 
@@ -300,6 +304,8 @@ u16 tmp125_val = 0;
 // Else, send one every approx hk_interval seconds
 u8 hk_interval = 1;
 
+//we will get shutter_status and light_sensor_status from gpio_mech[5] and gpio_mech[6]
+u8 shutter_light_sensor_status = 0;
 //We'll subtract off a fixed baseline from the PH data.  Reserve 64 * 4 u16 values
 // (it'd probably be OK to just use a single value for each ADC channel- 4 values total.  If RAM becomes a problem, and we need that 512B back, could reconsider)
 u16 ph_baseline_array[256];
@@ -524,10 +530,10 @@ int main()
 	/* the mac address of the board. this should be unique per board */
 	unsigned char flash_uid[8];
 	gpio_sel_mb();
-	//flash_read_uid(flash_uid);
+	flash_read_uid(flash_uid);
 	gpio_sel_wr();
-	unsigned char mac_ethernet_address[] ={ 0x00, 0x0a, 0x35, 0x00, 0x01, 0x03 };
-	//unsigned char mac_ethernet_address[6] ={0x00,flash_uid[5],flash_uid[4],flash_uid[3],flash_uid[2],flash_uid[1]};
+	//unsigned char mac_ethernet_address[] ={ 0x00, 0x0a, 0x35, 0x00, 0x01, 0x03 };
+	unsigned char mac_ethernet_address[6] ={0x00,flash_uid[5],flash_uid[4],flash_uid[3],flash_uid[2],flash_uid[1]};
 	xil_printf("mac_address = %x %x %x %x %x %x\r\n",mac_ethernet_address[0],mac_ethernet_address[1],mac_ethernet_address[2],
 			                                         mac_ethernet_address[3],mac_ethernet_address[4],mac_ethernet_address[5]);
   	/* Add network interface to the netif_list, and set it as default */
@@ -708,6 +714,8 @@ int main()
 						hkadc_channel++;
 						if (hkadc_channel == 16) hkadc_channel = 0;
 						GetTMP125();
+						//we get shutter status here, and the status will be sent out in HK packets
+						Get_shutter_status();
 					}
 					if ((elapsed_time & 0xf) == 0) //every sixteen ticks, about every 4 sec
 					{
@@ -1015,12 +1023,12 @@ recv_callback(void *arg, struct udp_pcb *tpcb,
 			set_focus((u16)(*(u16*)(bptr+4)), stats);
 			SendStepperData(stats);
 			//SetStepper((s16)*((u16*)(bptr+4)));
-			shutter_power = (*(bptr+6) & 0x01);
-			shutter_open = ((*(bptr+6) & 0x02) == 0x02);
+			//shutter_power = (*(bptr+6) & 0x01);
+			//shutter_open = ((*(bptr+6) & 0x02) == 0x02);
 			focus_limits_on = ((*(bptr+6) & 0x04) == 0x04);
 			fan_speed = (*(bptr+8) & 0x0f);
 			//OK to write the GPIO again even if the stepper is in motion
-			XGpio_DiscreteWrite(&Gpio_mech, GPIO_OUT_CHAN, (focus_limits_on <<23) | (shutter_power<<22) | (shutter_open<<21) | (fan_speed<<17));
+			XGpio_DiscreteWrite(&Gpio_mech, GPIO_OUT_CHAN, (focus_limits_on <<23) | (shutter_command<<21) | (fan_speed<<17));
 		}
 		if ((byte0 & 0x7f) == 0x06)   //Channel Mask
 		{
@@ -1031,7 +1039,11 @@ recv_callback(void *arg, struct udp_pcb *tpcb,
 			Status = PH_BL_Init(ph_baseline_array);
 			if (Status != 0) xil_printf("BaseLine Cal Failed\n");
 		}
-
+		if((byte0 & 0x7f)==0x08)
+		{
+			shutter_command = (*(bptr+1)&0x01);
+			XGpio_DiscreteWrite(&Gpio_mech, GPIO_OUT_CHAN, (focus_limits_on <<23) | (shutter_command<<21) | (fan_speed<<17));
+		}
 		if ((byte0 & 0x80) == 0x80)  //Echo the packet
 		{
 			//struct pbuf *hk_pbuf;
@@ -1518,6 +1530,12 @@ void GetTMP125(void)
 	*/
 }
 
+void Get_shutter_status(void)
+{
+	//bit5 is shutter_status;
+	//bit6 is light_sensor_status;
+	shutter_light_sensor_status =((XGpio_DiscreteRead(&Gpio_mech, GPIO_IN_CHAN))>>5) & (0x03);
+}
 //Send the housekeeping data
 void SendHouseKeeping(void)
 {
@@ -1552,6 +1570,8 @@ else
 	memcpy(hk_payload_ptr+38, &value,2);
 	memcpy(hk_payload_ptr+52, (char*) &FWID_0,4);
 	memcpy(hk_payload_ptr+56, (char*) &FWID_1,4);
+	//copy shutter_status and light_sensor_status here, 52[0] and 52[1]
+	memcpy(hk_payload_ptr+48, &shutter_light_sensor_status,1);
 }
 err_t err = udp_send(hk_pcb, hk_pbuf);
 if (err != ERR_OK) {
@@ -2097,12 +2117,14 @@ void get_FWID(void)
 	s8 addr;
 	for (addr = 31; addr >= 0; addr--)
 	{
-		XGpio_DiscreteWrite(&Gpio_mech, GPIO_OUT_CHAN, (addr<<24) | (focus_limits_on <<23) | (shutter_power<<22) | (shutter_open<<21) | (fan_speed<<17));
+		//XGpio_DiscreteWrite(&Gpio_mech, GPIO_OUT_CHAN, (addr<<24) | (focus_limits_on <<23) | (shutter_power<<22) | (shutter_open<<21) | (fan_speed<<17));
+		XGpio_DiscreteWrite(&Gpio_mech, GPIO_OUT_CHAN, (addr<<24) |(focus_limits_on <<23) | (shutter_command<<21) | (fan_speed<<17));
 		FWID_0 = (FWID_0<<1) | ((XGpio_DiscreteRead(&Gpio_mech, GPIO_IN_CHAN) & 0x10) == 0x10);
 	}
 	for (addr = 63; addr >= 32; addr--)
 	{
-		XGpio_DiscreteWrite(&Gpio_mech, GPIO_OUT_CHAN, (addr<<24) | (focus_limits_on <<23) | (shutter_power<<22) | (shutter_open<<21) | (fan_speed<<17));
+		//XGpio_DiscreteWrite(&Gpio_mech, GPIO_OUT_CHAN, (addr<<24) | (focus_limits_on <<23) | (shutter_power<<22) | (shutter_open<<21) | (fan_speed<<17));
+		XGpio_DiscreteWrite(&Gpio_mech, GPIO_OUT_CHAN,(addr<<24) | (focus_limits_on <<23) | (shutter_command<<21) | (fan_speed<<17));
 		FWID_1 = (FWID_1<<1) | ((XGpio_DiscreteRead(&Gpio_mech, GPIO_IN_CHAN) & 0x10) == 0x10);
 	}
 }
@@ -2127,7 +2149,8 @@ int set_focus(u16 target, int* statptr)
 	if ((target > MAXSTEPS) || (target < 0)) return -1;
 	//Turn on the limit switch LED
 	focus_limits_on = 1;
-	XGpio_DiscreteWrite(&Gpio_mech, GPIO_OUT_CHAN, (focus_limits_on <<23) | (shutter_power<<22) | (shutter_open<<21) | (fan_speed<<17));
+	//XGpio_DiscreteWrite(&Gpio_mech, GPIO_OUT_CHAN, (focus_limits_on <<23) | (shutter_power<<22) | (shutter_open<<21) | (fan_speed<<17));
+	XGpio_DiscreteWrite(&Gpio_mech, GPIO_OUT_CHAN, (focus_limits_on <<23) | (shutter_command<<21) | (fan_speed<<17));
 	//Read from flash where the stage was left. If no stored value, return is -1
 	int position = get_stored_focus();
 	u8 last_phase = 0;
@@ -2212,7 +2235,8 @@ int set_focus(u16 target, int* statptr)
 	*(statptr + 2) = position;
 	*(statptr + 3) = move_stat;
 	focus_limits_on = 0;
-	XGpio_DiscreteWrite(&Gpio_mech, GPIO_OUT_CHAN, (focus_limits_on <<23) | (shutter_power<<22) | (shutter_open<<21) | (fan_speed<<17));
+	//XGpio_DiscreteWrite(&Gpio_mech, GPIO_OUT_CHAN, (focus_limits_on <<23) | (shutter_power<<22) | (shutter_open<<21) | (fan_speed<<17));
+	XGpio_DiscreteWrite(&Gpio_mech, GPIO_OUT_CHAN, (focus_limits_on <<23) | (shutter_command<<21) | (fan_speed<<17));
 	return 0;
 }
 //Move the stepper a number of steps,
@@ -2261,7 +2285,8 @@ void ChangeStepper(u8 phase)
 	else if (phase == 1) mask = 0x6;
 	else if (phase == 2) mask = 0xc;
 	else if (phase == 3) mask = 0x9;
-	XGpio_DiscreteWrite(&Gpio_mech, GPIO_OUT_CHAN, (focus_limits_on <<23) | (shutter_power<<22) | (shutter_open<<21) | (fan_speed<<17) | mask);
+	//XGpio_DiscreteWrite(&Gpio_mech, GPIO_OUT_CHAN, (focus_limits_on <<23) | (shutter_power<<22) | (shutter_open<<21) | (fan_speed<<17) | mask);
+	XGpio_DiscreteWrite(&Gpio_mech, GPIO_OUT_CHAN, (focus_limits_on <<23) | (shutter_command<<21) | (fan_speed<<17)| mask);
 }
 int get_stored_focus(void)
 {

@@ -1,7 +1,7 @@
 //Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2018.3.1_AR71948 (lin64) Build 2489853 Tue Mar 26 04:18:30 MDT 2019
-//Date        : Sat Jun 13 17:52:53 2020
+//Date        : Thu Jun 18 15:00:06 2020
 //Host        : wei-Berkeley running 64-bit Ubuntu 18.04.4 LTS
 //Command     : generate_target base_mb_wrapper.bd
 //Design      : base_mb_wrapper
@@ -65,6 +65,10 @@ module base_mb_wrapper
     pll20dac_cs_n_o_0,
     pll25dac_cs_n_o_0,
     pps_inout_0,
+    sd0_sc,
+    sd1_ss,
+    sd2_spare,
+    sd3_lss,
     sfp_0_rxn,
     sfp_0_rxp,
     sfp_0_txn,
@@ -74,11 +78,8 @@ module base_mb_wrapper
     sfp_1_txn,
     sfp_1_txp,
     shutter_down_lim,
-    shutter_open,
-    shutter_power,
     shutter_up_lim,
     ss_o_0,
-    step_drive,
     stim_dac,
     stim_drive,
     sysclkin_n,
@@ -147,6 +148,10 @@ module base_mb_wrapper
   output pll20dac_cs_n_o_0;
   output pll25dac_cs_n_o_0;
   inout pps_inout_0;
+  output sd0_sc;
+  inout sd1_ss;
+  output sd2_spare;
+  inout sd3_lss;
   input sfp_0_rxn;
   input sfp_0_rxp;
   output sfp_0_txn;
@@ -156,11 +161,8 @@ module base_mb_wrapper
   output sfp_1_txn;
   output sfp_1_txp;
   input [0:0]shutter_down_lim;
-  output [0:0]shutter_open;
-  output [0:0]shutter_power;
   input [0:0]shutter_up_lim;
   output ss_o_0;
-  output [3:0]step_drive;
   output stim_dac;
   output stim_drive;
   input sysclkin_n;
@@ -236,6 +238,10 @@ module base_mb_wrapper
   wire pll20dac_cs_n_o_0;
   wire pll25dac_cs_n_o_0;
   wire pps_inout_0;
+  wire sd0_sc;
+  wire sd1_ss;
+  wire sd2_spare;
+  wire sd3_lss;
   wire sfp_0_rxn;
   wire sfp_0_rxp;
   wire sfp_0_txn;
@@ -245,11 +251,8 @@ module base_mb_wrapper
   wire sfp_1_txn;
   wire sfp_1_txp;
   wire [0:0]shutter_down_lim;
-  wire [0:0]shutter_open;
-  wire [0:0]shutter_power;
   wire [0:0]shutter_up_lim;
   wire ss_o_0;
-  wire [3:0]step_drive;
   wire stim_dac;
   wire stim_drive;
   wire sysclkin_n;
@@ -324,6 +327,10 @@ module base_mb_wrapper
         .pll20dac_cs_n_o_0(pll20dac_cs_n_o_0),
         .pll25dac_cs_n_o_0(pll25dac_cs_n_o_0),
         .pps_inout_0(pps_inout_0),
+        .sd0_sc(sd0_sc),
+        .sd1_ss(sd1_ss),
+        .sd2_spare(sd2_spare),
+        .sd3_lss(sd3_lss),
         .sfp_0_rxn(sfp_0_rxn),
         .sfp_0_rxp(sfp_0_rxp),
         .sfp_0_txn(sfp_0_txn),
@@ -333,11 +340,8 @@ module base_mb_wrapper
         .sfp_1_txn(sfp_1_txn),
         .sfp_1_txp(sfp_1_txp),
         .shutter_down_lim(shutter_down_lim),
-        .shutter_open(shutter_open),
-        .shutter_power(shutter_power),
         .shutter_up_lim(shutter_up_lim),
         .ss_o_0(ss_o_0),
-        .step_drive(step_drive),
         .stim_dac(stim_dac),
         .stim_drive(stim_drive),
         .sysclkin_n(sysclkin_n),

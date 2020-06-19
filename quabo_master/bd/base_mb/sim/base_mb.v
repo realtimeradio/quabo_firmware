@@ -1,7 +1,7 @@
 //Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2018.3.1_AR71948 (lin64) Build 2489853 Tue Mar 26 04:18:30 MDT 2019
-//Date        : Sat Jun 13 17:52:53 2020
+//Date        : Thu Jun 18 15:00:05 2020
 //Host        : wei-Berkeley running 64-bit Ubuntu 18.04.4 LTS
 //Command     : generate_target base_mb.bd
 //Design      : base_mb
@@ -9,7 +9,7 @@
 //--------------------------------------------------------------------------------
 `timescale 1 ps / 1 ps
 
-(* CORE_GENERATION_INFO = "base_mb,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=base_mb,x_ipVersion=1.00.a,x_ipLanguage=VERILOG,numBlks=112,numReposBlks=84,numNonXlnxBlks=6,numHierBlks=28,maxHierDepth=1,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=17,numPkgbdBlks=0,bdsource=USER,da_aeth_cnt=2,da_axi4_cnt=29,da_board_cnt=6,da_clkrst_cnt=3,da_mb_cnt=1,synth_mode=Global}" *) (* HW_HANDOFF = "base_mb.hwdef" *) 
+(* CORE_GENERATION_INFO = "base_mb,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=base_mb,x_ipVersion=1.00.a,x_ipLanguage=VERILOG,numBlks=112,numReposBlks=84,numNonXlnxBlks=6,numHierBlks=28,maxHierDepth=1,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=18,numPkgbdBlks=0,bdsource=USER,da_aeth_cnt=2,da_axi4_cnt=29,da_board_cnt=6,da_clkrst_cnt=3,da_mb_cnt=1,synth_mode=Global}" *) (* HW_HANDOFF = "base_mb.hwdef" *) 
 module base_mb
    (ADC_DIN_N,
     ADC_DIN_P,
@@ -70,6 +70,10 @@ module base_mb
     pll20dac_cs_n_o_0,
     pll25dac_cs_n_o_0,
     pps_inout_0,
+    sd0_sc,
+    sd1_ss,
+    sd2_spare,
+    sd3_lss,
     sfp_0_rxn,
     sfp_0_rxp,
     sfp_0_txn,
@@ -79,11 +83,8 @@ module base_mb
     sfp_1_txn,
     sfp_1_txp,
     shutter_down_lim,
-    shutter_open,
-    shutter_power,
     shutter_up_lim,
     ss_o_0,
-    step_drive,
     stim_dac,
     stim_drive,
     sysclkin_n,
@@ -156,6 +157,10 @@ module base_mb
   output pll20dac_cs_n_o_0;
   output pll25dac_cs_n_o_0;
   inout pps_inout_0;
+  output sd0_sc;
+  inout sd1_ss;
+  output sd2_spare;
+  inout sd3_lss;
   (* X_INTERFACE_INFO = "xilinx.com:interface:sfp:1.0 sfp_0 RXN" *) input sfp_0_rxn;
   (* X_INTERFACE_INFO = "xilinx.com:interface:sfp:1.0 sfp_0 RXP" *) input sfp_0_rxp;
   (* X_INTERFACE_INFO = "xilinx.com:interface:sfp:1.0 sfp_0 TXN" *) output sfp_0_txn;
@@ -165,11 +170,8 @@ module base_mb
   (* X_INTERFACE_INFO = "xilinx.com:interface:sfp:1.0 sfp_1 TXN" *) output sfp_1_txn;
   (* X_INTERFACE_INFO = "xilinx.com:interface:sfp:1.0 sfp_1 TXP" *) output sfp_1_txp;
   input [0:0]shutter_down_lim;
-  output [0:0]shutter_open;
-  output [0:0]shutter_power;
   input [0:0]shutter_up_lim;
   output ss_o_0;
-  output [3:0]step_drive;
   output stim_dac;
   output stim_drive;
   input sysclkin_n;
@@ -194,7 +196,6 @@ module base_mb
   wire [4:0]Bit_16_19_Dout;
   wire [3:0]Bit_19_24_Dout;
   wire [0:0]Bit_21_21_Dout;
-  wire [0:0]Bit_22_22_Dout;
   wire [0:0]Bit_23_23_Dout;
   wire [0:0]Bit_28_28_Dout;
   wire [5:0]Bit_29_24_Dout;
@@ -256,6 +257,8 @@ module base_mb
   wire Net2;
   wire [0:0]Net3;
   wire Net4;
+  wire Net5;
+  wire Net6;
   wire OBUFDS_FOR_CLK_0_O;
   wire OBUFDS_FOR_CLK_0_OB;
   wire PPS_IO_0_pps_inside_out;
@@ -269,6 +272,10 @@ module base_mb
   wire SPI_STARTUP_0_ss_o;
   wire SPI_STARTUP_0_wr_miso_o;
   wire SPI_access_0_int_out;
+  wire StepDrive_ShutterCtr_0_light_sensor_status;
+  wire StepDrive_ShutterCtr_0_sd0_sc;
+  wire StepDrive_ShutterCtr_0_sd2_spare;
+  wire StepDrive_ShutterCtr_0_shutter_status;
   wire [31:0]axi_ethernet_0_fifo_AXI_STR_TXD_TDATA;
   wire [3:0]axi_ethernet_0_fifo_AXI_STR_TXD_TKEEP;
   wire axi_ethernet_0_fifo_AXI_STR_TXD_TLAST;
@@ -870,7 +877,7 @@ module base_mb
   wire wrc_board_quabo_Light_0_spi_sclk_o;
   wire wrc_board_quabo_Light_0_uart_txd_o;
   wire [7:0]xlconcat_0_dout;
-  wire [4:0]xlconcat_2_dout;
+  wire [6:0]xlconcat_2_dout;
   wire [0:0]xlconstant_0_dout;
   wire [0:0]xlconstant_1_dout;
   wire [0:0]xlconstant_2_dout;
@@ -951,6 +958,8 @@ module base_mb
   assign pll20dac_cs_n_o_0 = wrc_board_quabo_Light_0_pll20dac_cs_n_o;
   assign pll25dac_cs_n_o_0 = wrc_board_quabo_Light_0_pll25dac_cs_n_o;
   assign rx_0_1 = J3pin5;
+  assign sd0_sc = StepDrive_ShutterCtr_0_sd0_sc;
+  assign sd2_spare = StepDrive_ShutterCtr_0_sd2_spare;
   assign sfp_0_txn = axi_ethernet_0_sfp_TXN;
   assign sfp_0_txp = axi_ethernet_0_sfp_TXP;
   assign sfp_1_txn = axi_ethernet_1_sfp_TXN;
@@ -958,10 +967,7 @@ module base_mb
   assign sfp_los_i_0_1 = user_sfp_0_sfp_los_i;
   assign sfp_rxn_i_0_1 = user_sfp_0_sfp_rxn_i;
   assign sfp_rxp_i_0_1 = user_sfp_0_sfp_rxp_i;
-  assign shutter_open[0] = Bit_21_21_Dout;
-  assign shutter_power[0] = Bit_22_22_Dout;
   assign ss_o_0 = SPI_STARTUP_0_ss_o;
-  assign step_drive[3:0] = step_drive_0_drive_out;
   assign stim_dac = stim_gen_0_stim_dac;
   assign stim_drive = stim_gen_0_stim_drive;
   assign sysclkin_n_1 = sysclkin_n;
@@ -1018,9 +1024,6 @@ module base_mb
   base_mb_Bit_16_16_1 Bit_21_21
        (.Din(axi_gpio_0_gpio_io_o1),
         .Dout(Bit_21_21_Dout));
-  base_mb_Bit_21_21_0 Bit_22_22
-       (.Din(axi_gpio_0_gpio_io_o1),
-        .Dout(Bit_22_22_Dout));
   base_mb_Bit_22_22_0 Bit_23_23
        (.Din(axi_gpio_0_gpio_io_o1),
         .Dout(Bit_23_23_Dout));
@@ -1218,6 +1221,18 @@ module base_mb
         .clk(microblaze_0_Clk),
         .go(wrc_board_quabo_Light_0_pll20dac_cs_n_o),
         .int_out(SPI_access_0_int_out));
+  base_mb_StepDrive_ShutterCtr_0_0 StepDrive_ShutterCtr_0
+       (.clk(microblaze_0_Clk),
+        .light_sensor_status(StepDrive_ShutterCtr_0_light_sensor_status),
+        .pos0(xlslice_0_Dout1),
+        .pos1(xlslice_1_Dout1),
+        .sd0_sc(StepDrive_ShutterCtr_0_sd0_sc),
+        .sd1_ss(sd1_ss),
+        .sd2_spare(StepDrive_ShutterCtr_0_sd2_spare),
+        .sd3_lss(sd3_lss),
+        .shutter_command(Bit_21_21_Dout),
+        .shutter_status(StepDrive_ShutterCtr_0_shutter_status),
+        .step_drive(step_drive_0_drive_out));
   base_mb_axi_ethernet_0_0 axi_ethernet_0
        (.axi_rxd_arstn(axi_ethernet_0_fifo_s2mm_prmry_reset_out_n),
         .axi_rxs_arstn(axi_ethernet_0_fifo_s2mm_prmry_reset_out_n),
@@ -2532,6 +2547,8 @@ module base_mb
         .In2(In2_0_1),
         .In3(In3_0_1),
         .In4(firmware_ID_ROM_0_data_out),
+        .In5(StepDrive_ShutterCtr_0_shutter_status),
+        .In6(StepDrive_ShutterCtr_0_light_sensor_status),
         .dout(xlconcat_2_dout));
   base_mb_xlconstant_0_0 xlconstant_0
        (.dout(xlconstant_0_dout));
