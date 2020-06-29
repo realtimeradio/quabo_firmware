@@ -2,10 +2,10 @@
 <Root MajorVersion="0" MinorVersion="36">
   <CompositeFile CompositeFileTopName="base_mb" CanBeSetAsTop="true" CanDisplayChildGraph="true">
     <Description>Composite Fileset</Description>
-    <Generation Name="SYNTHESIS" State="GENERATED" Timestamp="1592517607"/>
-    <Generation Name="IMPLEMENTATION" State="GENERATED" Timestamp="1592517607"/>
-    <Generation Name="SIMULATION" State="GENERATED" Timestamp="1592517607"/>
-    <Generation Name="HW_HANDOFF" State="GENERATED" Timestamp="1592517607"/>
+    <Generation Name="SYNTHESIS" State="GENERATED" Timestamp="1593392845"/>
+    <Generation Name="IMPLEMENTATION" State="GENERATED" Timestamp="1593392845"/>
+    <Generation Name="SIMULATION" State="GENERATED" Timestamp="1593392845"/>
+    <Generation Name="HW_HANDOFF" State="GENERATED" Timestamp="1593392845"/>
     <FileCollection Name="SOURCES" Type="SOURCES">
       <File Name="ip/base_mb_microblaze_0_0/base_mb_microblaze_0_0.xci" Type="IP">
         <Instance HierarchyPath="microblaze_0"/>
@@ -281,14 +281,6 @@
       </File>
       <File Name="ip/base_mb_in_buf_ds_1bit_0_0/base_mb_in_buf_ds_1bit_0_0.xci" Type="IP">
         <Instance HierarchyPath="in_buf_ds_1bit_0"/>
-        <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
-        <Library Name="xil_defaultlib"/>
-        <UsedIn Val="SYNTHESIS"/>
-        <UsedIn Val="IMPLEMENTATION"/>
-        <UsedIn Val="SIMULATION"/>
-      </File>
-      <File Name="ip/base_mb_axi_fifo_mm_s_PH_0/base_mb_axi_fifo_mm_s_PH_0.xci" Type="IP">
-        <Instance HierarchyPath="axi_fifo_mm_s_IM"/>
         <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
         <Library Name="xil_defaultlib"/>
         <UsedIn Val="SYNTHESIS"/>
@@ -687,6 +679,22 @@
         <UsedIn Val="IMPLEMENTATION"/>
         <UsedIn Val="SIMULATION"/>
       </File>
+      <File Name="ip/base_mb_StepDrive_ShutterCtr_0_0/base_mb_StepDrive_ShutterCtr_0_0.xci" Type="IP">
+        <Instance HierarchyPath="StepDrive_ShutterCtr_0"/>
+        <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
+        <Library Name="xil_defaultlib"/>
+        <UsedIn Val="SYNTHESIS"/>
+        <UsedIn Val="IMPLEMENTATION"/>
+        <UsedIn Val="SIMULATION"/>
+      </File>
+      <File Name="ip/base_mb_IM_FIFO_0_0/base_mb_IM_FIFO_0_0.xci" Type="IP">
+        <Instance HierarchyPath="IM_FIFO_0"/>
+        <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
+        <Library Name="xil_defaultlib"/>
+        <UsedIn Val="SYNTHESIS"/>
+        <UsedIn Val="IMPLEMENTATION"/>
+        <UsedIn Val="SIMULATION"/>
+      </File>
       <File Name="synth/base_mb.v" Type="Verilog">
         <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="false" IsStatusTracked="false"/>
         <Library Name="xil_defaultlib"/>
@@ -696,14 +704,6 @@
       <File Name="sim/base_mb.v" Type="Verilog">
         <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="false" IsStatusTracked="false"/>
         <Library Name="xil_defaultlib"/>
-        <UsedIn Val="SIMULATION"/>
-      </File>
-      <File Name="ip/base_mb_StepDrive_ShutterCtr_0_0/base_mb_StepDrive_ShutterCtr_0_0.xci" Type="IP">
-        <Instance HierarchyPath="StepDrive_ShutterCtr_0"/>
-        <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
-        <Library Name="xil_defaultlib"/>
-        <UsedIn Val="SYNTHESIS"/>
-        <UsedIn Val="IMPLEMENTATION"/>
         <UsedIn Val="SIMULATION"/>
       </File>
       <File Name="base_mb.bmm" Type="BMM">

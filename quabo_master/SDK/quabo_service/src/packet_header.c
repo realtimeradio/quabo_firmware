@@ -174,3 +174,12 @@ unsigned int Panoseti_GetStateMachine()
 	GET_STATE(state);
 	return state;
 }
+
+//reset im fifo
+void Panoseti_IMFIFO_Reset()
+{
+	int i = 0;
+	Xil_Out32(AXI_RAM_ADDR+0,8);
+	for(i=0; i<1000;i++); //this is for delay
+	Xil_Out32(AXI_RAM_ADDR+0,0);
+}

@@ -25,6 +25,7 @@
 #define IMFIFO_FPGA_CTRL_16BIT()	Xil_Out32(AXI_RAM_ADDR+0,2);
 #define IMFIFO_FPGA_CTRL_8BIT()		Xil_Out32(AXI_RAM_ADDR+0,4);
 #define SET_ACQ_MODE(data)			Xil_Out32(AXI_RAM_ADDR+20,data);
+
 //because the length of the eth packet struct is 48 bytes
 #define EthPacketHeader_Word_Len	13
 
@@ -68,4 +69,5 @@ char Panoseti_EthPacketHeader_Init(EthPacketHeader_Keys *ethpacketheader_keys);
 void Panoseti_WriteHeaderToRam();
 char Panoseti_ReadHeaderFromRam();
 unsigned int Panoseti_GetStateMachine();
+void Panoseti_IMFIFO_Reset();
 #endif

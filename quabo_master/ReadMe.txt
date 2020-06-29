@@ -1,3 +1,11 @@
+v11.3:
+(1) fix the timing offset issue;
+We fixed the timing offset bug--when integration time < 50us, here is a timing offset.
+The reason is that we can get a pixel data from axi4-fifo every 8 clk, so it will take 2048 clk at least to get all 256 pixel data.
+I chagne the axi4-fifo to a standard fifo, which is much faster.
+(2) fix the ossasional udp checksum issue;
+I found a bug in my state machine, and fixed it;
+
 v11.2:
 (1)implement shutter control 
 Focus stage shares the 4 ports with shutter control, and it depends on the quabo position.
