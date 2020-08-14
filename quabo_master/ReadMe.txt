@@ -1,3 +1,6 @@
+v11.4:
+add pull-down resistors for the 256 input pins
+
 v11.3:
 (1) fix the timing offset issue;
 We fixed the timing offset bug--when integration time < 50us, here is a timing offset.

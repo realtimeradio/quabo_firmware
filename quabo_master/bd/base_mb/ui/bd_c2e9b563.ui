@@ -190,8 +190,8 @@ preplace netloc axi_ethernet_0_fifo_interrupt 1 3 6 790 1340 NJ 1340 NJ 1340 NJ 
 preplace netloc axi_ethernet_0_userclk_out 1 11 2 4630 630 5290
 preplace netloc wrc_board_quabo_Light_0_sfp_txn_o 1 8 7 3210J 3900 NJ 3900 NJ 3900 4500J 3980 NJ 3980 5880J 3840 6420J
 preplace netloc ETH_CORE_CTRL_1_m_axis_txc 1 11 1 N
-preplace netloc ETH_CORE_CTRL_1_m_axis_txd 1 11 1 4440
 preplace netloc mdm_1_debug_sys_rst 1 3 3 800 2700 1180J 2810 1510
+preplace netloc ETH_CORE_CTRL_1_m_axis_txd 1 11 1 4440
 preplace netloc axi_ethernet_1_sfp 1 12 3 NJ 250 NJ 250 NJ
 preplace netloc clk_125m_gtx_n_i_0_1 1 0 8 NJ 3940 NJ 3940 NJ 3940 NJ 3940 NJ 3940 NJ 3940 NJ 3940 2560J
 preplace netloc axi_gpio_0_gpio_io_o 1 1 12 -100J 3150 NJ 3150 NJ 3150 NJ 3150 NJ 3150 2100 3090 NJ 3090 3130 3730 NJ 3730 NJ 3730 4470 5210 5370J
@@ -326,8 +326,8 @@ preplace netloc sfp_rxn_i_0_1 1 0 9 NJ 4310 NJ 4310 NJ 4310 NJ 4310 NJ 4310 NJ 4
 preplace netloc clk_wiz_1_locked 1 2 4 NJ 2990 800 2940 NJ 2940 1550J
 preplace netloc ETH_CORE_CTRL_0_m_axis_txc 1 11 1 4450
 preplace netloc ETH_CORE_CTRL_0_m_axis_txd 1 11 1 4440
-preplace netloc maroc_dc_0_M00_AXIS 1 12 1 5280
 preplace netloc axi_hwicap_0_ip2intc_irpt 1 3 10 810 2690 1190J 2790 1520J 2760 NJ 2760 NJ 2760 NJ 2760 NJ 2760 3900J 2860 4470J 2800 5200
+preplace netloc maroc_dc_0_M00_AXIS 1 12 1 5280
 preplace netloc Bit_28_28_Dout 1 7 1 2450J
 preplace netloc firmware_ID_ROM_0_data_out 1 12 1 5300J
 preplace netloc xlslice_4_Dout 1 12 1 5350J
@@ -370,9 +370,9 @@ preplace netloc in_n_0_1 1 0 11 -490J 2350 NJ 2350 NJ 2350 NJ 2350 NJ 2350 NJ 23
 preplace netloc Net5 1 14 1 N
 preplace netloc Net6 1 14 1 N
 preplace netloc microblaze_0_axi_periph_M10_AXI 1 7 1 2580
+preplace netloc AXI_Stream_Switch_3_0_M0_AXIS 1 9 2 NJ 880 3860
 preplace netloc SPI_MUX_1_spi_ck 1 13 2 NJ 3800 6390
 preplace netloc wrc_board_quabo_Light_0_plldac_din_o 1 8 5 3250J 3820 NJ 3820 NJ 3820 NJ 3820 5200
-preplace netloc AXI_Stream_Switch_3_0_M0_AXIS 1 9 2 NJ 880 3860
 preplace netloc clk_wiz_1_clk_out2 1 2 10 490J 2310 NJ 2310 NJ 2310 NJ 2310 2100J 2320 2530J 2130 3110J 2060 NJ 2060 NJ 2060 4510
 preplace netloc BIT_CLK_P_1 1 0 11 -560J 1330 NJ 1330 NJ 1330 NJ 1330 NJ 1330 NJ 1330 NJ 1330 NJ 1330 NJ 1330 NJ 1330 3860J
 preplace netloc clk_wiz_1_clk_out3 1 2 6 480J 2980 780 3080 NJ 3080 NJ 3080 NJ 3080 2420J
