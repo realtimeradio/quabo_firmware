@@ -1,3 +1,6 @@
+v11.5:
+the default status of shutter_command pin is 3.3V, instead of 0V
+
 v11.4:
 add pull-down resistors for the 256 input pins
 

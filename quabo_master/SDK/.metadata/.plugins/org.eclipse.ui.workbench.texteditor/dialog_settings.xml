@@ -2,20 +2,20 @@
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
 		<item value="false" key="isRegEx"/>
-		<item value="IM_FIFO" key="selection"/>
+		<item value="shutter_command" key="selection"/>
 		<item value="false" key="casesensitive"/>
 		<item value="false" key="incremental"/>
 		<item value="true" key="wrap"/>
 		<item value="false" key="wholeword"/>
 		<list key="findhistory">
+			<item value="shutter_command"/>
+			<item value="XGpio_DiscreteWrite"/>
+			<item value="GPIO"/>
+			<item value="SHO_NEW"/>
+			<item value="define RESIDUAL_BL 10"/>
+			<item value="PH_BL_Init()"/>
 			<item value="IM_Fifo"/>
 			<item value="fwid"/>
-			<item value="Set_Acquisition"/>
-			<item value="FWID_1"/>
-			<item value="FWID_0"/>
-			<item value="get_shutter_status"/>
-			<item value="get_shutter"/>
-			<item value="sendHouseKeeping"/>
 		</list>
 		<list key="replacehistory">
 		</list>
@@ -23,7 +23,7 @@
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
 		<item value="312" key="DIALOG_WIDTH"/>
 		<item value="1|Ubuntu|11.0|0|GTK|1|" key="DIALOG_FONT_NAME"/>
-		<item value="460" key="DIALOG_HEIGHT"/>
+		<item value="462" key="DIALOG_HEIGHT"/>
 		<item value="1005" key="DIALOG_X_ORIGIN"/>
 		<item value="398" key="DIALOG_Y_ORIGIN"/>
 	</section>

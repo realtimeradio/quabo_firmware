@@ -762,6 +762,7 @@ proc create_root_design { parentCell } {
   set_property -dict [ list \
    CONFIG.C_ALL_INPUTS_2 {1} \
    CONFIG.C_ALL_OUTPUTS {1} \
+   CONFIG.C_DOUT_DEFAULT {0x00200000} \
    CONFIG.C_GPIO2_WIDTH {7} \
    CONFIG.C_IS_DUAL {1} \
  ] $axi_gpio_mech

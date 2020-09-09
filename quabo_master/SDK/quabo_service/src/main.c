@@ -280,7 +280,7 @@ u8 ET_clk_reset = 0;
 
 //u8 shutter_power = 0;
 //u8 shutter_open = 0;
-u8 shutter_command = 0;
+u8 shutter_command = 1;
 u8 focus_limits_on = 0;
 u8 fan_speed = 0;
 
@@ -397,7 +397,7 @@ int main()
 		 XGpio_SetDataDirection(&Gpio_mech, GPIO_OUT_CHAN, 0x0);
 		 XGpio_SetDataDirection(&Gpio_mech, GPIO_IN_CHAN, 0xffffffff);
 		 //Set all outputs low
-		 XGpio_DiscreteWrite(&Gpio_mech, GPIO_OUT_CHAN, 0);
+		 XGpio_DiscreteWrite(&Gpio_mech, GPIO_OUT_CHAN, 0X200000);
 
 		 XGpio_DiscreteWrite(&Gpio, GPIO_OUT_CHAN, 0x0);
 		 //Set HVRSTb low, so HV disabled, stim on, stim_level= 50%
@@ -1723,6 +1723,7 @@ int PH_BL_Init(u16 * ph_baseline_array)
 			//Protect against a too-long ReceiveLength writing data outside the array
 			if (bl_array_index>255)break;
 		}
+	for (i = 0; i < 256; i++) if (ph_baseline_array[i] & 0x1000) ph_baseline_array[i] = ph_baseline_array[i] | 0xf000;
 	//read and ignore one more (Elapsed Time)
 	RxWord1 = XLlFifo_RxGetWord(&PH_Fifo);
 	}
