@@ -1,3 +1,14 @@
+v11.6B:
+(1) In v11.6A, SPIx1 is changed to SPIx4, but it can't boot up;
+In v11.6B, SPIx4 is changed back to SPIx1.
+(2) Since v11.5, some code is added to fix negative value bug, and here is the code:
+for (i = 0; i < 256; i++) if (ph_baseline_array[i] & 0x1000) ph_baseline_array[i] = ph_baseline_array[i] | 0xf000;
+
+v11.6A:
+(1) fix a IM packets bug--the nanosec in IM packets is not synced to PPS, which has been fixed here;
+(2) fix a clock setting bug--In maroc_dc core, axi clk is regarded as 62.5MHz, but it's 100MHz;
+a parameter(ADC_CLK_DIV) is changed from 2 to 4 for fixing this bug.
+
 v11.5:
 the default status of shutter_command pin is 3.3V, instead of 0V
 

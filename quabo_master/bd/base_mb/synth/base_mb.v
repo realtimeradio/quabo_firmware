@@ -1,7 +1,7 @@
 //Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2018.3.1_AR71948 (lin64) Build 2489853 Tue Mar 26 04:18:30 MDT 2019
-//Date        : Tue Sep  8 15:08:54 2020
+//Date        : Thu Sep 17 11:19:20 2020
 //Host        : wei-Berkeley running 64-bit Ubuntu 18.04.5 LTS
 //Command     : generate_target base_mb.bd
 //Design      : base_mb
@@ -1855,6 +1855,7 @@ module base_mb
         .maroc_trig1(maroc_trig1_0_1),
         .maroc_trig2(maroc_trig2_0_1),
         .maroc_trig3(maroc_trig3_0_1),
+        .one_pps(PPS_IO_0_pps_inside_out),
         .or_trig0(or_trig0_0_1),
         .or_trig1(or_trig1_0_1),
         .or_trig2(or_trig2_0_1),

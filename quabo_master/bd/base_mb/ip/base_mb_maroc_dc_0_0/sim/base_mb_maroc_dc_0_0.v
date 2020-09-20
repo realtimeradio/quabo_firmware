@@ -47,8 +47,8 @@
 // DO NOT MODIFY THIS FILE.
 
 
-// IP VLNV: xilinx.com:user:maroc_dc:1.5
-// IP Revision: 2
+// IP VLNV: xilinx.com:user:maroc_dc:1.7
+// IP Revision: 1
 
 `timescale 1ns/1ps
 
@@ -83,6 +83,7 @@ module base_mb_maroc_dc_0_0 (
   elapsed_time_1,
   elapsed_time_2,
   elapsed_time_3,
+  one_pps,
   s00_axi_awaddr,
   s00_axi_awprot,
   s00_axi_awvalid,
@@ -159,6 +160,7 @@ input wire [28 : 0] elapsed_time_0;
 input wire [28 : 0] elapsed_time_1;
 input wire [28 : 0] elapsed_time_2;
 input wire [28 : 0] elapsed_time_3;
+input wire one_pps;
 (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 S00_AXI AWADDR" *)
 input wire [5 : 0] s00_axi_awaddr;
 (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 S00_AXI AWPROT" *)
@@ -277,6 +279,7 @@ input wire m01_axis_aresetn;
     .elapsed_time_1(elapsed_time_1),
     .elapsed_time_2(elapsed_time_2),
     .elapsed_time_3(elapsed_time_3),
+    .one_pps(one_pps),
     .s00_axi_awaddr(s00_axi_awaddr),
     .s00_axi_awprot(s00_axi_awprot),
     .s00_axi_awvalid(s00_axi_awvalid),

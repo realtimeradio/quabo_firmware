@@ -1019,7 +1019,7 @@ proc create_root_design { parentCell } {
    }
   
   # Create instance: maroc_dc_0, and set properties
-  set maroc_dc_0 [ create_bd_cell -type ip -vlnv xilinx.com:user:maroc_dc:1.5 maroc_dc_0 ]
+  set maroc_dc_0 [ create_bd_cell -type ip -vlnv xilinx.com:user:maroc_dc:1.7 maroc_dc_0 ]
   set_property -dict [ list \
    CONFIG.C_M01_AXIS_TDATA_WIDTH {32} \
  ] $maroc_dc_0
@@ -1276,7 +1276,7 @@ proc create_root_design { parentCell } {
   connect_bd_net -net Net6 [get_bd_ports sd3_lss] [get_bd_pins StepDrive_ShutterCtr_0/sd3_lss]
   connect_bd_net -net OBUFDS_FOR_CLK_0_O [get_bd_ports sysclkout_p] [get_bd_pins OBUFDS_FOR_CLK_0/O]
   connect_bd_net -net OBUFDS_FOR_CLK_0_OB [get_bd_ports sysclkout_n] [get_bd_pins OBUFDS_FOR_CLK_0/OB]
-  connect_bd_net -net PPS_IO_0_pps_inside_out [get_bd_ports SMA_J1] [get_bd_pins delay_0/dout] [get_bd_pins elapsed_time_gen_0/one_pps] [get_bd_pins flash_control_0/one_pps]
+  connect_bd_net -net PPS_IO_0_pps_inside_out [get_bd_ports SMA_J1] [get_bd_pins delay_0/dout] [get_bd_pins elapsed_time_gen_0/one_pps] [get_bd_pins flash_control_0/one_pps] [get_bd_pins maroc_dc_0/one_pps]
   connect_bd_net -net PPS_IO_0_pps_inside_out1 [get_bd_pins PPS_IO_0/pps_inside_out] [get_bd_pins delay_0/din]
   connect_bd_net -net SC_DIN_0_1 [get_bd_ports SC_DIN] [get_bd_pins maroc_slow_control_0/SC_DIN]
   connect_bd_net -net SPI_MUX_1_spi_ck [get_bd_ports SPI_CK] [get_bd_pins SPI_MUX_1/spi_ck]

@@ -95,3 +95,4 @@ set_false_path -from [get_pins base_mb_i/wrc_board_quabo_Light_0/U0/cmp_xwrc_boa
 
 
 
+
