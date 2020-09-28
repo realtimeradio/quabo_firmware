@@ -18,16 +18,16 @@ proc init_gui { IPINST } {
   set C_M01_AXIS_START_COUNT [ipgui::add_param $IPINST -name "C_M01_AXIS_START_COUNT" -parent ${Page_0}]
   set_property tooltip {Start count is the number of clock cycles the master will wait before initiating/issuing any transaction.} ${C_M01_AXIS_START_COUNT}
 
-  ipgui::add_param $IPINST -name "REMAP_FOR_BGA" -widget comboBox
+  ipgui::add_param $IPINST -name "PCB_REV" -widget comboBox
 
 }
 
-proc update_PARAM_VALUE.REMAP_FOR_BGA { PARAM_VALUE.REMAP_FOR_BGA } {
-	# Procedure called to update REMAP_FOR_BGA when any of the dependent parameters in the arguments change
+proc update_PARAM_VALUE.PCB_REV { PARAM_VALUE.PCB_REV } {
+	# Procedure called to update PCB_REV when any of the dependent parameters in the arguments change
 }
 
-proc validate_PARAM_VALUE.REMAP_FOR_BGA { PARAM_VALUE.REMAP_FOR_BGA } {
-	# Procedure called to validate REMAP_FOR_BGA
+proc validate_PARAM_VALUE.PCB_REV { PARAM_VALUE.PCB_REV } {
+	# Procedure called to validate PCB_REV
 	return true
 }
 
@@ -134,8 +134,8 @@ proc update_MODELPARAM_VALUE.C_M01_AXIS_START_COUNT { MODELPARAM_VALUE.C_M01_AXI
 	set_property value [get_property value ${PARAM_VALUE.C_M01_AXIS_START_COUNT}] ${MODELPARAM_VALUE.C_M01_AXIS_START_COUNT}
 }
 
-proc update_MODELPARAM_VALUE.REMAP_FOR_BGA { MODELPARAM_VALUE.REMAP_FOR_BGA PARAM_VALUE.REMAP_FOR_BGA } {
+proc update_MODELPARAM_VALUE.PCB_REV { MODELPARAM_VALUE.PCB_REV PARAM_VALUE.PCB_REV } {
 	# Procedure called to set VHDL generic/Verilog parameter value(s) based on TCL parameter value
-	set_property value [get_property value ${PARAM_VALUE.REMAP_FOR_BGA}] ${MODELPARAM_VALUE.REMAP_FOR_BGA}
+	set_property value [get_property value ${PARAM_VALUE.PCB_REV}] ${MODELPARAM_VALUE.PCB_REV}
 }
 

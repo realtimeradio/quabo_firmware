@@ -4,7 +4,7 @@
 	module maroc_dc_v1_0 #
 	(
 		// Users to add parameters here
-
+		parameter PCB_REV = 1,
 		// User parameters ends
 		// Do not modify the parameters beyond this line
 
@@ -209,7 +209,8 @@ wire [6:0] ph_stop_chan = slave_reg9[30:24];
 wire counter_reset = slave_reg9[31];
 wire [15:0] frame_interval = slave_reg10[15:0];
 
-maroc_dc USR_LOGIC(
+maroc_dc #(.REMAP_FOR_BGA(PCB_REV))
+    USR_LOGIC(
         //System clocks and reset
        .axi_clk(s00_axi_aclk),
        .hs_clk(hs_clk),  //sync to axi_clk

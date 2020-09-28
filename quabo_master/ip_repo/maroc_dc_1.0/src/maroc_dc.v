@@ -20,7 +20,10 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
-module maroc_dc(
+module maroc_dc #(
+    //Need to select which version of the Maroc we have: 0 = QFP, 1 = BGA
+    parameter REMAP_FOR_BGA = 0)
+(
     //System clocks and reset
     input axi_clk,
     input hs_clk,  //sync to axi_clk
@@ -79,14 +82,15 @@ module maroc_dc(
     output [5:0] testpoint
     );
 
-    parameter NUM_CHANNELS = 256;       //Maybe use this to speed compile when developing
+    localparam NUM_CHANNELS = 256;       //Maybe use this to speed compile when developing
     
     //Need to remap the triggers to match the actual PCB connections
-    parameter REMAP_TRIGS = 1;
+    localparam REMAP_TRIGS = 1;
+    //And need to select which version of the Maroc we have: 0 = QFP, 1 = BGA
     wire [255:0] maroc_trig_remapped;
     genvar gg;
     generate
-       if (REMAP_TRIGS) begin: remap
+       if ((REMAP_TRIGS==1) && (REMAP_FOR_BGA == 0)) begin: remap_qfp
 
             assign maroc_trig_remapped[0]=maroc_trig[113];
             assign maroc_trig_remapped[1]=maroc_trig[114];
@@ -344,8 +348,266 @@ module maroc_dc(
             assign maroc_trig_remapped[253]=maroc_trig[209];
             assign maroc_trig_remapped[254]=maroc_trig[193];
             assign maroc_trig_remapped[255]=maroc_trig[192];
-
-        end else begin: no_remap
+       end
+       else if ((REMAP_TRIGS==1) && (REMAP_FOR_BGA == 1)) begin: remap_bga
+                assign maroc_trig_remapped[0]=maroc_trig[82];
+                assign maroc_trig_remapped[1]=maroc_trig[83];
+                assign maroc_trig_remapped[2]=maroc_trig[86];
+                assign maroc_trig_remapped[3]=maroc_trig[88];
+                assign maroc_trig_remapped[4]=maroc_trig[91];
+                assign maroc_trig_remapped[5]=maroc_trig[92];
+                assign maroc_trig_remapped[6]=maroc_trig[126];
+                assign maroc_trig_remapped[7]=maroc_trig[94];
+                assign maroc_trig_remapped[8]=maroc_trig[1];
+                assign maroc_trig_remapped[9]=maroc_trig[2];
+                assign maroc_trig_remapped[10]=maroc_trig[5];
+                assign maroc_trig_remapped[11]=maroc_trig[6];
+                assign maroc_trig_remapped[12]=maroc_trig[9];
+                assign maroc_trig_remapped[13]=maroc_trig[10];
+                assign maroc_trig_remapped[14]=maroc_trig[13];
+                assign maroc_trig_remapped[15]=maroc_trig[14];
+                assign maroc_trig_remapped[16]=maroc_trig[84];
+                assign maroc_trig_remapped[17]=maroc_trig[85];
+                assign maroc_trig_remapped[18]=maroc_trig[87];
+                assign maroc_trig_remapped[19]=maroc_trig[89];
+                assign maroc_trig_remapped[20]=maroc_trig[90];
+                assign maroc_trig_remapped[21]=maroc_trig[93];
+                assign maroc_trig_remapped[22]=maroc_trig[127];
+                assign maroc_trig_remapped[23]=maroc_trig[95];
+                assign maroc_trig_remapped[24]=maroc_trig[0];
+                assign maroc_trig_remapped[25]=maroc_trig[3];
+                assign maroc_trig_remapped[26]=maroc_trig[4];
+                assign maroc_trig_remapped[27]=maroc_trig[7];
+                assign maroc_trig_remapped[28]=maroc_trig[8];
+                assign maroc_trig_remapped[29]=maroc_trig[11];
+                assign maroc_trig_remapped[30]=maroc_trig[12];
+                assign maroc_trig_remapped[31]=maroc_trig[15];
+                assign maroc_trig_remapped[32]=maroc_trig[65];
+                assign maroc_trig_remapped[33]=maroc_trig[67];
+                assign maroc_trig_remapped[34]=maroc_trig[68];
+                assign maroc_trig_remapped[35]=maroc_trig[72];
+                assign maroc_trig_remapped[36]=maroc_trig[73];
+                assign maroc_trig_remapped[37]=maroc_trig[78];
+                assign maroc_trig_remapped[38]=maroc_trig[77];
+                assign maroc_trig_remapped[39]=maroc_trig[80];
+                assign maroc_trig_remapped[40]=maroc_trig[16];
+                assign maroc_trig_remapped[41]=maroc_trig[19];
+                assign maroc_trig_remapped[42]=maroc_trig[20];
+                assign maroc_trig_remapped[43]=maroc_trig[23];
+                assign maroc_trig_remapped[44]=maroc_trig[24];
+                assign maroc_trig_remapped[45]=maroc_trig[27];
+                assign maroc_trig_remapped[46]=maroc_trig[28];
+                assign maroc_trig_remapped[47]=maroc_trig[31];
+                assign maroc_trig_remapped[48]=maroc_trig[66];
+                assign maroc_trig_remapped[49]=maroc_trig[69];
+                assign maroc_trig_remapped[50]=maroc_trig[70];
+                assign maroc_trig_remapped[51]=maroc_trig[71];
+                assign maroc_trig_remapped[52]=maroc_trig[74];
+                assign maroc_trig_remapped[53]=maroc_trig[76];
+                assign maroc_trig_remapped[54]=maroc_trig[79];
+                assign maroc_trig_remapped[55]=maroc_trig[81];
+                assign maroc_trig_remapped[56]=maroc_trig[17];
+                assign maroc_trig_remapped[57]=maroc_trig[18];
+                assign maroc_trig_remapped[58]=maroc_trig[21];
+                assign maroc_trig_remapped[59]=maroc_trig[22];
+                assign maroc_trig_remapped[60]=maroc_trig[25];
+                assign maroc_trig_remapped[61]=maroc_trig[26];
+                assign maroc_trig_remapped[62]=maroc_trig[29];
+                assign maroc_trig_remapped[63]=maroc_trig[30];
+                assign maroc_trig_remapped[64]=maroc_trig[112];
+                assign maroc_trig_remapped[65]=maroc_trig[113];
+                assign maroc_trig_remapped[66]=maroc_trig[116];
+                assign maroc_trig_remapped[67]=maroc_trig[75];
+                assign maroc_trig_remapped[68]=maroc_trig[118];
+                assign maroc_trig_remapped[69]=maroc_trig[119];
+                assign maroc_trig_remapped[70]=maroc_trig[125];
+                assign maroc_trig_remapped[71]=maroc_trig[122];
+                assign maroc_trig_remapped[72]=maroc_trig[33];
+                assign maroc_trig_remapped[73]=maroc_trig[34];
+                assign maroc_trig_remapped[74]=maroc_trig[37];
+                assign maroc_trig_remapped[75]=maroc_trig[38];
+                assign maroc_trig_remapped[76]=maroc_trig[41];
+                assign maroc_trig_remapped[77]=maroc_trig[42];
+                assign maroc_trig_remapped[78]=maroc_trig[45];
+                assign maroc_trig_remapped[79]=maroc_trig[46];
+                assign maroc_trig_remapped[80]=maroc_trig[114];
+                assign maroc_trig_remapped[81]=maroc_trig[117];
+                assign maroc_trig_remapped[82]=maroc_trig[115];
+                assign maroc_trig_remapped[83]=maroc_trig[121];
+                assign maroc_trig_remapped[84]=maroc_trig[120];
+                assign maroc_trig_remapped[85]=maroc_trig[123];
+                assign maroc_trig_remapped[86]=maroc_trig[124];
+                assign maroc_trig_remapped[87]=maroc_trig[64];
+                assign maroc_trig_remapped[88]=maroc_trig[32];
+                assign maroc_trig_remapped[89]=maroc_trig[35];
+                assign maroc_trig_remapped[90]=maroc_trig[36];
+                assign maroc_trig_remapped[91]=maroc_trig[39];
+                assign maroc_trig_remapped[92]=maroc_trig[40];
+                assign maroc_trig_remapped[93]=maroc_trig[43];
+                assign maroc_trig_remapped[94]=maroc_trig[44];
+                assign maroc_trig_remapped[95]=maroc_trig[47];
+                assign maroc_trig_remapped[96]=maroc_trig[99];
+                assign maroc_trig_remapped[97]=maroc_trig[100];
+                assign maroc_trig_remapped[98]=maroc_trig[97];
+                assign maroc_trig_remapped[99]=maroc_trig[103];
+                assign maroc_trig_remapped[100]=maroc_trig[104];
+                assign maroc_trig_remapped[101]=maroc_trig[106];
+                assign maroc_trig_remapped[102]=maroc_trig[108];
+                assign maroc_trig_remapped[103]=maroc_trig[110];
+                assign maroc_trig_remapped[104]=maroc_trig[48];
+                assign maroc_trig_remapped[105]=maroc_trig[51];
+                assign maroc_trig_remapped[106]=maroc_trig[52];
+                assign maroc_trig_remapped[107]=maroc_trig[55];
+                assign maroc_trig_remapped[108]=maroc_trig[56];
+                assign maroc_trig_remapped[109]=maroc_trig[59];
+                assign maroc_trig_remapped[110]=maroc_trig[60];
+                assign maroc_trig_remapped[111]=maroc_trig[63];
+                assign maroc_trig_remapped[112]=maroc_trig[98];
+                assign maroc_trig_remapped[113]=maroc_trig[96];
+                assign maroc_trig_remapped[114]=maroc_trig[101];
+                assign maroc_trig_remapped[115]=maroc_trig[102];
+                assign maroc_trig_remapped[116]=maroc_trig[105];
+                assign maroc_trig_remapped[117]=maroc_trig[107];
+                assign maroc_trig_remapped[118]=maroc_trig[111];
+                assign maroc_trig_remapped[119]=maroc_trig[109];
+                assign maroc_trig_remapped[120]=maroc_trig[49];
+                assign maroc_trig_remapped[121]=maroc_trig[50];
+                assign maroc_trig_remapped[122]=maroc_trig[53];
+                assign maroc_trig_remapped[123]=maroc_trig[54];
+                assign maroc_trig_remapped[124]=maroc_trig[57];
+                assign maroc_trig_remapped[125]=maroc_trig[58];
+                assign maroc_trig_remapped[126]=maroc_trig[61];
+                assign maroc_trig_remapped[127]=maroc_trig[62];
+                assign maroc_trig_remapped[128]=maroc_trig[143];
+                assign maroc_trig_remapped[129]=maroc_trig[142];
+                assign maroc_trig_remapped[130]=maroc_trig[158];
+                assign maroc_trig_remapped[131]=maroc_trig[159];
+                assign maroc_trig_remapped[132]=maroc_trig[175];
+                assign maroc_trig_remapped[133]=maroc_trig[174];
+                assign maroc_trig_remapped[134]=maroc_trig[190];
+                assign maroc_trig_remapped[135]=maroc_trig[191];
+                assign maroc_trig_remapped[136]=maroc_trig[223];
+                assign maroc_trig_remapped[137]=maroc_trig[222];
+                assign maroc_trig_remapped[138]=maroc_trig[209];
+                assign maroc_trig_remapped[139]=maroc_trig[208];
+                assign maroc_trig_remapped[140]=maroc_trig[192];
+                assign maroc_trig_remapped[141]=maroc_trig[250];
+                assign maroc_trig_remapped[142]=maroc_trig[237];
+                assign maroc_trig_remapped[143]=maroc_trig[238];
+                assign maroc_trig_remapped[144]=maroc_trig[140];
+                assign maroc_trig_remapped[145]=maroc_trig[141];
+                assign maroc_trig_remapped[146]=maroc_trig[157];
+                assign maroc_trig_remapped[147]=maroc_trig[156];
+                assign maroc_trig_remapped[148]=maroc_trig[172];
+                assign maroc_trig_remapped[149]=maroc_trig[173];
+                assign maroc_trig_remapped[150]=maroc_trig[189];
+                assign maroc_trig_remapped[151]=maroc_trig[188];
+                assign maroc_trig_remapped[152]=maroc_trig[255];
+                assign maroc_trig_remapped[153]=maroc_trig[254];
+                assign maroc_trig_remapped[154]=maroc_trig[207];
+                assign maroc_trig_remapped[155]=maroc_trig[205];
+                assign maroc_trig_remapped[156]=maroc_trig[252];
+                assign maroc_trig_remapped[157]=maroc_trig[253];
+                assign maroc_trig_remapped[158]=maroc_trig[239];
+                assign maroc_trig_remapped[159]=maroc_trig[235];
+                assign maroc_trig_remapped[160]=maroc_trig[139];
+                assign maroc_trig_remapped[161]=maroc_trig[138];
+                assign maroc_trig_remapped[162]=maroc_trig[154];
+                assign maroc_trig_remapped[163]=maroc_trig[155];
+                assign maroc_trig_remapped[164]=maroc_trig[171];
+                assign maroc_trig_remapped[165]=maroc_trig[170];
+                assign maroc_trig_remapped[166]=maroc_trig[186];
+                assign maroc_trig_remapped[167]=maroc_trig[187];
+                assign maroc_trig_remapped[168]=maroc_trig[221];
+                assign maroc_trig_remapped[169]=maroc_trig[220];
+                assign maroc_trig_remapped[170]=maroc_trig[204];
+                assign maroc_trig_remapped[171]=maroc_trig[206];
+                assign maroc_trig_remapped[172]=maroc_trig[251];
+                assign maroc_trig_remapped[173]=maroc_trig[247];
+                assign maroc_trig_remapped[174]=maroc_trig[236];
+                assign maroc_trig_remapped[175]=maroc_trig[234];
+                assign maroc_trig_remapped[176]=maroc_trig[136];
+                assign maroc_trig_remapped[177]=maroc_trig[137];
+                assign maroc_trig_remapped[178]=maroc_trig[153];
+                assign maroc_trig_remapped[179]=maroc_trig[152];
+                assign maroc_trig_remapped[180]=maroc_trig[168];
+                assign maroc_trig_remapped[181]=maroc_trig[169];
+                assign maroc_trig_remapped[182]=maroc_trig[185];
+                assign maroc_trig_remapped[183]=maroc_trig[184];
+                assign maroc_trig_remapped[184]=maroc_trig[218];
+                assign maroc_trig_remapped[185]=maroc_trig[219];
+                assign maroc_trig_remapped[186]=maroc_trig[202];
+                assign maroc_trig_remapped[187]=maroc_trig[201];
+                assign maroc_trig_remapped[188]=maroc_trig[248];
+                assign maroc_trig_remapped[189]=maroc_trig[246];
+                assign maroc_trig_remapped[190]=maroc_trig[233];
+                assign maroc_trig_remapped[191]=maroc_trig[232];
+                assign maroc_trig_remapped[192]=maroc_trig[135];
+                assign maroc_trig_remapped[193]=maroc_trig[134];
+                assign maroc_trig_remapped[194]=maroc_trig[150];
+                assign maroc_trig_remapped[195]=maroc_trig[151];
+                assign maroc_trig_remapped[196]=maroc_trig[167];
+                assign maroc_trig_remapped[197]=maroc_trig[166];
+                assign maroc_trig_remapped[198]=maroc_trig[182];
+                assign maroc_trig_remapped[199]=maroc_trig[183];
+                assign maroc_trig_remapped[200]=maroc_trig[217];
+                assign maroc_trig_remapped[201]=maroc_trig[216];
+                assign maroc_trig_remapped[202]=maroc_trig[199];
+                assign maroc_trig_remapped[203]=maroc_trig[200];
+                assign maroc_trig_remapped[204]=maroc_trig[249];
+                assign maroc_trig_remapped[205]=maroc_trig[203];
+                assign maroc_trig_remapped[206]=maroc_trig[230];
+                assign maroc_trig_remapped[207]=maroc_trig[231];
+                assign maroc_trig_remapped[208]=maroc_trig[132];
+                assign maroc_trig_remapped[209]=maroc_trig[133];
+                assign maroc_trig_remapped[210]=maroc_trig[149];
+                assign maroc_trig_remapped[211]=maroc_trig[148];
+                assign maroc_trig_remapped[212]=maroc_trig[164];
+                assign maroc_trig_remapped[213]=maroc_trig[165];
+                assign maroc_trig_remapped[214]=maroc_trig[181];
+                assign maroc_trig_remapped[215]=maroc_trig[180];
+                assign maroc_trig_remapped[216]=maroc_trig[215];
+                assign maroc_trig_remapped[217]=maroc_trig[214];
+                assign maroc_trig_remapped[218]=maroc_trig[198];
+                assign maroc_trig_remapped[219]=maroc_trig[196];
+                assign maroc_trig_remapped[220]=maroc_trig[243];
+                assign maroc_trig_remapped[221]=maroc_trig[244];
+                assign maroc_trig_remapped[222]=maroc_trig[229];
+                assign maroc_trig_remapped[223]=maroc_trig[225];
+                assign maroc_trig_remapped[224]=maroc_trig[131];
+                assign maroc_trig_remapped[225]=maroc_trig[130];
+                assign maroc_trig_remapped[226]=maroc_trig[146];
+                assign maroc_trig_remapped[227]=maroc_trig[147];
+                assign maroc_trig_remapped[228]=maroc_trig[163];
+                assign maroc_trig_remapped[229]=maroc_trig[162];
+                assign maroc_trig_remapped[230]=maroc_trig[178];
+                assign maroc_trig_remapped[231]=maroc_trig[179];
+                assign maroc_trig_remapped[232]=maroc_trig[213];
+                assign maroc_trig_remapped[233]=maroc_trig[211];
+                assign maroc_trig_remapped[234]=maroc_trig[197];
+                assign maroc_trig_remapped[235]=maroc_trig[195];
+                assign maroc_trig_remapped[236]=maroc_trig[245];
+                assign maroc_trig_remapped[237]=maroc_trig[241];
+                assign maroc_trig_remapped[238]=maroc_trig[224];
+                assign maroc_trig_remapped[239]=maroc_trig[228];
+                assign maroc_trig_remapped[240]=maroc_trig[128];
+                assign maroc_trig_remapped[241]=maroc_trig[129];
+                assign maroc_trig_remapped[242]=maroc_trig[145];
+                assign maroc_trig_remapped[243]=maroc_trig[144];
+                assign maroc_trig_remapped[244]=maroc_trig[160];
+                assign maroc_trig_remapped[245]=maroc_trig[161];
+                assign maroc_trig_remapped[246]=maroc_trig[177];
+                assign maroc_trig_remapped[247]=maroc_trig[176];
+                assign maroc_trig_remapped[248]=maroc_trig[212];
+                assign maroc_trig_remapped[249]=maroc_trig[210];
+                assign maroc_trig_remapped[250]=maroc_trig[194];
+                assign maroc_trig_remapped[251]=maroc_trig[193];
+                assign maroc_trig_remapped[252]=maroc_trig[242];
+                assign maroc_trig_remapped[253]=maroc_trig[240];
+                assign maroc_trig_remapped[254]=maroc_trig[226];
+                assign maroc_trig_remapped[255]=maroc_trig[227];
+       end
+        else begin: no_remap
           for (gg=0; gg< 256; gg=gg+1) begin
           assign maroc_trig_remapped[gg] = maroc_trig[gg];
           end
