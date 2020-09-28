@@ -6,6 +6,8 @@
 //#define VERBOSE
 //To save a few kB of code space, get rid of the InitRemap()
 #define USE_SIMPLE_INIT
+//Also ned to select whether it's the QFP or BGA version.  Comment this out for QFP
+#define REMAP_FOR_BGA
 
 //In hw13, added a pin to select one of two IP addresses on J3, abandoned UART
 //#define READ_IP_ADDR_FROM_J3
@@ -330,6 +332,9 @@ int ProgramSfpPhy(void);
 u32 FWID_0;
 u32 FWID_1;
 
+//We'll store the PCB revision here
+u8 PCBrev = 0;
+
 //We may hard-code these  later
 u16 ENDZONESIZE = 300;
 u16 BACKOFF = 200;
@@ -427,7 +432,27 @@ int main()
 #ifdef PH_REMAP
 		//Need to define a map array.
 #ifdef USE_SIMPLE_INIT
+#ifdef REMAP_FOR_BGA
 		//Not sure why this is a u16 array, rather than u8
+		u16 remap_array [256] = {
+                24,     23,     240,    136,        8,      7,      241,        137,        9,      21,     225,        168,        25,     5,      224,    169,
+                26,     4,      208,    185,        10,     20,     209,        184,        11,     19,     193,        200,        27,     3,      192,    201,
+                28,     18,     176,    216,        12,     2,      177,        217,        13,     17,     161,        232,        29,     16,     160,    248,
+                30,     1,      144,    233,        14,     0,      145,        249,        15,     55,     129,        138,        31,     39,     128,    139,
+                40,     54,     243,    154,        56,     37,     242,        171,        57,     38,     226,        155,        41,     53,     227,    170,
+                42,     67,     211,    205,        58,     52,     210,        186,        59,     36,     194,        187,        43,     35,     195,    203,
+                44,     51,     179,    202,        60,     50,     178,        218,        61,     49,     162,        234,        45,     34,     163,    219,
+                46,     33,     147,    235,        62,     48,     146,        250,        63,     32,     130,        251,        47,     87,     131,    140,
+                88,     22,     244,    152,        72,     6,      245,        153,        73,     70,     229,        157,        89,     86,     228,    156,
+                90,     85,     212,    172,        74,     71,     213,        141,        75,     83,     197,        204,        91,     84,     196,    188,
+                92,     69,     180,    173,        76,     68,     181,        189,        77,     81,     165,        236,        93,     66,     164,    221,
+                94,     82,     148,    220,        78,     80,     149,        252,        79,     65,     133,        237,        95,     64,     132,    253,
+                104,    118,    247,    158,        120,    103,    246,        143,        121,    119,    230,        142,        105,    102,    231,    174,
+                106,    117,    215,    159,        122,    101,    214,        175,        123,    116,    198,        190,        107,    100,    199,    191,
+                108,    99,     183,    207,        124,    115,    182,        206,        125,    114,    166,        222,        109,    97,     167,    239,
+                110,    96,     151,    255,        126,    112,    150,        254,        127,    98,     134,        223,        111,    113,    135,    238
+        };
+#else
 		u16 remap_array [256] = {
 				24, 	96, 	240, 	255, 	8, 		112,	241,	254,	9,		113,	225,	238,	25,		97,		224,	239,
 				26,		98,		208,	223,	10,		114,	209,	222,	11,		115,	193,	206,	27,		99,		192,	207,
@@ -446,6 +471,7 @@ int main()
 				108,	20,		183,	184,	124,	4,		182,	185,	125,	5,		166,	169,	109,	21,		167,	168,
 				110,	22,		151,	152,	126,	6,		150,	153,	127,	7,		134,	137,	111,	23,		135,	136
 		};
+#endif
 #else
 		u16 remap_array [256];
 		InitRemap(remap_array);
@@ -1572,6 +1598,8 @@ else
 	memcpy(hk_payload_ptr+56, (char*) &FWID_1,4);
 	//copy shutter_status and light_sensor_status here, 52[0] and 52[1]
 	memcpy(hk_payload_ptr+48, &shutter_light_sensor_status,1);
+	//Put PCBrev in byte 53
+	memcpy(hk_payload_ptr+49, &PCBrev,1);
 }
 err_t err = udp_send(hk_pcb, hk_pbuf);
 if (err != ERR_OK) {
@@ -1723,7 +1751,6 @@ int PH_BL_Init(s16 * ph_baseline_array)
 			//Protect against a too-long ReceiveLength writing data outside the array
 			if (bl_array_index>255)break;
 		}
-	for (i = 0; i < 256; i++) if (ph_baseline_array[i] & 0x1000) ph_baseline_array[i] = ph_baseline_array[i] | 0xf000;
 	//read and ignore one more (Elapsed Time)
 	RxWord1 = XLlFifo_RxGetWord(&PH_Fifo);
 	}
@@ -2128,6 +2155,8 @@ void get_FWID(void)
 		XGpio_DiscreteWrite(&Gpio_mech, GPIO_OUT_CHAN,(addr<<24) | (focus_limits_on <<23) | (shutter_command<<21) | (fan_speed<<17));
 		FWID_1 = (FWID_1<<1) | ((XGpio_DiscreteRead(&Gpio_mech, GPIO_IN_CHAN) & 0x10) == 0x10);
 	}
+	//If the PCBrev_n pin is pulled down, it's a rev1 board
+	PCBrev = (XGpio_DiscreteRead(&Gpio_mech, GPIO_IN_CHAN) & 0x80) == 0;
 }
 
 //Move the focus stage to 'target' above the zero point, 0<= steps <= MAXSTEPS
