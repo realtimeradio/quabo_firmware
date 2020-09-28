@@ -879,8 +879,9 @@ set_property DRIVE 16 [get_ports pps_inout_0]
 
 
 
-
-
+set_property IOSTANDARD LVCMOS18 [get_ports PCBrev_n[0]]
+set_property PULLUP true [get_ports PCBrev_n[0]]
+set_property PACKAGE_PIN V13 [get_ports PCBrev_n[0]]
 
 
 set_property BITSTREAM.CONFIG.SPI_BUSWIDTH 1 [current_design]
