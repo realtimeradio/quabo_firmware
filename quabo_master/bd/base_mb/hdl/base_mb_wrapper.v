@@ -1,8 +1,8 @@
-//Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
+//Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
-//Tool Version: Vivado v.2018.3.1_AR71948 (lin64) Build 2489853 Tue Mar 26 04:18:30 MDT 2019
-//Date        : Thu Sep 17 11:19:21 2020
-//Host        : wei-Berkeley running 64-bit Ubuntu 18.04.5 LTS
+//Tool Version: Vivado v.2018.3_AR71948 (win64) Build 2405991 Thu Dec  6 23:38:27 MST 2018
+//Date        : Wed Sep 23 15:23:40 2020
+//Host        : RIXLAB2018 running 64-bit major release  (build 9200)
 //Command     : generate_target base_mb_wrapper.bd
 //Design      : base_mb_wrapper
 //Purpose     : IP block netlist
@@ -26,6 +26,7 @@ module base_mb_wrapper
     J3pin6,
     MISO,
     MOSI,
+    PCBrev_n,
     RSTB_R,
     SC_CLK,
     SC_DIN,
@@ -109,6 +110,7 @@ module base_mb_wrapper
   output J3pin6;
   input MISO;
   output MOSI;
+  input [0:0]PCBrev_n;
   output [3:0]RSTB_R;
   output [3:0]SC_CLK;
   input [3:0]SC_DIN;
@@ -193,6 +195,7 @@ module base_mb_wrapper
   wire J3pin6;
   wire MISO;
   wire MOSI;
+  wire [0:0]PCBrev_n;
   wire [3:0]RSTB_R;
   wire [3:0]SC_CLK;
   wire [3:0]SC_DIN;
@@ -284,6 +287,7 @@ module base_mb_wrapper
         .J3pin6(J3pin6),
         .MISO(MISO),
         .MOSI(MOSI),
+        .PCBrev_n(PCBrev_n),
         .RSTB_R(RSTB_R),
         .SC_CLK(SC_CLK),
         .SC_DIN(SC_DIN),

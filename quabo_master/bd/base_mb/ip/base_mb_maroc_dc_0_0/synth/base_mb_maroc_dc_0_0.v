@@ -47,12 +47,12 @@
 // DO NOT MODIFY THIS FILE.
 
 
-// IP VLNV: xilinx.com:user:maroc_dc:1.7
+// IP VLNV: xilinx.com:user:maroc_dc:1.8
 // IP Revision: 1
 
-(* X_CORE_INFO = "maroc_dc_v1_0,Vivado 2018.3.1_AR71948" *)
+(* X_CORE_INFO = "maroc_dc_v1_0,Vivado 2018.3_AR71948" *)
 (* CHECK_LICENSE_TYPE = "base_mb_maroc_dc_0_0,maroc_dc_v1_0,{}" *)
-(* CORE_GENERATION_INFO = "base_mb_maroc_dc_0_0,maroc_dc_v1_0,{x_ipProduct=Vivado 2018.3.1_AR71948,x_ipVendor=xilinx.com,x_ipLibrary=user,x_ipName=maroc_dc,x_ipVersion=1.7,x_ipCoreRevision=1,x_ipLanguage=VERILOG,x_ipSimLanguage=MIXED,C_S00_AXI_DATA_WIDTH=32,C_S00_AXI_ADDR_WIDTH=6,C_M00_AXIS_TDATA_WIDTH=32,C_M00_AXIS_START_COUNT=32,C_M01_AXIS_TDATA_WIDTH=32,C_M01_AXIS_START_COUNT=32}" *)
+(* CORE_GENERATION_INFO = "base_mb_maroc_dc_0_0,maroc_dc_v1_0,{x_ipProduct=Vivado 2018.3_AR71948,x_ipVendor=xilinx.com,x_ipLibrary=user,x_ipName=maroc_dc,x_ipVersion=1.8,x_ipCoreRevision=1,x_ipLanguage=VERILOG,x_ipSimLanguage=MIXED,C_S00_AXI_DATA_WIDTH=32,C_S00_AXI_ADDR_WIDTH=6,C_M00_AXIS_TDATA_WIDTH=32,C_M00_AXIS_START_COUNT=32,C_M01_AXIS_TDATA_WIDTH=32,C_M01_AXIS_START_COUNT=32,PCB_REV=1}" *)
 (* DowngradeIPIdentifiedWarnings = "yes" *)
 module base_mb_maroc_dc_0_0 (
   hs_clk,
@@ -249,7 +249,8 @@ input wire m01_axis_aresetn;
     .C_M00_AXIS_TDATA_WIDTH(32),  // Width of S_AXIS address bus. The slave accepts the read and write addresses of width C_M_AXIS_TDATA_WIDTH.
     .C_M00_AXIS_START_COUNT(32),  // Start count is the number of clock cycles the master will wait before initiating/issuing any transaction.
     .C_M01_AXIS_TDATA_WIDTH(32),  // Width of S_AXIS address bus. The slave accepts the read and write addresses of width C_M_AXIS_TDATA_WIDTH.
-    .C_M01_AXIS_START_COUNT(32)  // Start count is the number of clock cycles the master will wait before initiating/issuing any transaction.
+    .C_M01_AXIS_START_COUNT(32),  // Start count is the number of clock cycles the master will wait before initiating/issuing any transaction.
+    .PCB_REV(1)
   ) inst (
     .hs_clk(hs_clk),
     .maroc_trig0(maroc_trig0),

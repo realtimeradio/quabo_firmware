@@ -1,3 +1,13 @@
+v11.7:
+Made the changes necessary to support the BGA PCB design.  There are two parameters that must be set to compile
+the design for either the QFP (old) or BGA (new) versions.  In the gateware, the maroc_dc IP (in the Block Diagram) 
+has an attribute "PCBrev" which can be set to either 0 (QFP) or 1 (BGA).  (This maps to the Verilog parameter 
+REMAP_FOR_BGA in maroc_dc.v).  This sets the mapping of the 256 trigger signals.
+In the software, in main.c, there is a #define REMAP_FOR_BGA.  This should be commented out for the QFP version.
+THESE TWO PARAMETER SETTINGS MUST AGREE.  We'll need to do two compiles and bitfile generations whenever we make a change in the 	
+future, so we can accomodate both PCB revisions.  I suggest we name them with an even number for QFP and odd for BGA, 
+eg 12.0 and 12.1. 
+
 v11.6B:
 (1) In v11.6A, SPIx1 is changed to SPIx4, but it can't boot up;
 In v11.6B, SPIx4 is changed back to SPIx1.

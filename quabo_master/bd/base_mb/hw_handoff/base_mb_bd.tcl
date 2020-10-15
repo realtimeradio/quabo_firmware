@@ -276,6 +276,7 @@ proc create_root_design { parentCell } {
   set J3pin6 [ create_bd_port -dir O J3pin6 ]
   set MISO [ create_bd_port -dir I MISO ]
   set MOSI [ create_bd_port -dir O MOSI ]
+  set PCBrev_n [ create_bd_port -dir I -from 0 -to 0 PCBrev_n ]
   set RSTB_R [ create_bd_port -dir O -from 3 -to 0 RSTB_R ]
   set SC_CLK [ create_bd_port -dir O -from 3 -to 0 -type clk SC_CLK ]
   set SC_DIN [ create_bd_port -dir I -from 3 -to 0 SC_DIN ]
@@ -763,7 +764,7 @@ proc create_root_design { parentCell } {
    CONFIG.C_ALL_INPUTS_2 {1} \
    CONFIG.C_ALL_OUTPUTS {1} \
    CONFIG.C_DOUT_DEFAULT {0x00200000} \
-   CONFIG.C_GPIO2_WIDTH {7} \
+   CONFIG.C_GPIO2_WIDTH {8} \
    CONFIG.C_IS_DUAL {1} \
  ] $axi_gpio_mech
 
@@ -1019,9 +1020,10 @@ proc create_root_design { parentCell } {
    }
   
   # Create instance: maroc_dc_0, and set properties
-  set maroc_dc_0 [ create_bd_cell -type ip -vlnv xilinx.com:user:maroc_dc:1.7 maroc_dc_0 ]
+  set maroc_dc_0 [ create_bd_cell -type ip -vlnv xilinx.com:user:maroc_dc:1.8 maroc_dc_0 ]
   set_property -dict [ list \
    CONFIG.C_M01_AXIS_TDATA_WIDTH {32} \
+   CONFIG.PCB_REV {1} \
  ] $maroc_dc_0
 
   # Create instance: maroc_slow_control_0, and set properties
@@ -1135,7 +1137,7 @@ proc create_root_design { parentCell } {
   # Create instance: xlconcat_2, and set properties
   set xlconcat_2 [ create_bd_cell -type ip -vlnv xilinx.com:ip:xlconcat:2.1 xlconcat_2 ]
   set_property -dict [ list \
-   CONFIG.NUM_PORTS {7} \
+   CONFIG.NUM_PORTS {8} \
  ] $xlconcat_2
 
   # Create instance: xlconstant_0, and set properties
@@ -1267,6 +1269,7 @@ proc create_root_design { parentCell } {
   connect_bd_net -net In1_0_1 [get_bd_ports focus_up_lim] [get_bd_pins xlconcat_2/In1]
   connect_bd_net -net In2_0_1 [get_bd_ports shutter_down_lim] [get_bd_pins xlconcat_2/In2]
   connect_bd_net -net In3_0_1 [get_bd_ports shutter_up_lim] [get_bd_pins xlconcat_2/In3]
+  connect_bd_net -net In7_0_1 [get_bd_ports PCBrev_n] [get_bd_pins xlconcat_2/In7]
   connect_bd_net -net Net [get_bd_ports onewire_b_0] [get_bd_pins wrc_board_quabo_Light_0/onewire_b]
   connect_bd_net -net Net1 [get_bd_ports user_sfp_0_sfp_mod_def2_b] [get_bd_pins wrc_board_quabo_Light_0/sfp_mod_def2_b]
   connect_bd_net -net Net2 [get_bd_ports user_sfp_0_sfp_mod_def1_b] [get_bd_pins wrc_board_quabo_Light_0/sfp_mod_def1_b]
@@ -1431,26 +1434,26 @@ proc create_root_design { parentCell } {
   create_bd_addr_seg -range 0x00010000 -offset 0x44A80000 [get_bd_addr_spaces microblaze_0/Instruction] [get_bd_addr_segs HighSpeed_IM_v1_0_0/s_axi_packetheader/reg0] SEG_HighSpeed_IM_v1_0_0_reg05
   create_bd_addr_seg -range 0x00040000 -offset 0x40C00000 [get_bd_addr_spaces microblaze_0/Data] [get_bd_addr_segs axi_ethernet_0/s_axi/Reg0] SEG_axi_ethernet_0_Reg0
   create_bd_addr_seg -range 0x00040000 -offset 0x40C00000 [get_bd_addr_spaces microblaze_0/Instruction] [get_bd_addr_segs axi_ethernet_0/s_axi/Reg0] SEG_axi_ethernet_0_Reg0
-  create_bd_addr_seg -range 0x00010000 -offset 0x44A00000 [get_bd_addr_spaces microblaze_0/Instruction] [get_bd_addr_segs axi_ethernet_0_fifo/S_AXI/Mem0] SEG_axi_ethernet_0_fifo_Mem0
   create_bd_addr_seg -range 0x00010000 -offset 0x44A00000 [get_bd_addr_spaces microblaze_0/Data] [get_bd_addr_segs axi_ethernet_0_fifo/S_AXI/Mem0] SEG_axi_ethernet_0_fifo_Mem0
-  create_bd_addr_seg -range 0x00040000 -offset 0x40C40000 [get_bd_addr_spaces microblaze_0/Instruction] [get_bd_addr_segs axi_ethernet_1/s_axi/Reg0] SEG_axi_ethernet_1_Reg0
+  create_bd_addr_seg -range 0x00010000 -offset 0x44A00000 [get_bd_addr_spaces microblaze_0/Instruction] [get_bd_addr_segs axi_ethernet_0_fifo/S_AXI/Mem0] SEG_axi_ethernet_0_fifo_Mem0
   create_bd_addr_seg -range 0x00040000 -offset 0x40C40000 [get_bd_addr_spaces microblaze_0/Data] [get_bd_addr_segs axi_ethernet_1/s_axi/Reg0] SEG_axi_ethernet_1_Reg0
+  create_bd_addr_seg -range 0x00040000 -offset 0x40C40000 [get_bd_addr_spaces microblaze_0/Instruction] [get_bd_addr_segs axi_ethernet_1/s_axi/Reg0] SEG_axi_ethernet_1_Reg0
   create_bd_addr_seg -range 0x00010000 -offset 0x44A50000 [get_bd_addr_spaces microblaze_0/Data] [get_bd_addr_segs axi_fifo_mm_s_PH/S_AXI/Mem0] SEG_axi_fifo_mm_s_0_Mem0
   create_bd_addr_seg -range 0x00010000 -offset 0x44A50000 [get_bd_addr_spaces microblaze_0/Instruction] [get_bd_addr_segs axi_fifo_mm_s_PH/S_AXI/Mem0] SEG_axi_fifo_mm_s_0_Mem0
   create_bd_addr_seg -range 0x00010000 -offset 0x40000000 [get_bd_addr_spaces microblaze_0/Data] [get_bd_addr_segs GPIO/S_AXI/Reg] SEG_axi_gpio_0_Reg
   create_bd_addr_seg -range 0x00010000 -offset 0x40000000 [get_bd_addr_spaces microblaze_0/Instruction] [get_bd_addr_segs GPIO/S_AXI/Reg] SEG_axi_gpio_0_Reg
   create_bd_addr_seg -range 0x00010000 -offset 0x40010000 [get_bd_addr_spaces microblaze_0/Data] [get_bd_addr_segs axi_gpio_mech/S_AXI/Reg] SEG_axi_gpio_0_Reg1
   create_bd_addr_seg -range 0x00010000 -offset 0x40010000 [get_bd_addr_spaces microblaze_0/Instruction] [get_bd_addr_segs axi_gpio_mech/S_AXI/Reg] SEG_axi_gpio_0_Reg3
-  create_bd_addr_seg -range 0x00010000 -offset 0x40200000 [get_bd_addr_spaces microblaze_0/Instruction] [get_bd_addr_segs axi_hwicap_0/S_AXI_LITE/Reg] SEG_axi_hwicap_0_Reg
   create_bd_addr_seg -range 0x00010000 -offset 0x40200000 [get_bd_addr_spaces microblaze_0/Data] [get_bd_addr_segs axi_hwicap_0/S_AXI_LITE/Reg] SEG_axi_hwicap_0_Reg
-  create_bd_addr_seg -range 0x00010000 -offset 0x40800000 [get_bd_addr_spaces microblaze_0/Instruction] [get_bd_addr_segs axi_iic_0/S_AXI/Reg] SEG_axi_iic_0_Reg
+  create_bd_addr_seg -range 0x00010000 -offset 0x40200000 [get_bd_addr_spaces microblaze_0/Instruction] [get_bd_addr_segs axi_hwicap_0/S_AXI_LITE/Reg] SEG_axi_hwicap_0_Reg
   create_bd_addr_seg -range 0x00010000 -offset 0x40800000 [get_bd_addr_spaces microblaze_0/Data] [get_bd_addr_segs axi_iic_0/S_AXI/Reg] SEG_axi_iic_0_Reg
-  create_bd_addr_seg -range 0x00010000 -offset 0x41200000 [get_bd_addr_spaces microblaze_0/Instruction] [get_bd_addr_segs axi_intc_0/S_AXI/Reg] SEG_axi_intc_0_Reg
+  create_bd_addr_seg -range 0x00010000 -offset 0x40800000 [get_bd_addr_spaces microblaze_0/Instruction] [get_bd_addr_segs axi_iic_0/S_AXI/Reg] SEG_axi_iic_0_Reg
   create_bd_addr_seg -range 0x00010000 -offset 0x41200000 [get_bd_addr_spaces microblaze_0/Data] [get_bd_addr_segs axi_intc_0/S_AXI/Reg] SEG_axi_intc_0_Reg
-  create_bd_addr_seg -range 0x00010000 -offset 0x44A10000 [get_bd_addr_spaces microblaze_0/Instruction] [get_bd_addr_segs axi_quad_spi_0/AXI_LITE/Reg] SEG_axi_quad_spi_0_Reg
+  create_bd_addr_seg -range 0x00010000 -offset 0x41200000 [get_bd_addr_spaces microblaze_0/Instruction] [get_bd_addr_segs axi_intc_0/S_AXI/Reg] SEG_axi_intc_0_Reg
   create_bd_addr_seg -range 0x00010000 -offset 0x44A10000 [get_bd_addr_spaces microblaze_0/Data] [get_bd_addr_segs axi_quad_spi_0/AXI_LITE/Reg] SEG_axi_quad_spi_0_Reg
-  create_bd_addr_seg -range 0x00010000 -offset 0x44A70000 [get_bd_addr_spaces microblaze_0/Instruction] [get_bd_addr_segs axi_quad_spi_1/AXI_LITE/Reg] SEG_axi_quad_spi_1_Reg
+  create_bd_addr_seg -range 0x00010000 -offset 0x44A10000 [get_bd_addr_spaces microblaze_0/Instruction] [get_bd_addr_segs axi_quad_spi_0/AXI_LITE/Reg] SEG_axi_quad_spi_0_Reg
   create_bd_addr_seg -range 0x00010000 -offset 0x44A70000 [get_bd_addr_spaces microblaze_0/Data] [get_bd_addr_segs axi_quad_spi_1/AXI_LITE/Reg] SEG_axi_quad_spi_1_Reg
+  create_bd_addr_seg -range 0x00010000 -offset 0x44A70000 [get_bd_addr_spaces microblaze_0/Instruction] [get_bd_addr_segs axi_quad_spi_1/AXI_LITE/Reg] SEG_axi_quad_spi_1_Reg
   create_bd_addr_seg -range 0x00010000 -offset 0x40020000 [get_bd_addr_spaces microblaze_0/Data] [get_bd_addr_segs axi_spi_sel/S_AXI/Reg] SEG_axi_spi_sel_Reg
   create_bd_addr_seg -range 0x00010000 -offset 0x40020000 [get_bd_addr_spaces microblaze_0/Instruction] [get_bd_addr_segs axi_spi_sel/S_AXI/Reg] SEG_axi_spi_sel_Reg
   create_bd_addr_seg -range 0x00010000 -offset 0x41A00000 [get_bd_addr_spaces microblaze_0/Data] [get_bd_addr_segs axi_timebase_wdt_0/S_AXI/Reg] SEG_axi_timebase_wdt_0_Reg

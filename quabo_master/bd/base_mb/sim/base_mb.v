@@ -1,8 +1,8 @@
-//Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
+//Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
-//Tool Version: Vivado v.2018.3.1_AR71948 (lin64) Build 2489853 Tue Mar 26 04:18:30 MDT 2019
-//Date        : Thu Sep 17 11:19:21 2020
-//Host        : wei-Berkeley running 64-bit Ubuntu 18.04.5 LTS
+//Tool Version: Vivado v.2018.3_AR71948 (win64) Build 2405991 Thu Dec  6 23:38:27 MST 2018
+//Date        : Wed Sep 23 15:23:40 2020
+//Host        : RIXLAB2018 running 64-bit major release  (build 9200)
 //Command     : generate_target base_mb.bd
 //Design      : base_mb
 //Purpose     : IP block netlist
@@ -27,6 +27,7 @@ module base_mb
     J3pin6,
     MISO,
     MOSI,
+    PCBrev_n,
     RSTB_R,
     SC_CLK,
     SC_DIN,
@@ -114,6 +115,7 @@ module base_mb
   output J3pin6;
   input MISO;
   output MOSI;
+  input [0:0]PCBrev_n;
   output [3:0]RSTB_R;
   (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 CLK.SC_CLK CLK" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME CLK.SC_CLK, CLK_DOMAIN base_mb_maroc_slow_control_0_0_SC_CLK, FREQ_HZ 100000000, INSERT_VIP 0, PHASE 0.000" *) output [3:0]SC_CLK;
   input [3:0]SC_DIN;
@@ -239,6 +241,7 @@ module base_mb
   wire [0:0]In1_0_1;
   wire [0:0]In2_0_1;
   wire [0:0]In3_0_1;
+  wire [0:0]In7_0_1;
   wire Net;
   wire Net1;
   wire Net2;
@@ -845,7 +848,7 @@ module base_mb
   wire wrc_board_quabo_Light_0_spi_sclk_o;
   wire wrc_board_quabo_Light_0_uart_txd_o;
   wire [7:0]xlconcat_0_dout;
-  wire [6:0]xlconcat_2_dout;
+  wire [7:0]xlconcat_2_dout;
   wire [0:0]xlconstant_0_dout;
   wire [0:0]xlconstant_1_dout;
   wire [0:0]xlconstant_2_dout;
@@ -873,6 +876,7 @@ module base_mb
   assign In1_0_1 = focus_up_lim[0];
   assign In2_0_1 = shutter_down_lim[0];
   assign In3_0_1 = shutter_up_lim[0];
+  assign In7_0_1 = PCBrev_n[0];
   assign J3pin1[0] = xlslice_3_Dout;
   assign J3pin4 = wrc_board_quabo_Light_0_uart_txd_o;
   assign J3pin6 = axi_uartlite_0_tx;
@@ -2462,6 +2466,7 @@ module base_mb
         .In4(firmware_ID_ROM_0_data_out),
         .In5(StepDrive_ShutterCtr_0_shutter_status),
         .In6(StepDrive_ShutterCtr_0_light_sensor_status),
+        .In7(In7_0_1),
         .dout(xlconcat_2_dout));
   base_mb_xlconstant_0_0 xlconstant_0
        (.dout(xlconstant_0_dout));
