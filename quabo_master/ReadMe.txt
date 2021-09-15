@@ -1,3 +1,14 @@
+v11.8(9):
+(1) The bug of periodic high flux measurments is fixed.
+The reason is that frame_go and a state machine in im_mode_state_machine.v were reset by pps,
+but the state machine shouldn't be reset by pps.
+Therefore, a pps_rst port is added for fixing the bug.
+(2) Led flasher selection bit is added to the new firmware.
+The default led is the new one.
+To change the led, control_quabo_v10.py should be used.
+(3) v11.8 is for QFP quabo, and v11.9 is for BGA quabo.
+The code of the two version are 99.999% the same, and the difference is shown in v11.7 comment.
+
 v11.7:
 Made the changes necessary to support the BGA PCB design.  There are two parameters that must be set to compile
 the design for either the QFP (old) or BGA (new) versions.  In the gateware, the maroc_dc IP (in the Block Diagram) 

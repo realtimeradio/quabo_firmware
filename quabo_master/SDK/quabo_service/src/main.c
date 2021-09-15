@@ -7,7 +7,7 @@
 //To save a few kB of code space, get rid of the InitRemap()
 #define USE_SIMPLE_INIT
 //Also ned to select whether it's the QFP or BGA version.  Comment this out for QFP
-#define REMAP_FOR_BGA
+//#define REMAP_FOR_BGA
 
 //In hw13, added a pin to select one of two IP addresses on J3, abandoned UART
 //#define READ_IP_ADDR_FROM_J3
@@ -273,6 +273,7 @@ u8 stim_level = 0;
 u8 stim_rate = 0;
 u8 stim_on = 0;
 u8 hv_rstb = 0;
+u8 led_flasher_sel = 1;
 // spi_sel = 0 is for WR control, = 1 for MB control
 u8 spi_sel = 0;
 // Set to 1 to arm the WR interrupt logic
@@ -1070,6 +1071,11 @@ recv_callback(void *arg, struct udp_pcb *tpcb,
 			shutter_command = (*(bptr+1)&0x01);
 			XGpio_DiscreteWrite(&Gpio_mech, GPIO_OUT_CHAN, (focus_limits_on <<23) | (shutter_command<<21) | (fan_speed<<17));
 		}
+		if((byte0 & 0x7f)==0x09)
+		{
+			led_flasher_sel = (*(bptr+1)&0x01);
+			UpdateGPIO();
+		}
 		if ((byte0 & 0x80) == 0x80)  //Echo the packet
 		{
 			//struct pbuf *hk_pbuf;
@@ -1518,7 +1524,7 @@ int GetHouseKeeping(void)
 //Update the GPIO that controls the stim, hv_enable, etc
 void UpdateGPIO(void)
 {
-	XGpio_DiscreteWrite(&Gpio, GPIO_OUT_CHAN, ((ET_clk_reset<<28) | (flash_width<<24) | (flash_level<<19) | (flash_rate<<16) |
+	XGpio_DiscreteWrite(&Gpio, GPIO_OUT_CHAN, ((led_flasher_sel << 29)|(ET_clk_reset<<28) | (flash_width<<24) | (flash_level<<19) | (flash_rate<<16) |
 			(wr_int_arm<<15)|(spi_sel<<14)|(stim_rate<<10) | (stim_level<<2) | (stim_on<<1) | hv_rstb ));
 }
 

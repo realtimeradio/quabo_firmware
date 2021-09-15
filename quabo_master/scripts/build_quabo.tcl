@@ -51,7 +51,7 @@ if { [info exists ::origin_dir_loc] } {
 }
 
 # Set the project name
-set _xil_proj_name_ "quabo_V0116_BGA"
+set _xil_proj_name_ "quabo_V0118"
 
 # Use project name variable, if specified in the tcl shell
 if { [info exists ::user_project_name] } {

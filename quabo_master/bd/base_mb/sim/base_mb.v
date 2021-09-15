@@ -1,15 +1,15 @@
-//Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
+//Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
-//Tool Version: Vivado v.2018.3_AR71948 (win64) Build 2405991 Thu Dec  6 23:38:27 MST 2018
-//Date        : Wed Sep 23 15:23:40 2020
-//Host        : RIXLAB2018 running 64-bit major release  (build 9200)
+//Tool Version: Vivado v.2018.3.1_AR71948 (lin64) Build 2489853 Tue Mar 26 04:18:30 MDT 2019
+//Date        : Mon Sep 13 21:51:37 2021
+//Host        : wei-Berkeley running 64-bit Ubuntu 18.04.5 LTS
 //Command     : generate_target base_mb.bd
 //Design      : base_mb
 //Purpose     : IP block netlist
 //--------------------------------------------------------------------------------
 `timescale 1 ps / 1 ps
 
-(* CORE_GENERATION_INFO = "base_mb,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=base_mb,x_ipVersion=1.00.a,x_ipLanguage=VERILOG,numBlks=112,numReposBlks=84,numNonXlnxBlks=6,numHierBlks=28,maxHierDepth=1,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=19,numPkgbdBlks=0,bdsource=USER,da_aeth_cnt=2,da_axi4_cnt=29,da_board_cnt=6,da_clkrst_cnt=3,da_mb_cnt=1,synth_mode=Global}" *) (* HW_HANDOFF = "base_mb.hwdef" *) 
+(* CORE_GENERATION_INFO = "base_mb,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=base_mb,x_ipVersion=1.00.a,x_ipLanguage=VERILOG,numBlks=113,numReposBlks=85,numNonXlnxBlks=6,numHierBlks=28,maxHierDepth=1,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=19,numPkgbdBlks=0,bdsource=USER,da_aeth_cnt=2,da_axi4_cnt=29,da_board_cnt=6,da_clkrst_cnt=3,da_mb_cnt=1,synth_mode=Global}" *) (* HW_HANDOFF = "base_mb.hwdef" *) 
 module base_mb
    (ADC_DIN_N,
     ADC_DIN_P,
@@ -25,6 +25,7 @@ module base_mb
     J3pin4,
     J3pin5,
     J3pin6,
+    LED_FLASHER_SEL,
     MISO,
     MOSI,
     PCBrev_n,
@@ -113,6 +114,7 @@ module base_mb
   output J3pin4;
   input J3pin5;
   output J3pin6;
+  output [0:0]LED_FLASHER_SEL;
   input MISO;
   output MOSI;
   input [0:0]PCBrev_n;
@@ -201,6 +203,7 @@ module base_mb
   wire [0:0]Bit_23_23_Dout;
   wire [0:0]Bit_28_28_Dout;
   wire [5:0]Bit_29_24_Dout;
+  wire [0:0]Bit_29_29_Dout;
   wire [3:0]Bit_3_0_Dout;
   wire [31:0]ETH_CORE_CTRL_0_m_axis_txc_TDATA;
   wire [3:0]ETH_CORE_CTRL_0_m_axis_txc_TKEEP;
@@ -880,6 +883,7 @@ module base_mb
   assign J3pin1[0] = xlslice_3_Dout;
   assign J3pin4 = wrc_board_quabo_Light_0_uart_txd_o;
   assign J3pin6 = axi_uartlite_0_tx;
+  assign LED_FLASHER_SEL[0] = Bit_29_29_Dout;
   assign MOSI = SPI_MUX_1_spi_mosi;
   assign RSTB_R[3:0] = maroc_dc_0_RSTB_R;
   assign SC_CLK[3:0] = maroc_slow_control_0_SC_CLK;
@@ -1008,6 +1012,9 @@ module base_mb
   base_mb_Bit_0_15_1 Bit_29_24
        (.Din(axi_gpio_0_gpio_io_o1),
         .Dout(Bit_29_24_Dout));
+  base_mb_Bit_0_0_0 Bit_29_29
+       (.Din(axi_gpio_0_gpio_io_o),
+        .Dout(Bit_29_29_Dout));
   base_mb_xlslice_1_0 Bit_2_9
        (.Din(axi_gpio_0_gpio_io_o),
         .Dout(xlslice_2_Dout));

@@ -655,6 +655,8 @@ set_property IOSTANDARD LVCMOS33 [get_ports stim_drive]
 set_property PACKAGE_PIN G20 [get_ports stim_drive]
 set_property IOSTANDARD LVCMOS33 [get_ports {HV_RSTb[0]}]
 set_property PACKAGE_PIN L19 [get_ports {HV_RSTb[0]}]
+set_property IOSTANDARD LVCMOS33 [get_ports {LED_FLASHER_SEL[0]}]
+set_property PACKAGE_PIN M16 [get_ports {LED_FLASHER_SEL[0]}]
 #BOARD LOCATION JUMPERS ON mobo; [1:0] are QUADPOS, [9:2] are APNUM
 set_property PULLUP true [get_ports {board_loc[0]}]
 set_property PULLUP true [get_ports {board_loc[1]}]

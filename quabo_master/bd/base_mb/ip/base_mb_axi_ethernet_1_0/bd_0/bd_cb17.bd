@@ -7,7 +7,7 @@
       "name": "bd_cb17",
       "scoped": "true",
       "synth_flow_mode": "None",
-      "tool_version": "2018.3_AR71948",
+      "tool_version": "2018.3.1_AR71948",
       "validated": "true"
     },
     "design_tree": {

@@ -1,8 +1,8 @@
-//Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
+//Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
-//Tool Version: Vivado v.2018.3_AR71948 (win64) Build 2405991 Thu Dec  6 23:38:27 MST 2018
-//Date        : Wed Sep 23 15:23:40 2020
-//Host        : RIXLAB2018 running 64-bit major release  (build 9200)
+//Tool Version: Vivado v.2018.3.1_AR71948 (lin64) Build 2489853 Tue Mar 26 04:18:30 MDT 2019
+//Date        : Mon Sep 13 21:51:38 2021
+//Host        : wei-Berkeley running 64-bit Ubuntu 18.04.5 LTS
 //Command     : generate_target base_mb_wrapper.bd
 //Design      : base_mb_wrapper
 //Purpose     : IP block netlist
@@ -24,6 +24,7 @@ module base_mb_wrapper
     J3pin4,
     J3pin5,
     J3pin6,
+    LED_FLASHER_SEL,
     MISO,
     MOSI,
     PCBrev_n,
@@ -108,6 +109,7 @@ module base_mb_wrapper
   output J3pin4;
   input J3pin5;
   output J3pin6;
+  output [0:0]LED_FLASHER_SEL;
   input MISO;
   output MOSI;
   input [0:0]PCBrev_n;
@@ -193,6 +195,7 @@ module base_mb_wrapper
   wire J3pin4;
   wire J3pin5;
   wire J3pin6;
+  wire [0:0]LED_FLASHER_SEL;
   wire MISO;
   wire MOSI;
   wire [0:0]PCBrev_n;
@@ -285,6 +288,7 @@ module base_mb_wrapper
         .J3pin4(J3pin4),
         .J3pin5(J3pin5),
         .J3pin6(J3pin6),
+        .LED_FLASHER_SEL(LED_FLASHER_SEL),
         .MISO(MISO),
         .MOSI(MOSI),
         .PCBrev_n(PCBrev_n),
