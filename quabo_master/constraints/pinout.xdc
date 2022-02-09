@@ -865,6 +865,26 @@ set_property PACKAGE_PIN F1 [get_ports user_sfp_0_sfp_txn_o]
 set_property PACKAGE_PIN F2 [get_ports user_sfp_0_sfp_txp_o]
 
 
+set_property IOSTANDARD LVCMOS18 [get_ports {tai_inout[0]}]
+set_property IOSTANDARD LVCMOS18 [get_ports {tai_inout[1]}]
+set_property IOSTANDARD LVCMOS18 [get_ports {tai_inout[2]}]
+set_property IOSTANDARD LVCMOS18 [get_ports {tai_inout[3]}]
+set_property IOSTANDARD LVCMOS18 [get_ports {tai_inout[4]}]
+set_property IOSTANDARD LVCMOS18 [get_ports {tai_inout[5]}]
+set_property IOSTANDARD LVCMOS18 [get_ports {tai_inout[6]}]
+set_property IOSTANDARD LVCMOS18 [get_ports {tai_inout[7]}]
+set_property IOSTANDARD LVCMOS18 [get_ports {tai_inout[8]}]
+set_property IOSTANDARD LVCMOS18 [get_ports {tai_inout[9]}]
+set_property PACKAGE_PIN V18 [get_ports {tai_inout[0]}]
+set_property PACKAGE_PIN V19 [get_ports {tai_inout[1]}]
+set_property PACKAGE_PIN V14 [get_ports {tai_inout[2]}]
+set_property PACKAGE_PIN W14 [get_ports {tai_inout[3]}]
+set_property PACKAGE_PIN W15 [get_ports {tai_inout[4]}]
+set_property PACKAGE_PIN W16 [get_ports {tai_inout[5]}]
+set_property PACKAGE_PIN AB14 [get_ports {tai_inout[6]}]
+set_property PACKAGE_PIN AB15 [get_ports {tai_inout[7]}]
+set_property PACKAGE_PIN Y15 [get_ports {tai_inout[8]}]
+set_property PACKAGE_PIN Y16 [get_ports {tai_inout[9]}]
 
 #set_property IOSTANDARD LVCMOS33 [get_ports pps_o_0]
 #set_property PACKAGE_PIN B20 [get_ports pps_o_0]
@@ -881,9 +901,14 @@ set_property DRIVE 16 [get_ports pps_inout_0]
 
 
 
-set_property IOSTANDARD LVCMOS18 [get_ports PCBrev_n[0]]
-set_property PULLUP true [get_ports PCBrev_n[0]]
-set_property PACKAGE_PIN V13 [get_ports PCBrev_n[0]]
+set_property IOSTANDARD LVCMOS18 [get_ports {PCBrev_n[0]}]
+set_property PULLUP true [get_ports {PCBrev_n[0]}]
+set_property PACKAGE_PIN V13 [get_ports {PCBrev_n[0]}]
 
 
 set_property BITSTREAM.CONFIG.SPI_BUSWIDTH 1 [current_design]
+
+
+
+
+

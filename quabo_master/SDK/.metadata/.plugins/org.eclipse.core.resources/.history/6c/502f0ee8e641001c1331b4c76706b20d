@@ -1,0 +1,46 @@
+/*
+ * hs_ph.h
+ *
+ *  Created on: Nov 8, 2021
+ *      Author: wei
+ */
+#ifndef SRC_HS_PH_H_
+#define SRC_HS_PH_H_
+
+#define AXI_HS_PH_ADDR 0x44A60000
+//cache related registers and bits
+#define AXI_CACHE_CFG_REG		0
+#define AXI_CACHE_DATA_REG		4
+#define AXI_CACHE_READ_BIT		0
+#define AXI_CACHE_SEL_BIT		1
+#define AXI_CACHE_RADDR_BIT		8
+//ph bl related registers and bits
+#define AXI_BL_CFG_REG			8
+#define AXI_BL_DATA_REG			12
+#define AXI_BL_ENA_BIT			0
+#define AXI_BL_WEA_BIT			1
+#define AXI_BL_ADDR_BIT			8
+#define AXI_BL_DATA_IN_BIT		16
+//ph remapping related registers and bits
+#define AXI_REMAP_CFG_REG		16
+#define AXI_REMAP_DATA_REG		20
+#define AXI_REMAP_ENA_BIT		0
+#define AXI_REMAP_WEA_BIT		1
+
+// This is used to switch mode.
+// We have two modes here:
+// 1. bl calculation mode--microbalze core can get ph data from fpga, so that it can calculate bl data;
+// 2. bl real time mode--fpga finish the bl subtraction in real-time.
+char BL_Cal_Mode();
+char BL_RT_Mode();
+// This is used to read ph data from cache RAM for baseline calculation
+char Cache_Read(char sel, unsigned short *cache);
+// These are used to write/read data to/from the remap RAM
+char Remap_Init(unsigned char *remap);
+char Remap_Write(unsigned char *remap);
+char Remap_Read(unsigned char *remap);
+// These are used to write/read data to/from the bl RAM
+char BL_Write(unsigned short *bl);
+char BL_Read(unsigned short *bl);
+
+#endif /* SRC_HS_PH_H_ */

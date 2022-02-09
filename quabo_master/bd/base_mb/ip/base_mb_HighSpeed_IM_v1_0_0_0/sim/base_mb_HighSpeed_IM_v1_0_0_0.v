@@ -1,4 +1,4 @@
-// (c) Copyright 1995-2020 Xilinx, Inc. All rights reserved.
+// (c) Copyright 1995-2022 Xilinx, Inc. All rights reserved.
 // 
 // This file contains confidential and proprietary information
 // of Xilinx, Inc. and is protected under U.S. and
@@ -47,15 +47,16 @@
 // DO NOT MODIFY THIS FILE.
 
 
-// IP VLNV: user.org:user:HighSpeed_IM_v2_9:2.9
-// IP Revision: 5
+// IP VLNV: user.org:user:HighSpeed_Module:3.9
+// IP Revision: 1
 
 `timescale 1ns/1ps
 
 (* IP_DEFINITION_SOURCE = "package_project" *)
 (* DowngradeIPIdentifiedWarnings = "yes" *)
 module base_mb_HighSpeed_IM_v1_0_0_0 (
-  elapsed_time,
+  im_elapsed_time,
+  ph_elapsed_time,
   aclk,
   aresetn,
   s_axi_packetheader_awaddr,
@@ -82,13 +83,15 @@ module base_mb_HighSpeed_IM_v1_0_0_0 (
   m_axis_tkeep,
   m_axis_tlast,
   m_axis_tready,
+  tai,
   rdata_to_user,
   ready_to_read,
   start_to_read,
   arst_for_imfifo
 );
 
-input wire [28 : 0] elapsed_time;
+input wire [28 : 0] im_elapsed_time;
+input wire [31 : 0] ph_elapsed_time;
 (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME aclk, ASSOCIATED_BUSIF m_axis:m_axi_im_config:s_axi_im_config:s_axi_packetheader, ASSOCIATED_RESET aresetn, FREQ_HZ 100000000, PHASE 0.0, CLK_DOMAIN base_mb_clk_wiz_1_0_clk_100, INSERT_VIP 0" *)
 (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 aclk CLK" *)
 input wire aclk;
@@ -146,6 +149,7 @@ output wire m_axis_tlast;
 (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME m_axis, TDATA_NUM_BYTES 4, TDEST_WIDTH 0, TID_WIDTH 0, TUSER_WIDTH 0, HAS_TREADY 1, HAS_TSTRB 0, HAS_TKEEP 1, HAS_TLAST 1, FREQ_HZ 100000000, PHASE 0.0, CLK_DOMAIN base_mb_clk_wiz_1_0_clk_100, LAYERED_METADATA undef, INSERT_VIP 0" *)
 (* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 m_axis TREADY" *)
 input wire m_axis_tready;
+input wire [9 : 0] tai;
 input wire [31 : 0] rdata_to_user;
 input wire ready_to_read;
 output wire start_to_read;
@@ -160,9 +164,11 @@ output wire arst_for_imfifo;
     .C_M_AXI_IM_Config_DATA_WIDTH(32),
     .C_M_AXI_IM_Config_TRANSACTIONS_NUM(4),
     .C_M_AXIS_TDATA_WIDTH(32),
-    .C_M_AXIS_START_COUNT(32)
+    .C_M_AXIS_START_COUNT(32),
+    .MODE_SEL(0)
   ) inst (
-    .elapsed_time(elapsed_time),
+    .im_elapsed_time(im_elapsed_time),
+    .ph_elapsed_time(ph_elapsed_time),
     .aclk(aclk),
     .aresetn(aresetn),
     .s_axi_packetheader_awaddr(s_axi_packetheader_awaddr),
@@ -189,6 +195,7 @@ output wire arst_for_imfifo;
     .m_axis_tkeep(m_axis_tkeep),
     .m_axis_tlast(m_axis_tlast),
     .m_axis_tready(m_axis_tready),
+    .tai(tai),
     .rdata_to_user(rdata_to_user),
     .ready_to_read(ready_to_read),
     .start_to_read(start_to_read),

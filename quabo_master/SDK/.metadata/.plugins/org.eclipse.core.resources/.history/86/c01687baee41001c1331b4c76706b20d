@@ -1,0 +1,117 @@
+/*
+ * hs_ph.c
+ *
+ *  Created on: Nov 8, 2021
+ *      Author: wei
+ *	Description:
+ *	This is used for HS-PH mode.
+ *	In HS-PH mode, we have three dual-port RAMs, so we need to read/write from/to the three dual-port RAMS.
+ *	A axi interface is used for completing the work.
+ */
+#include "string.h"
+#include "xil_io.h"
+#include "hs_ph.h"
+//Cache_Mode()
+//Description: It's used for setting the cache mode. Two modes can be set.
+//parameter:   mode--0-RT mode. Microblaze core will do nothing in this mode. Everything is finished in FPGA.
+//			         1-Cache mode. Microblaze core will read data from the cache ram. RT part will stop working.
+char Cache_Mode(char mode){
+	unsigned int tmp;
+	tmp = Xil_In32(AXI_HS_PH_ADDR + AXI_CACHE_CFG_REG);
+	tmp = tmp | (mode<<AXI_CACHE_READ_BIT);
+	Xil_Out32(AXI_HS_PH_ADDR + AXI_CACHE_CFG_REG,tmp);
+	return 0;
+}
+//Cache_Read()
+//Description: It's used for read data from cache RAM.
+//parameter: sel  --0-data will be read from Cache RAM0;
+//				  1-data will be read from Cache RAM1.
+//           cache--the data read from cache RAM will be stored here.
+char Cache_Read(char sel, unsigned short *cache){
+	//set to Cache mode first.
+	Cache_Mode(1);
+	unsigned int tmp;
+	tmp = Xil_In32(AXI_HS_PH_ADDR + AXI_CACHE_CFG_REG);
+	tmp = tmp | (sel << AXI_CACHE_SEL_BIT);
+	Xil_Out32(AXI_HS_PH_ADDR + AXI_CACHE_CFG_REG, tmp);
+	unsigned char i = 0;
+	//write an address, and then read a data from cache RAM
+	for(i=0;i<255;i++)
+	{
+		tmp = Xil_In32(AXI_HS_PH_ADDR + AXI_CACHE_CFG_REG);
+		tmp = tmp | (i << AXI_CACHE_RADDR_BIT);
+		Xil_Out32(AXI_HS_PH_ADDR + AXI_CACHE_CFG_REG, tmp);
+		*(cache+i) = Xil_In32(AXI_HS_PH_ADDR + AXI_CACHE_DATA_REG);
+	}
+	//set back to RT mode.
+	Cache_Mode(0);
+	return 0;
+}
+
+
+char BL_Write(unsigned short *bl){
+	return 0;
+}
+
+char BL_Read(unsigned short *bl){
+	return 0;
+}
+//Remap_Init()
+//Description: It's used for remap data initialization.
+//paramter: remap--it's used for storing the remap data.
+char Remap_Init(unsigned char *remap){
+	unsigned char i;
+	// this is for test.
+	for(i=0;i<255;i++)
+		*(remap + i) = i;
+	return 0;
+}
+
+//Remap_Write()
+//Description: It's used for write remap data to remap RAM.
+//parameter: remap--it stores the remap data.
+char Remap_Write(unsigned char *remap){
+	unsigned int tmp;
+	// enable writing first
+	tmp = Xil_In32(AXI_HS_PH_ADDR + AXI_REMAP_CFG_REG);
+	tmp = tmp | (1<<AXI_REMAP_WEA_BIT) | (1<<AXI_REMAP_ENA_BIT);
+	Xil_Out32(AXI_HS_PH_ADDR + AXI_REMAP_CFG_REG, tmp);
+	// write the remap data to remap RAM
+	unsigned char i;
+	for(i=0;i<255;i++)
+	{
+		tmp = Xil_In32(AXI_HS_PH_ADDR + AXI_REMAP_CFG_REG);
+		tmp = tmp | (i<<AXI_REMAP_ADDR_BIT) | (*(remap + i)<<AXI_REMAP_DATA_IN_BIT);
+		Xil_Out32(AXI_HS_PH_ADDR + AXI_REMAP_DATA_REG, tmp);
+	}
+	// disable writing
+	tmp = Xil_In32(AXI_HS_PH_ADDR + AXI_REMAP_CFG_REG);
+	tmp = tmp | (0<<AXI_REMAP_WEA_BIT) | (0<<AXI_REMAP_ENA_BIT);
+	return 0;
+}
+//Remap_Write()
+//Description: It's used for read remap data from remap RAM.
+//parameter: remap--it stores the remap data read from remap RAM.
+char Remap_Read(unsigned char *remap){
+	unsigned int tmp;
+	// enable reading first
+	tmp = Xil_In32(AXI_HS_PH_ADDR + AXI_REMAP_CFG_REG);
+	tmp = tmp | (0<<AXI_REMAP_WEA_BIT) | (1<<AXI_REMAP_ENA_BIT);
+	Xil_Out32(AXI_HS_PH_ADDR + AXI_REMAP_CFG_REG, tmp);
+	// read remap data from remap RAM
+	unsigned char i;
+	for(i=0;i<255;i++)
+	{
+		tmp = Xil_In32(AXI_HS_PH_ADDR + AXI_REMAP_CFG_REG);
+		tmp = tmp | (i<<AXI_REMAP_ADDR_BIT);
+		Xil_Out32(AXI_HS_PH_ADDR + AXI_REMAP_DATA_REG, tmp);
+		*(remap + i) = Xil_In32(AXI_HS_PH_ADDR + AXI_REMAP_DATA_REG);
+	}
+	// disable writing
+	tmp = Xil_In32(AXI_HS_PH_ADDR + AXI_REMAP_CFG_REG);
+	tmp = tmp | (0<<AXI_REMAP_WEA_BIT) | (0<<AXI_REMAP_ENA_BIT);
+	return 0;
+}
+
+
+

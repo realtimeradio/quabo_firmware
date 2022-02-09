@@ -1,4 +1,4 @@
--- (c) Copyright 1995-2020 Xilinx, Inc. All rights reserved.
+-- (c) Copyright 1995-2022 Xilinx, Inc. All rights reserved.
 -- 
 -- This file contains confidential and proprietary information
 -- of Xilinx, Inc. and is protected under U.S. and
@@ -46,8 +46,8 @@
 -- 
 -- DO NOT MODIFY THIS FILE.
 
--- IP VLNV: user.org:user:wrc_board_quabo_Light:1.2
--- IP Revision: 2
+-- IP VLNV: user.org:user:wrc_board_quabo_Light:1.3
+-- IP Revision: 1
 
 LIBRARY ieee;
 USE ieee.std_logic_1164.ALL;
@@ -83,7 +83,8 @@ ENTITY base_mb_wrc_board_quabo_Light_0_2 IS
     reset_i : IN STD_LOGIC;
     clk_ext_10m : IN STD_LOGIC;
     pps_o : OUT STD_LOGIC;
-    clk_sys_o : OUT STD_LOGIC
+    clk_sys_o : OUT STD_LOGIC;
+    tm_tai_o : OUT STD_LOGIC_VECTOR(9 DOWNTO 0)
   );
 END base_mb_wrc_board_quabo_Light_0_2;
 
@@ -124,7 +125,8 @@ ARCHITECTURE base_mb_wrc_board_quabo_Light_0_2_arch OF base_mb_wrc_board_quabo_L
       reset_i : IN STD_LOGIC;
       clk_ext_10m : IN STD_LOGIC;
       pps_o : OUT STD_LOGIC;
-      clk_sys_o : OUT STD_LOGIC
+      clk_sys_o : OUT STD_LOGIC;
+      tm_tai_o : OUT STD_LOGIC_VECTOR(9 DOWNTO 0)
     );
   END COMPONENT wrc_board_quabo;
   ATTRIBUTE IP_DEFINITION_SOURCE : STRING;
@@ -185,6 +187,7 @@ BEGIN
       reset_i => reset_i,
       clk_ext_10m => clk_ext_10m,
       pps_o => pps_o,
-      clk_sys_o => clk_sys_o
+      clk_sys_o => clk_sys_o,
+      tm_tai_o => tm_tai_o
     );
 END base_mb_wrc_board_quabo_Light_0_2_arch;

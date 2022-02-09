@@ -8,6 +8,7 @@ LD_SRCS += \
 
 C_SRCS += \
 ../src/EthCore_Configuration.c \
+../src/hs_ph.c \
 ../src/main.c \
 ../src/packet_header.c \
 ../src/platform.c \
@@ -15,6 +16,7 @@ C_SRCS += \
 
 OBJS += \
 ./src/EthCore_Configuration.o \
+./src/hs_ph.o \
 ./src/main.o \
 ./src/packet_header.o \
 ./src/platform.o \
@@ -22,6 +24,7 @@ OBJS += \
 
 C_DEPS += \
 ./src/EthCore_Configuration.d \
+./src/hs_ph.d \
 ./src/main.d \
 ./src/packet_header.d \
 ./src/platform.d \

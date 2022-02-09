@@ -11,21 +11,21 @@
 
 #define ACQ_MODE_HS_IM     0x03
 
-#define AXI_RAM_ADDR	0x44A80000
-#define RAM_WE_EN()					Xil_Out32(AXI_RAM_ADDR+0,1)
-#define RAM_WE_DIS()				Xil_Out32(AXI_RAM_ADDR+0,0)
-#define WRITE_TO_RAM(addr, data) 	Xil_Out32(AXI_RAM_ADDR+4, addr); \
-									Xil_Out32(AXI_RAM_ADDR+8, data);
-#define READ_FROM_RAM(addr, data)	Xil_Out32(AXI_RAM_ADDR+4, addr); \
-									Xil_Out32(AXI_RAM_ADDR+12,0);	\
-									data = Xil_In32(AXI_RAM_ADDR+12);
-#define SELF_CHECK(data)			data = Xil_In32(AXI_RAM_ADDR+8);
-#define GET_STATE(data)				data = Xil_In32(AXI_RAM_ADDR+16);
-#define IMFIFO_MB_CTRL()			Xil_Out32(AXI_RAM_ADDR+0,0);
-#define IMFIFO_FPGA_CTRL_16BIT()	Xil_Out32(AXI_RAM_ADDR+0,2);
-#define IMFIFO_FPGA_CTRL_8BIT()		Xil_Out32(AXI_RAM_ADDR+0,4);
-#define SET_ACQ_MODE(data)			Xil_Out32(AXI_RAM_ADDR+20,data);
-
+//#define AXI_RAM_ADDR	0x44A80000
+#define RAM_WE_EN(AXI_RAM_ADDR)					Xil_Out32(AXI_RAM_ADDR+0,1)
+#define RAM_WE_DIS(AXI_RAM_ADDR)				Xil_Out32(AXI_RAM_ADDR+0,0)
+#define WRITE_TO_RAM(AXI_RAM_ADDR,addr, data) 	Xil_Out32(AXI_RAM_ADDR+4, addr); \
+												Xil_Out32(AXI_RAM_ADDR+8, data);
+#define READ_FROM_RAM(AXI_RAM_ADDR,addr, data)	Xil_Out32(AXI_RAM_ADDR+4, addr); \
+												Xil_Out32(AXI_RAM_ADDR+12,0);	\
+												data = Xil_In32(AXI_RAM_ADDR+12);
+#define SELF_CHECK(AXI_RAM_ADDR,data)			data = Xil_In32(AXI_RAM_ADDR+8);
+#define GET_STATE(AXI_RAM_ADDR,data)			data = Xil_In32(AXI_RAM_ADDR+16);
+#define IMFIFO_MB_CTRL(AXI_RAM_ADDR)			Xil_Out32(AXI_RAM_ADDR+0,0);
+#define IMFIFO_FPGA_CTRL_16BIT(AXI_RAM_ADDR)	Xil_Out32(AXI_RAM_ADDR+0,2);
+#define IMFIFO_FPGA_CTRL_8BIT(AXI_RAM_ADDR)		Xil_Out32(AXI_RAM_ADDR+0,4);
+#define SET_ACQ_MODE(AXI_RAM_ADDR,data)			Xil_Out32(AXI_RAM_ADDR+20,((Xil_In32(AXI_RAM_ADDR+20)&0xff00)|data));
+#define SET_PACKET_VER(AXI_RAM_ADDR,data)		Xil_Out32(AXI_RAM_ADDR+20, ((Xil_In32(AXI_RAM_ADDR+20)&0xff)|data<<8));
 //because the length of the eth packet struct is 48 bytes
 #define EthPacketHeader_Word_Len	13
 
@@ -65,9 +65,9 @@ typedef struct EthPacketHeader_Keys{
 	unsigned short total_len;
 	unsigned short length;
 } EthPacketHeader_Keys;
-char Panoseti_EthPacketHeader_Init(EthPacketHeader_Keys *ethpacketheader_keys);
-void Panoseti_WriteHeaderToRam();
-char Panoseti_ReadHeaderFromRam();
-unsigned int Panoseti_GetStateMachine();
-void Panoseti_IMFIFO_Reset();
+char Panoseti_EthPacketHeader_Init(unsigned int baseaddr,EthPacketHeader_Keys *ethpacketheader_keys, unsigned char packet_ver);
+void Panoseti_WriteHeaderToRam(unsigned int baseaddr);
+char Panoseti_ReadHeaderFromRam(unsigned int baseaddr);
+unsigned int Panoseti_GetStateMachine(unsigned int baseaddr);
+void Panoseti_IMFIFO_Reset(unsigned int baseaddr);
 #endif

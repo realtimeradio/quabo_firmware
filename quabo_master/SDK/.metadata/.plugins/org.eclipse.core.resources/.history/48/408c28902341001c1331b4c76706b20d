@@ -1,0 +1,14 @@
+/*
+ * hs_ph.c
+ *
+ *  Created on: Nov 8, 2021
+ *      Author: wei
+ *	Description:
+ *	This is used for HS-PH mode.
+ *	In HS-PH mode, we have three dual-port RAMs, so we need to read/write from/to the three dual-port RAMS.
+ *	A axi interface is used for completing the work.
+ */
+
+
+
+

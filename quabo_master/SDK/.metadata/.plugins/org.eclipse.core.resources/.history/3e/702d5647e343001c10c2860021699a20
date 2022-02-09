@@ -1,0 +1,88 @@
+/*
+ * hs_ph.h
+ *
+ *  Created on: Nov 8, 2021
+ *      Author: wei
+ */
+#ifndef SRC_HS_PH_H_
+#define SRC_HS_PH_H_
+
+#define AXI_HS_PH_ADDR 0x44A60000
+//cache related registers and bits
+#define AXI_CACHE_CFG_REG		0
+#define AXI_CACHE_DATA_REG		4
+#define AXI_CACHE_READ_BIT		0
+#define AXI_CACHE_SEL_BIT		1
+#define AXI_CACHE_RADDR_BIT		8
+//ph bl related registers and bits
+#define AXI_BL_CFG_REG			8
+#define AXI_BL_DATA_REG			12
+#define AXI_BL_ENA_BIT			0
+#define AXI_BL_WEA_BIT			1
+#define AXI_BL_ADDR_BIT			8
+#define AXI_BL_DATA_IN_BIT		16
+//ph remapping related registers and bits
+#define AXI_REMAP_CFG_REG		16
+#define AXI_REMAP_DATA_REG		20
+#define AXI_REMAP_ENA_BIT		0
+#define AXI_REMAP_WEA_BIT		1
+#define AXI_REMAP_ADDR_BIT		8
+#define AXI_REMAP_DATA_IN_BIT	16
+
+#ifdef REMAP_FOR_BGA
+		//Not sure why this is a u16 array, rather than u8
+		u16 remap_array [256] = {
+                24,     23,     240,    136,        8,      7,      241,        137,        9,      21,     225,        168,        25,     5,      224,    169,
+                26,     4,      208,    185,        10,     20,     209,        184,        11,     19,     193,        200,        27,     3,      192,    201,
+                28,     18,     176,    216,        12,     2,      177,        217,        13,     17,     161,        232,        29,     16,     160,    248,
+                30,     1,      144,    233,        14,     0,      145,        249,        15,     55,     129,        138,        31,     39,     128,    139,
+                40,     54,     243,    154,        56,     37,     242,        171,        57,     38,     226,        155,        41,     53,     227,    170,
+                42,     67,     211,    205,        58,     52,     210,        186,        59,     36,     194,        187,        43,     35,     195,    203,
+                44,     51,     179,    202,        60,     50,     178,        218,        61,     49,     162,        234,        45,     34,     163,    219,
+                46,     33,     147,    235,        62,     48,     146,        250,        63,     32,     130,        251,        47,     87,     131,    140,
+                88,     22,     244,    152,        72,     6,      245,        153,        73,     70,     229,        157,        89,     86,     228,    156,
+                90,     85,     212,    172,        74,     71,     213,        141,        75,     83,     197,        204,        91,     84,     196,    188,
+                92,     69,     180,    173,        76,     68,     181,        189,        77,     81,     165,        236,        93,     66,     164,    221,
+                94,     82,     148,    220,        78,     80,     149,        252,        79,     65,     133,        237,        95,     64,     132,    253,
+                104,    118,    247,    158,        120,    103,    246,        143,        121,    119,    230,        142,        105,    102,    231,    174,
+                106,    117,    215,    159,        122,    101,    214,        175,        123,    116,    198,        190,        107,    100,    199,    191,
+                108,    99,     183,    207,        124,    115,    182,        206,        125,    114,    166,        222,        109,    97,     167,    239,
+                110,    96,     151,    255,        126,    112,    150,        254,        127,    98,     134,        223,        111,    113,    135,    238
+        };
+#else
+		u16 remap_array [256] = {
+				24, 	96, 	240, 	255, 	8, 		112,	241,	254,	9,		113,	225,	238,	25,		97,		224,	239,
+				26,		98,		208,	223,	10,		114,	209,	222,	11,		115,	193,	206,	27,		99,		192,	207,
+				28,		100,	176,	191,	12,		116,	177,	190,	13,		117,	161,	174,	29,		101,	160,	175,
+				30,		102,	144,	159,	14,		118,	145,	158,	15,		119,	129,	142,	31,		103,	128,	143,
+				40,		80,		243,	252,	56,		64,		242,	253,	57,		65,		226,	237,	41,		81,		227,	236,
+				42,		82,		211,	220,	58,		66,		210,	221,	59,		67,		194,	205,	43,		83,		195,	204,
+				44,		84,		179,	188,	60,		68,		178,	189,	61,		69,		162,	173,	45,		85,		163,	172,
+				46,		86,		147,	156,	62,		70,		146,	157,	63,		71,		130,	141,	47,		87,		131,	140,
+				88,		32,		244,	251,	72,		48,		245,	250,	73,		49,		229,	234,	89,		33,		228,	235,
+				90,		34,		212,	219,	74,		50,		213,	218,	75,		51,		197,	202,	91,		35,		196,	203,
+				92,		36,		180,	187,	76,		52,		181,	186,	77,		53,		165,	170,	93,		37,		164,	171,
+				94,		38,		148,	155,	78,		54,		149,	154,	79,		55,		133,	138,	95,		39,		132,	139,
+				104,	16,		247,	248,	120,	0,		246,	249,	121,	1,		230,	233,	105,	17,		231,	232,
+				106,	18,		215,	216,	122,	2,		214,	217,	123,	3,		198,	201,	107,	19,		199,	200,
+				108,	20,		183,	184,	124,	4,		182,	185,	125,	5,		166,	169,	109,	21,		167,	168,
+				110,	22,		151,	152,	126,	6,		150,	153,	127,	7,		134,	137,	111,	23,		135,	136
+		};
+#endif
+// This is used to switch mode.
+// We have two modes here:
+// 1. bl calculation mode--microbalze core can get ph data from fpga, so that it can calculate bl data;
+// 2. bl real time mode--fpga finish the bl subtraction in real-time.
+char Cache_Mode(char mode);
+// This is used to read ph data from cache RAM for baseline calculation
+char Cache_Read(char sel, unsigned short *cache);
+// These are used to write/read data to/from the remap RAM
+char Remap_Init(unsigned char *remap);
+char Remap_Write(unsigned char *remap);
+char Remap_Read(unsigned char *remap);
+char Remap_Check(unsigned char *remap_w, unsigned char *remap_r);
+// These are used to write/read data to/from the bl RAM
+char BL_Write(unsigned short *bl);
+char BL_Read(unsigned short *bl);
+char BL_Check(unsigned short *bl_w, unsigned short *bl_r);
+#endif /* SRC_HS_PH_H_ */

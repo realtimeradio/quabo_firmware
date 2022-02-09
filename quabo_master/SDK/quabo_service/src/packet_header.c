@@ -66,7 +66,7 @@ void Cal_IP_Checksum(){
 
 //cal the udp packet checksum
 //it's not the final result, and this value will be used in fpga
-void Cal_UDP_ChecksumPart(){
+void Cal_UDP_ChecksumPart(unsigned char packet_ver){
 	unsigned int checksum_sum = 0;
 	checksum_sum += ethpacketheader_user_ptr->src_ip[0] *256;
 	checksum_sum += ethpacketheader_user_ptr->src_ip[1];
@@ -85,6 +85,7 @@ void Cal_UDP_ChecksumPart(){
 	checksum_sum += ethpacketheader_user_ptr->board_loc[0] *256;
 	checksum_sum += ethpacketheader_user_ptr->board_loc[1];
 	checksum_sum +=	ethpacketheader_user_ptr->acqmode *256;
+	checksum_sum += packet_ver;
 
 	ethpacketheader_user_ptr->udp_checksum_part = checksum_sum;
 }
@@ -111,7 +112,7 @@ void EthPacketHeader_for_FPGA_Init(){
 	memcpy(ethpacketheader_ptr->board_loc, ethpacketheader_user_ptr->board_loc,4);				//*char
 }
 //config the packet header struct
-char Panoseti_EthPacketHeader_Init(EthPacketHeader_Keys *ethpacketheader_keys)
+char Panoseti_EthPacketHeader_Init(unsigned int baseaddr,EthPacketHeader_Keys *ethpacketheader_keys, unsigned char packet_ver)
 {
 	memcpy(ethpacketheader_user_ptr->dst_mac, ethpacketheader_keys->dst_mac,6);
 	memcpy(ethpacketheader_user_ptr->src_mac, ethpacketheader_keys->src_mac,6);
@@ -124,40 +125,40 @@ char Panoseti_EthPacketHeader_Init(EthPacketHeader_Keys *ethpacketheader_keys)
 	ethpacketheader_user_ptr->total_len = ethpacketheader_keys->total_len;
 	ethpacketheader_user_ptr->length = ethpacketheader_keys->length;
 	Cal_IP_Checksum();
-	Cal_UDP_ChecksumPart();
+	Cal_UDP_ChecksumPart(packet_ver);
 	EthPacketHeader_for_FPGA_Init();
 	//Wirte the parameters into ram in fpga
-	Panoseti_WriteHeaderToRam();
+	Panoseti_WriteHeaderToRam(baseaddr);
 	//Read the parameters back, and compare with the original paramters
 	char state = 0;
-	state = Panoseti_ReadHeaderFromRam();
+	state = Panoseti_ReadHeaderFromRam(baseaddr);
 	return state;
 }
 
 //write the packet header struct to ram in fpga
-void Panoseti_WriteHeaderToRam()
+void Panoseti_WriteHeaderToRam(unsigned int baseaddr)
 {
-	RAM_WE_EN();
+	RAM_WE_EN(baseaddr);
 	unsigned int *data =(unsigned int*)ethpacketheader_ptr;
 	unsigned char addr = 0;
 	//unsigned int tmp;
 	for(addr=0; addr<EthPacketHeader_Word_Len; addr++)
 	{
-		WRITE_TO_RAM(addr, *(data+addr));
-		//SELF_CHECK(tmp);
+		WRITE_TO_RAM(baseaddr, addr, *(data+addr));
+		//SELF_CHECK(baseaddr, tmp);
 	}
-	RAM_WE_DIS();
+	RAM_WE_DIS(baseaddr);
 }
 
 //read the packet header info back from the ram in fpga
-char Panoseti_ReadHeaderFromRam()
+char Panoseti_ReadHeaderFromRam(unsigned int baseaddr)
 {
 	unsigned int *data = (unsigned int*)ethpacketheader_ptr;
 	unsigned int tmp = 0;
 	unsigned char addr = 0;
 	for(addr=0; addr< EthPacketHeader_Word_Len; addr++)
 	{
-		READ_FROM_RAM(addr,tmp);
+		READ_FROM_RAM(baseaddr, addr,tmp);
 		if(tmp != *(data+addr))
 			return -1;
 	}
@@ -168,18 +169,18 @@ char Panoseti_ReadHeaderFromRam()
 //because I'm working remotelt, and the jtag is connected to one quabo, which works well,
 //but the other three can't work, and I don't know what happened,
 //so what I can do is connect hs_im_state out, to understand what happened in fpga...
-unsigned int Panoseti_GetStateMachine()
+unsigned int Panoseti_GetStateMachine(unsigned int baseaddr)
 {
 	unsigned int state;
-	GET_STATE(state);
+	GET_STATE(baseaddr, state);
 	return state;
 }
 
 //reset im fifo
-void Panoseti_IMFIFO_Reset()
+void Panoseti_IMFIFO_Reset(unsigned int baseaddr)
 {
 	int i = 0;
-	Xil_Out32(AXI_RAM_ADDR+0,8);
+	Xil_Out32(baseaddr+0,8);
 	for(i=0; i<1000;i++); //this is for delay
-	Xil_Out32(AXI_RAM_ADDR+0,0);
+	Xil_Out32(baseaddr+0,0);
 }

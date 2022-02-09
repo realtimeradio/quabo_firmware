@@ -63,7 +63,7 @@ src/main.o src/main.o: ../src/main.c \
  ../../standalone_bsp_0/microblaze_0/include/flash.h \
  ../src/EthCore_Configuration.h \
  ../../standalone_bsp_0/microblaze_0/include/xil_types.h \
- ../src/packet_header.h \
+ ../src/packet_header.h ../src/hs_ph.h \
  ../../standalone_bsp_0/microblaze_0/include/netif/etharp.h \
  ../../standalone_bsp_0/microblaze_0/include/lwip/etharp.h \
  ../../standalone_bsp_0/microblaze_0/include/lwip/prot/ethernet.h \
@@ -202,6 +202,8 @@ src/main.o src/main.o: ../src/main.c \
 ../../standalone_bsp_0/microblaze_0/include/xil_types.h:
 
 ../src/packet_header.h:
+
+../src/hs_ph.h:
 
 ../../standalone_bsp_0/microblaze_0/include/netif/etharp.h:
 

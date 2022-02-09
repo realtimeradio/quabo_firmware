@@ -1,8 +1,8 @@
-//Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
+//Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
-//Tool Version: Vivado v.2018.3.1_AR71948 (lin64) Build 2489853 Tue Mar 26 04:18:30 MDT 2019
-//Date        : Mon Sep 13 21:51:38 2021
-//Host        : wei-Berkeley running 64-bit Ubuntu 18.04.5 LTS
+//Tool Version: Vivado v.2018.3 (lin64) Build 2405991 Thu Dec  6 23:36:41 MST 2018
+//Date        : Wed Jan 12 20:40:12 2022
+//Host        : wei-Berkeley running 64-bit Ubuntu 20.04.3 LTS
 //Command     : generate_target base_mb_wrapper.bd
 //Design      : base_mb_wrapper
 //Purpose     : IP block netlist
@@ -88,6 +88,7 @@ module base_mb_wrapper
     sysclkin_p,
     sysclkout_n,
     sysclkout_p,
+    tai_inout,
     user_sfp_0_sfp_los_i,
     user_sfp_0_sfp_mod_def1_b,
     user_sfp_0_sfp_mod_def2_b,
@@ -173,6 +174,7 @@ module base_mb_wrapper
   input sysclkin_p;
   output sysclkout_n;
   output sysclkout_p;
+  inout [9:0]tai_inout;
   input user_sfp_0_sfp_los_i;
   inout user_sfp_0_sfp_mod_def1_b;
   inout user_sfp_0_sfp_mod_def2_b;
@@ -265,6 +267,7 @@ module base_mb_wrapper
   wire sysclkin_p;
   wire sysclkout_n;
   wire sysclkout_p;
+  wire [9:0]tai_inout;
   wire user_sfp_0_sfp_los_i;
   wire user_sfp_0_sfp_mod_def1_b;
   wire user_sfp_0_sfp_mod_def2_b;
@@ -356,6 +359,7 @@ module base_mb_wrapper
         .sysclkin_p(sysclkin_p),
         .sysclkout_n(sysclkout_n),
         .sysclkout_p(sysclkout_p),
+        .tai_inout(tai_inout),
         .user_sfp_0_sfp_los_i(user_sfp_0_sfp_los_i),
         .user_sfp_0_sfp_mod_def1_b(user_sfp_0_sfp_mod_def1_b),
         .user_sfp_0_sfp_mod_def2_b(user_sfp_0_sfp_mod_def2_b),

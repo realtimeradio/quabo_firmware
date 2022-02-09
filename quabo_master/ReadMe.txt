@@ -1,3 +1,20 @@
+v20.0(1):
+(1) Fast PH readout is implemented. This part is moved from microblaze software to FPGA, so it's much faster now.
+(2) 10-bit TAI time is added to IM and PH packets, which is from WR.
+    quabo0 sends the TAI time out, and quabo1/2/3 receive the TAI time.
+(3) Added two new cmds:
+    a) add a new cmd for setting IP addresses of IM and PH packets.
+       after the cmd is sent to quabo, a reply with MAC addresses will be sent from quabo.
+       the default IP address of IM and PH packets is 192.168.1.100.
+    b) add a new cmd for setting IP address of HK packets.
+       the default IP address of HK packets is 192.168.1.100.
+(4) Any host computer in the local network is able to send cmds to quabo, and quabo will reply to this host computer(if there is a reply).
+(5) PH packets contain 16-bit, signed value, which could be negative.
+(6) Packet version is added to the packet, which is used for checking PH packets.
+    a) if the packet version is 0, it's an old PH packet, and it contains 12-bit, unsigned value;
+    b) if the packet version is 1, it's a new PH packet, and it contains 16-bit, signed value.
+Normally, we don't care about the packet version.
+
 v11.8(9):
 (1) The bug of periodic high flux measurments is fixed.
 The reason is that frame_go and a state machine in im_mode_state_machine.v were reset by pps,

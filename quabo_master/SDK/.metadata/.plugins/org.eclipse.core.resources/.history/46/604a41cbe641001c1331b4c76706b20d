@@ -1,0 +1,61 @@
+/*
+ * hs_ph.c
+ *
+ *  Created on: Nov 8, 2021
+ *      Author: wei
+ *	Description:
+ *	This is used for HS-PH mode.
+ *	In HS-PH mode, we have three dual-port RAMs, so we need to read/write from/to the three dual-port RAMS.
+ *	A axi interface is used for completing the work.
+ */
+#include "string.h"
+#include "xil_io.h"
+#include "hs_ph.h"
+
+char BL_Cal_Mode(){
+	unsigned int tmp;
+	tmp = Xil_In32(AXI_HS_PH_ADDR+0);
+	tmp = tmp | 0x00000001;
+	Xil_Out32(AXI_HS_PH_ADDR+0,tmp);
+	return 0;
+}
+
+char BL_RT_Mode(){
+	unsigned int tmp;
+	tmp = Xil_In32(AXI_HS_PH_ADDR+0);
+	tmp = tmp & 0xFFFFFFF0;
+	Xil_Out32(AXI_HS_PH_ADDR+0,tmp);
+	return 0;
+}
+
+char Cache_Read(char sel, unsigned short *cache){
+	unsigned int tmp;
+	BL_Cal_Mode();
+	tmp = Xil_In32(AXI_HS_PH_ADDR+0);
+	tmp = tmp |
+	return 0;
+}
+
+char Remap_Init(unsigned char *remap){
+	return 0;
+}
+
+char Remap_Write(unsigned char *remap){
+	return 0;
+}
+
+char Remap_Read(unsigned char *remap){
+	return 0;
+}
+
+char BL_Write(unsigned short *bl){
+	return 0;
+}
+
+char BL_Read(unsigned short *bl){
+	return 0;
+}
+
+
+
+
