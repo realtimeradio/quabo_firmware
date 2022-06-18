@@ -2,13 +2,13 @@
 proc init_gui { IPINST } {
   ipgui::add_param $IPINST -name "Component_Name"
   #Adding Page
-  set Page_0 [ipgui::add_page $IPINST -name "Page 0"]
-  ipgui::add_param $IPINST -name "g_dpram_initf" -parent ${Page_0}
-  ipgui::add_param $IPINST -name "g_simulation" -parent ${Page_0}
+  ipgui::add_page $IPINST -name "Page 0"
 
   ipgui::add_param $IPINST -name "g_dmdt_mult_factor"
   ipgui::add_param $IPINST -name "g_dmdt_div_factor"
   ipgui::add_param $IPINST -name "g_dmdt_period_ns"
+  ipgui::add_param $IPINST -name "g_dpram_initf"
+  ipgui::add_param $IPINST -name "g_simulation"
 
 }
 
@@ -66,5 +66,20 @@ proc update_MODELPARAM_VALUE.g_dpram_initf { MODELPARAM_VALUE.g_dpram_initf PARA
 proc update_MODELPARAM_VALUE.g_simulation { MODELPARAM_VALUE.g_simulation PARAM_VALUE.g_simulation } {
 	# Procedure called to set VHDL generic/Verilog parameter value(s) based on TCL parameter value
 	set_property value [get_property value ${PARAM_VALUE.g_simulation}] ${MODELPARAM_VALUE.g_simulation}
+}
+
+proc update_MODELPARAM_VALUE.g_dmdt_mult_factor { MODELPARAM_VALUE.g_dmdt_mult_factor PARAM_VALUE.g_dmdt_mult_factor } {
+	# Procedure called to set VHDL generic/Verilog parameter value(s) based on TCL parameter value
+	set_property value [get_property value ${PARAM_VALUE.g_dmdt_mult_factor}] ${MODELPARAM_VALUE.g_dmdt_mult_factor}
+}
+
+proc update_MODELPARAM_VALUE.g_dmdt_div_factor { MODELPARAM_VALUE.g_dmdt_div_factor PARAM_VALUE.g_dmdt_div_factor } {
+	# Procedure called to set VHDL generic/Verilog parameter value(s) based on TCL parameter value
+	set_property value [get_property value ${PARAM_VALUE.g_dmdt_div_factor}] ${MODELPARAM_VALUE.g_dmdt_div_factor}
+}
+
+proc update_MODELPARAM_VALUE.g_dmdt_period_ns { MODELPARAM_VALUE.g_dmdt_period_ns PARAM_VALUE.g_dmdt_period_ns } {
+	# Procedure called to set VHDL generic/Verilog parameter value(s) based on TCL parameter value
+	set_property value [get_property value ${PARAM_VALUE.g_dmdt_period_ns}] ${MODELPARAM_VALUE.g_dmdt_period_ns}
 }
 

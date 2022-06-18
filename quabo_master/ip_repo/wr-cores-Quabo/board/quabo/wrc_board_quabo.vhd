@@ -66,6 +66,9 @@ entity wrc_board_quabo is
 --     g_dpram_initf : string := "../../bin/wrpc/wrc_phy16.bram";
     g_dpram_initf : string := "/home/wei/Desktop/wrc_phy16_no_arp_sdb.bram";
 --	 g_dpram_initf : string := "../../bin/wrpc/wrc_no_vlan.bram";
+    g_dmdt_mult_factor          : integer              := 50;
+    g_dmdt_div_factor           : integer              := 16;
+    g_dmdt_period_ns            : real                 := 50.0;
     -- Simulation-mode enable parameter. Set by default (synthesis) to 0, and
     -- changed to non-zero in the instantiation of the top level DUT in the testbench.
     -- Its purpose is to reduce some internal counters/timeouts to speed up simulations.
@@ -367,6 +370,9 @@ begin  -- architecture top
     generic map (
       g_simulation                => g_simulation,
       g_with_external_clock_input => FALSE,   -- RR changed
+      g_dmdt_mult_factor          => g_dmdt_mult_factor,
+      g_dmdt_div_factor           => g_dmdt_div_factor,
+      g_dmdt_period_ns            => g_dmdt_period_ns,
       g_dpram_initf               => g_dpram_initf,
       g_fabric_iface              => STREAMERS)--PLAIN)
     port map (
