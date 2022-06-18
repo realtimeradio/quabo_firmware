@@ -51,7 +51,7 @@ package wr_quabo_pkg is
       g_with_external_clock_input : boolean              := TRUE;
       g_dmdt_mult_factor          : integer              := 50;
       g_dmdt_div_factor           : integer              := 16;
-      g_dmdt_period_ns            : real                 := 50.0;
+      g_dmdt_period_ns            : integer              := 50;
       g_aux_clks                  : integer              := 0;
       g_fabric_iface              : t_board_fabric_iface := plain;
       g_streamers_op_mode         : t_streamers_op_mode  := TX_AND_RX;
