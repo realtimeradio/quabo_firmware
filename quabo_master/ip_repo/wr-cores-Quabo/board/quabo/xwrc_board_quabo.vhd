@@ -62,7 +62,7 @@ entity xwrc_board_quabo is
     -- DMDT input clock frequency options
     g_dmdt_mult_factor          : integer              := 50;
     g_dmdt_div_factor           : integer              := 16;
-    g_dmdt_period_ns            : real                 := 50.0;
+    g_dmdt_period_ns            : integer              := 50;
     -- Number of aux clocks syntonized by WRPC to WR timebase
     g_aux_clks                  : integer              := 1;
     -- plain     = expose WRC fabric interface
@@ -315,7 +315,7 @@ begin  -- architecture struct
       g_with_external_clock_input => g_with_external_clock_input,
       g_dmdt_mult_factor          => g_dmdt_mult_factor,
       g_dmdt_div_factor           => g_dmdt_div_factor,
-      g_dmdt_period_ns            => g_dmdt_period_ns,
+      g_dmdt_period_ns            => real(g_dmdt_period_ns),
       g_use_default_plls          => TRUE,
       g_simulation                => g_simulation)
     port map (

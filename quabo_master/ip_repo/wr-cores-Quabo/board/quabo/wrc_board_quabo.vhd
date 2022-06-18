@@ -68,7 +68,7 @@ entity wrc_board_quabo is
 --	 g_dpram_initf : string := "../../bin/wrpc/wrc_no_vlan.bram";
     g_dmdt_mult_factor          : integer              := 50;
     g_dmdt_div_factor           : integer              := 16;
-    g_dmdt_period_ns            : real                 := 50.0;
+    g_dmdt_period_ns            : integer              := 50;
     -- Simulation-mode enable parameter. Set by default (synthesis) to 0, and
     -- changed to non-zero in the instantiation of the top level DUT in the testbench.
     -- Its purpose is to reduce some internal counters/timeouts to speed up simulations.
