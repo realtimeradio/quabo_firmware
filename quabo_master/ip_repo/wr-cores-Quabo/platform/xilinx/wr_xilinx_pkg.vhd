@@ -43,6 +43,9 @@ package wr_xilinx_pkg is
       g_fpga_family               : string  := "spartan6";
       g_with_external_clock_input : boolean := FALSE;
       g_use_default_plls          : boolean := TRUE;
+      g_dmdt_mult_factor          : integer := 50;
+      g_dmdt_div_factor           : integer := 16;
+      g_dmdt_period_ns            : real    := 50.0;
       g_gtp_enable_ch0            : integer := 0;
       g_gtp_enable_ch1            : integer := 1;
       g_simulation                : integer := 0);

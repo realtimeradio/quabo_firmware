@@ -63,6 +63,10 @@ entity xwrc_platform_xilinx is
       -- Select GTP channel to use (only one can be active)
       g_gtp_enable_ch0            : integer := 0;
       g_gtp_enable_ch1            : integer := 1;
+      --PLL frequency control
+      g_dmdt_mult_factor          : integer := 50;
+      g_dmdt_div_factor           : integer := 16;
+      g_dmdt_period_ns            : real    := 50.0;
       -- Set to TRUE will speed up some initialization processes
       g_simulation                : integer := 0
       );
@@ -249,12 +253,12 @@ begin  -- architecture rtl
           CLK_FEEDBACK       => "CLKFBOUT",
           COMPENSATION       => "INTERNAL",
           DIVCLK_DIVIDE      => 1,
-          CLKFBOUT_MULT      => 50,
+          CLKFBOUT_MULT      => g_dmdt_mult_factor,
           CLKFBOUT_PHASE     => 0.000,
-          CLKOUT0_DIVIDE     => 16,
+          CLKOUT0_DIVIDE     => g_dmdt_div_factor,
           CLKOUT0_PHASE      => 0.000,
           CLKOUT0_DUTY_CYCLE => 0.500,
-          CLKIN_PERIOD       => 50.0,
+          CLKIN_PERIOD       => g_dmdt_period_ns,
           REF_JITTER         => 0.016)
         port map (
           CLKFBOUT => clk_dmtd_fb,
@@ -490,18 +494,18 @@ begin  -- architecture rtl
           COMPENSATION         => "ZHOLD",
           STARTUP_WAIT         => false,
           DIVCLK_DIVIDE        => 1,
-          CLKFBOUT_MULT_F      => 50.000,    -- 20 MHz -> 1 GHz
+          CLKFBOUT_MULT_F      => real(g_dmdt_mult_factor),    -- 20 MHz -> 1 GHz
           CLKFBOUT_PHASE       => 0.000,
           CLKFBOUT_USE_FINE_PS => false,
-          CLKOUT0_DIVIDE_F     => 16.000,    -- 1GHz/16 -> 62.5 MHz
+          CLKOUT0_DIVIDE_F     => real(g_dmdt_div_factor),    -- 1GHz/16 -> 62.5 MHz
           CLKOUT0_PHASE        => 0.000,
           CLKOUT0_DUTY_CYCLE   => 0.500,
           CLKOUT0_USE_FINE_PS  => false,
-          CLKOUT1_DIVIDE       => 16,        -- 1GHz/16 -> 62.5 MHz
+          CLKOUT1_DIVIDE       => g_dmdt_div_factor,    -- 1GHz/16 -> 62.5 MHz
           CLKOUT1_PHASE        => 0.000,
           CLKOUT1_DUTY_CYCLE   => 0.500,
           CLKOUT1_USE_FINE_PS  => false,
-          CLKIN1_PERIOD        => 50.000,    -- 50ns for 20 MHz
+          CLKIN1_PERIOD        => g_dmdt_period_ns,     -- 50ns for 20 MHz
           REF_JITTER1          => 0.010)
         port map (
           -- Output clocks

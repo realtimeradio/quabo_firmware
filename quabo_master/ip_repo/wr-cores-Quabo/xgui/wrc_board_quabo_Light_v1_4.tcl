@@ -6,7 +6,37 @@ proc init_gui { IPINST } {
   ipgui::add_param $IPINST -name "g_dpram_initf" -parent ${Page_0}
   ipgui::add_param $IPINST -name "g_simulation" -parent ${Page_0}
 
+  ipgui::add_param $IPINST -name "g_dmdt_mult_factor"
+  ipgui::add_param $IPINST -name "g_dmdt_div_factor"
+  ipgui::add_param $IPINST -name "g_dmdt_period_ns"
 
+}
+
+proc update_PARAM_VALUE.g_dmdt_div_factor { PARAM_VALUE.g_dmdt_div_factor } {
+	# Procedure called to update g_dmdt_div_factor when any of the dependent parameters in the arguments change
+}
+
+proc validate_PARAM_VALUE.g_dmdt_div_factor { PARAM_VALUE.g_dmdt_div_factor } {
+	# Procedure called to validate g_dmdt_div_factor
+	return true
+}
+
+proc update_PARAM_VALUE.g_dmdt_mult_factor { PARAM_VALUE.g_dmdt_mult_factor } {
+	# Procedure called to update g_dmdt_mult_factor when any of the dependent parameters in the arguments change
+}
+
+proc validate_PARAM_VALUE.g_dmdt_mult_factor { PARAM_VALUE.g_dmdt_mult_factor } {
+	# Procedure called to validate g_dmdt_mult_factor
+	return true
+}
+
+proc update_PARAM_VALUE.g_dmdt_period_ns { PARAM_VALUE.g_dmdt_period_ns } {
+	# Procedure called to update g_dmdt_period_ns when any of the dependent parameters in the arguments change
+}
+
+proc validate_PARAM_VALUE.g_dmdt_period_ns { PARAM_VALUE.g_dmdt_period_ns } {
+	# Procedure called to validate g_dmdt_period_ns
+	return true
 }
 
 proc update_PARAM_VALUE.g_dpram_initf { PARAM_VALUE.g_dpram_initf } {
